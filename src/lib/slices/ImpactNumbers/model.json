@@ -1,0 +1,74 @@
+{
+  "type": "SharedSlice",
+  "id": "impact_statistics",
+  "name": "ImpactNumbers",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays a heading, introduction text, and a group of statistical blocks, each featuring an image, numeric value, label, and description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Section eyebrow",
+            "placeholder": "Eyebrow"
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section title",
+            "placeholder": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "stats": {
+          "type": "Group",
+          "config": {
+            "label": "Statistics",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value"
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+:root {
+	--accent-brown: #b29e84;
+	--bg-sand-light: #fff5eb;
+	--bg-sand-dark: #ebe0d5;
+	--bg-dark: #1f1b16;
+	--white: #fff5eb;
+	--black: #0d0a08;
+
+	--body-font-size: 16px;
+	--section-spacing: 12.5rem;
+	--section-spacing--md: 8.75rem;
+	--section-spacing--sm: 6.25rem;
+}
+
+body {
+	font-size: var(--body-font-size);
+}
+
+/**
+ * MOBILE
+ */
+.padding-block {
+	padding-block: var(--section-spacing--sm);
+}
+
+.padding-block--start {
+	padding-block-start: var(--section-spacing--sm);
+}
+
+.padding-block--end {
+	padding-block-end: var(--section-spacing--sm);
+}
+
+/**
+ * TABLET
+*/
+@media screen and (min-width: 768px) {
+	.padding-block {
+		padding-block: var(--section-spacing--md);
+	}
+
+	.padding-block--start {
+		padding-block-start: var(--section-spacing--md);
+	}
+
+	.padding-block--end {
+		padding-block-end: var(--section-spacing--md);
+	}
+}
+
+/**
+ * DESKTOP
+*/
+@media screen and (min-width: 1200px) {
+	.padding-block {
+		padding-block: var(--section-spacing);
+	}
+
+	.padding-block--start {
+		padding-block-start: var(--section-spacing);
+	}
+
+	.padding-block--end {
+		padding-block-end: var(--section-spacing);
+	}
+}

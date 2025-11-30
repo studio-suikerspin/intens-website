@@ -1,0 +1,104 @@
+{
+  "type": "SharedSlice",
+  "id": "service_highlights",
+  "name": "ImageText",
+  "variations": [
+    {
+      "id": "image_text_alternating",
+      "name": "Image & Text Alternating",
+      "description": "Displays each service with image and text side by side, alternating image position per item. Supports headline, link to all services, and a repeatable list of service blocks.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Headline"
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": "",
+            "allowText": true,
+            "repeat": false,
+            "select": null,
+            "allowTargetBlank": true
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,strong,em,hyperlink"
+          }
+        },
+        "image_text_block": {
+          "type": "Group",
+          "config": {
+            "label": "Image & text block",
+            "repeat": true,
+            "fields": {
+              "image_right": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Image right",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,hyperlink,list-item,o-list-item"
+                }
+              },
+              "cta_button": {
+                "type": "Link",
+                "config": {
+                  "label": "CTA button",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "type": "SharedSlice",
+  "id": "project_showcase",
+  "name": "HorizontalShowcase",
+  "variations": [
+    {
+      "id": "with_featured_project",
+      "name": "Default",
+      "description": "Displays section intro and a primary featured project with category tags and project link.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Section Title"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Section Description"
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": "",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "featured_projects": {
+          "type": "Group",
+          "config": {
+            "label": "Featured Projects",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Project Title"
+                }
+              },
+              "summary": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Project Summary"
+                }
+              },
+              "project_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Project Link",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "category": {
+                "type": "Text",
+                "config": {
+                  "label": "Category"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
