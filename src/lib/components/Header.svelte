@@ -23,7 +23,7 @@
 	</div>
 </header>
 
-<style lang="scss">
+<style>
 	.header {
 		position: sticky;
 		top: 0;
@@ -31,21 +31,25 @@
 		right: 0;
 		width: 100%;
 
-		&__container {
+		.header__container {
 			max-width: 1500px;
 			margin-inline: auto;
 		}
 
-		&__inner {
+		.header__inner {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 		}
 
-		&__nav {
+		.header__nav {
 			display: flex;
 			align-items: center;
 			gap: 0.75rem;
+		}
+
+		.header__nav :global .header__nav-item {
+			font-weight: 700;
 		}
 	}
 </style>
