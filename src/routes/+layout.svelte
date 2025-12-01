@@ -1,7 +1,7 @@
 <script>
-	import '../app.css';
-	import '$lib/fonts/iconly.css';
 	import '$lib/fonts/satoshi.css';
+	import '$lib/fonts/iconly.css';
+	import '../app.css';
 
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/state';
