@@ -15,6 +15,7 @@
 }
 
 body {
+	font-family: 'Satoshi-Medium';
 	font-size: var(--body-font-size);
 }
 
