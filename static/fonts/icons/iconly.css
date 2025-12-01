@@ -9,11 +9,11 @@
 	font-weight: 400;
 	src: url('fonts/icons/iconly.eot?1764519169137');
 	src:
-		url('fonts/icons/iconly.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icons/iconly.woff2?1764519169137') format('woff2'),
-		url('fonts/icons/iconly.woff?1764519169137') format('woff'),
-		url('fonts/icons/iconly.ttf?1764519169137') format('truetype'),
-		url('fonts/icons/iconly.svg?1764519169137#Iconly') format('svg');
+		url('./iconly.eot?#iefix') format('embedded-opentype'),
+		url('./iconly.woff2?1764519169137') format('woff2'),
+		url('./iconly.woff?1764519169137') format('woff'),
+		url('./iconly.ttf?1764519169137') format('truetype'),
+		url('./iconly.svg?1764519169137#Iconly') format('svg');
 }
 
 [class='icon'],

@@ -21,9 +21,9 @@
 @font-face {
 	font-family: 'Satoshi';
 	src:
-		url('fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
-		url('fonts/satoshi/Satoshi-Variable.woff') format('woff'),
-		url('fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+		url('./Satoshi-Variable.woff2') format('woff2'),
+		url('./Satoshi-Variable.woff') format('woff'),
+		url('./Satoshi-Variable.ttf') format('truetype');
 	font-weight: 300 900;
 	font-display: swap;
 	font-style: normal;
@@ -39,9 +39,9 @@
 @font-face {
 	font-family: 'Satoshi';
 	src:
-		url('fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2'),
-		url('fonts/satoshi/Satoshi-VariableItalic.woff') format('woff'),
-		url('fonts/satoshi/Satoshi-VariableItalic.ttf') format('truetype');
+		url('./Satoshi-VariableItalic.woff2') format('woff2'),
+		url('./Satoshi-VariableItalic.woff') format('woff'),
+		url('./Satoshi-VariableItalic.ttf') format('truetype');
 	font-weight: 300 900;
 	font-display: swap;
 	font-style: italic;

@@ -1,6 +1,4 @@
 <script>
-	import '$lib/fonts/satoshi.css';
-	import '$lib/fonts/iconly.css';
 	import '../app.css';
 
 	import { PrismicPreview } from '@prismicio/svelte/kit';
@@ -25,6 +23,9 @@
 		<meta name="og:image" content={metadata.meta_image.url} />
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
+
+	<link rel="stylesheet" href="fonts/satoshi/satoshi.css" />
+	<link rel="stylesheet" href="fonts/icons/iconly.css" />
 </svelte:head>
 <main>
 	<Header />
