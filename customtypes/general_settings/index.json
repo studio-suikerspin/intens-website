@@ -1,0 +1,19 @@
+{
+	"format": "custom",
+	"id": "general_settings",
+	"label": "General settings",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"site_logo": {
+				"type": "Image",
+				"config": {
+					"label": "Site logo",
+					"constraint": {},
+					"thumbnails": []
+				}
+			}
+		}
+	}
+}

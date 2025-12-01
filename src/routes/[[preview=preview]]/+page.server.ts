@@ -1,21 +1,16 @@
-import { asText } from '@prismicio/client';
-
 import { createClient } from '$lib/prismicio';
+import type { PageServerLoad, EntryGenerator } from './$types';
 
-export async function load({ fetch, cookies }) {
+export const load: PageServerLoad = async ({ params, fetch, cookies }) => {
 	const client = createClient({ fetch, cookies });
 
-	const page = await client.getByUID('page', 'home');
+	const page = await client.getSingle('homepage');
 
 	return {
-		page,
-		title: asText(page.data.title),
-		meta_description: page.data.meta_description,
-		meta_title: page.data.meta_title,
-		meta_image: page.data.meta_image.url
+		page
 	};
-}
+};
 
-export function entries() {
+export const entries: EntryGenerator = async () => {
 	return [{}];
-}
+};

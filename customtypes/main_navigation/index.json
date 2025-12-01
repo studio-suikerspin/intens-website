@@ -1,0 +1,22 @@
+{
+	"format": "custom",
+	"id": "main_navigation",
+	"label": "Main navigation",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"navigation_item": {
+				"type": "Link",
+				"config": {
+					"label": "Navigation item",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": true
+				}
+			}
+		}
+	}
+}

@@ -57,7 +57,43 @@ type ContentRelationshipFieldWithData<
 	>;
 }[Exclude<TCustomType[number], string>['id']];
 
-type HomepageDocumentDataSlicesSlice = HeroWithNavigationOverlaySlice;
+/**
+ * Content for General settings documents
+ */
+interface GeneralSettingsDocumentData {
+	/**
+	 * Site logo field in *General settings*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general_settings.site_logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	site_logo: prismic.ImageField<never>;
+}
+
+/**
+ * General settings document from Prismic
+ *
+ * - **API ID**: `general_settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GeneralSettingsDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<GeneralSettingsDocumentData>,
+		'general_settings',
+		Lang
+	>;
+
+type HomepageDocumentDataSlicesSlice =
+	| ImpactStatisticsSlice
+	| ServiceHighlightsSlice
+	| ProjectShowcaseSlice
+	| HeroWithNavigationOverlaySlice;
 
 /**
  * Content for Homepage documents
@@ -73,6 +109,17 @@ interface HomepageDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/slices
 	 */
 	slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>; /**
+	 * Page title field in *Homepage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.page_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	page_title: prismic.KeyTextField;
+
+	/**
 	 * Meta Title field in *Homepage*
 	 *
 	 * - **Field Type**: Text
@@ -120,6 +167,36 @@ export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocu
 	'homepage',
 	Lang
 >;
+
+/**
+ * Content for Main navigation documents
+ */
+interface MainNavigationDocumentData {
+	/**
+	 * Navigation item field in *Main navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: main_navigation.navigation_item
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	navigation_item: prismic.Repeatable<
+		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+	>;
+}
+
+/**
+ * Main navigation document from Prismic
+ *
+ * - **API ID**: `main_navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MainNavigationDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice = never;
 
@@ -196,7 +273,11 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = HomepageDocument | PageDocument;
+export type AllDocumentTypes =
+	| GeneralSettingsDocument
+	| HomepageDocument
+	| MainNavigationDocument
+	| PageDocument;
 
 /**
  * Item in *Hero → Parallax → Primary → Column 1*
@@ -805,9 +886,13 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			GeneralSettingsDocument,
+			GeneralSettingsDocumentData,
 			HomepageDocument,
 			HomepageDocumentData,
 			HomepageDocumentDataSlicesSlice,
+			MainNavigationDocument,
+			MainNavigationDocumentData,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,

@@ -11,6 +11,15 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"impact_statistics": {
+							"type": "SharedSlice"
+						},
+						"service_highlights": {
+							"type": "SharedSlice"
+						},
+						"project_showcase": {
+							"type": "SharedSlice"
+						},
 						"hero_with_navigation_overlay": {
 							"type": "SharedSlice"
 						}
@@ -19,6 +28,13 @@
 			}
 		},
 		"SEO & Metadata": {
+			"page_title": {
+				"type": "Text",
+				"config": {
+					"label": "Page title",
+					"placeholder": ""
+				}
+			},
 			"meta_title": {
 				"config": {
 					"label": "Meta Title",
