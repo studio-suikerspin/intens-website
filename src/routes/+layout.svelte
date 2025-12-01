@@ -10,7 +10,7 @@
 
 	let { children } = $props();
 
-	let { data: metadata } = page.data.page;
+	let { data: metadata } = page?.data?.page ?? { data: {} };
 </script>
 
 <svelte:head>
