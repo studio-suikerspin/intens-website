@@ -4,15 +4,24 @@
 
 	type Props = SliceComponentProps<Content.ServiceHighlightsSlice>;
 
+	import SectionHeader from '$lib/components/SectionHeader/index.svelte';
+
 	const { slice }: Props = $props();
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) slices.
-	<br />
-	<strong>You can edit this slice directly in your code editor.</strong>
-	<!--
-	💡 Use the Prismic MCP server with your code editor
-	📚 Docs: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-	-->
+<section
+	class="block-spacing image-text-section"
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+>
+	<div class="container">
+		<div class="image-text-section__inner">
+			<SectionHeader
+				eyebrow={slice.primary.eyebrow ? slice.primary.eyebrow : undefined}
+				title={slice.primary.headline}
+				description={slice.primary.description ? slice.primary.description : undefined}
+				cta={slice.primary.cta_link ? slice.primary.cta_link : undefined}
+			/>
+		</div>
+	</div>
 </section>

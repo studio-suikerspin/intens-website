@@ -34,30 +34,34 @@ body {
 	font-size: var(--body-font-size);
 }
 
+.bg-dark {
+	background: var(--bg-dark);
+}
+
 /**
  * MOBILE
  */
-.padding-block {
+.block-spacing {
 	padding-block: var(--section-spacing--sm);
 }
 
-.padding-block--start {
+.block-spacing--start {
 	padding-block-start: var(--section-spacing--sm);
 }
 
-.padding-block--end {
+.block-spacing--end {
 	padding-block-end: var(--section-spacing--sm);
 }
 
-.padding-block--sm {
+.block-spacing--sm {
 	padding-block: calc(var(--section-spacing--sm) / 2);
 }
 
-.padding-block--sm--start {
+.block-spacing--sm--start {
 	padding-block-start: calc(var(--section-spacing--sm) / 2);
 }
 
-.padding-block--sm--end {
+.block-spacing--sm--end {
 	padding-block-end: calc(var(--section-spacing--sm) / 2);
 }
 
@@ -65,27 +69,27 @@ body {
  * TABLET
 */
 @media screen and (min-width: 768px) {
-	.padding-block {
+	.block-spacing {
 		padding-block: var(--section-spacing--md);
 	}
 
-	.padding-block--start {
+	.block-spacing--start {
 		padding-block-start: var(--section-spacing--md);
 	}
 
-	.padding-block--end {
+	.block-spacing--end {
 		padding-block-end: var(--section-spacing--md);
 	}
 
-	.padding-block--sm {
+	.block-spacing--sm {
 		padding-block: calc(var(--section-spacing--md) / 2);
 	}
 
-	.padding-block--sm--start {
+	.block-spacing--sm--start {
 		padding-block-start: calc(var(--section-spacing--md) / 2);
 	}
 
-	.padding-block--sm--end {
+	.block-spacing--sm--end {
 		padding-block-end: calc(var(--section-spacing--md) / 2);
 	}
 }
@@ -94,27 +98,27 @@ body {
  * DESKTOP
 */
 @media screen and (min-width: 1200px) {
-	.padding-block {
+	.block-spacing {
 		padding-block: var(--section-spacing);
 	}
 
-	.padding-block--start {
+	.block-spacing--start {
 		padding-block-start: var(--section-spacing);
 	}
 
-	.padding-block--end {
+	.block-spacing--end {
 		padding-block-end: var(--section-spacing);
 	}
 
-	.padding-block--sm {
+	.block-spacing--sm {
 		padding-block: calc(var(--section-spacing) / 2);
 	}
 
-	.padding-block--sm--start {
+	.block-spacing--sm--start {
 		padding-block-start: calc(var(--section-spacing) / 2);
 	}
 
-	.padding-block--sm--end {
+	.block-spacing--sm--end {
 		padding-block-end: calc(var(--section-spacing) / 2);
 	}
 }

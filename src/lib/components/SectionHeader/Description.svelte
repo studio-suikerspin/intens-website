@@ -13,4 +13,8 @@
 		line-height: 140%;
 		max-width: 43rem;
 	}
+
+	.section-header__description--dark {
+		color: var(--white);
+	}
 </style>

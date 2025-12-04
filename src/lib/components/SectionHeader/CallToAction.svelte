@@ -9,7 +9,7 @@
 		field={cta}
 		class={['section-header__cta', isDark ? 'section-header__cta--dark' : '']}
 	/>
-	<i class="icon-circle"></i>
+	<i class="icon-circle cta-icon {isDark ? 'cta-icon--dark' : ''}"></i>
 
 	<div class="section-header__cta-underline"></div>
 </div>
@@ -30,12 +30,20 @@
 		text-wrap: nowrap;
 	}
 
-	.section-header__cta-wrapper i {
+	.section-header__cta-wrapper :global .section-header__cta--dark {
+		color: var(--white);
+	}
+
+	.section-header__cta-wrapper .cta-icon {
 		position: absolute;
 		font-size: 1.25rem;
 		right: 0;
 		top: 50%;
 		transform: translateY(-50%);
 		pointer-events: none;
+	}
+
+	.cta-icon--dark {
+		color: var(--white);
 	}
 </style>

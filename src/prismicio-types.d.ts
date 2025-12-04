@@ -640,6 +640,17 @@ export interface ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsI
  */
 export interface ProjectShowcaseSliceWithFeaturedProjectPrimary {
 	/**
+	 * Dark field in *HorizontalShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: project_showcase.with_featured_project.primary.dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	dark: prismic.BooleanField;
+
+	/**
 	 * Eyebrow field in *HorizontalShowcase → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -650,24 +661,14 @@ export interface ProjectShowcaseSliceWithFeaturedProjectPrimary {
 	eyebrow: prismic.KeyTextField;
 
 	/**
-	 * Section Title field in *HorizontalShowcase → Default → Primary*
+	 * Headline field in *HorizontalShowcase → Default → Primary*
 	 *
-	 * - **Field Type**: Rich Text
+	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.section_title
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 * - **API ID Path**: project_showcase.with_featured_project.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
-	section_title: prismic.RichTextField;
-
-	/**
-	 * Section Description field in *HorizontalShowcase → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.section_description
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	section_description: prismic.RichTextField;
+	headline: prismic.KeyTextField;
 
 	/**
 	 * CTA Link field in *HorizontalShowcase → Default → Primary*
@@ -678,6 +679,16 @@ export interface ProjectShowcaseSliceWithFeaturedProjectPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
 	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Description field in *HorizontalShowcase → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_showcase.with_featured_project.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
 
 	/**
 	 * Featured Projects field in *HorizontalShowcase → Default → Primary*
@@ -795,12 +806,12 @@ export interface ServiceHighlightsSliceImageTextAlternatingPrimary {
 	/**
 	 * Headline field in *ImageText → Image & Text Alternating → Primary*
 	 *
-	 * - **Field Type**: Rich Text
+	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: service_highlights.image_text_alternating.primary.headline
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
-	headline: prismic.RichTextField;
+	headline: prismic.KeyTextField;
 
 	/**
 	 * CTA Link field in *ImageText → Image & Text Alternating → Primary*

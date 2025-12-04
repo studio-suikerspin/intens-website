@@ -8,17 +8,6 @@
 				"value": "correct",
 				"type": "Text"
 			},
-			"headline": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Crack"
-						}
-					}
-				]
-			},
 			"description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -115,6 +104,11 @@
 						]
 					}
 				]
+			},
+			"headline": {
+				"__TYPE__": "FieldContent",
+				"value": "furniture",
+				"type": "Text"
 			}
 		},
 		"items": []

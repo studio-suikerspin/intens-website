@@ -12,7 +12,7 @@
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="padding-block"
+	class="block-spacing"
 >
 	<div class="container">
 		<div class="team-members-carousel__inner">

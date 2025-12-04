@@ -18,10 +18,10 @@
           }
         },
         "headline": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
-            "single": "heading1",
-            "label": "Headline"
+            "label": "Headline",
+            "placeholder": ""
           }
         },
         "cta_link": {
