@@ -17,9 +17,15 @@
 	--header-z-index: 1000;
 }
 
+@utility container {
+	max-width: 1500px;
+	margin-inline: auto;
+	padding-inline: 1.25rem;
+}
+
 html,
 body {
-	background-color: transparent;
+	background-color: var(--white);
 }
 
 body {
@@ -43,6 +49,18 @@ body {
 	padding-block-end: var(--section-spacing--sm);
 }
 
+.padding-block--sm {
+	padding-block: calc(var(--section-spacing--sm) / 2);
+}
+
+.padding-block--sm--start {
+	padding-block-start: calc(var(--section-spacing--sm) / 2);
+}
+
+.padding-block--sm--end {
+	padding-block-end: calc(var(--section-spacing--sm) / 2);
+}
+
 /**
  * TABLET
 */
@@ -57,6 +75,18 @@ body {
 
 	.padding-block--end {
 		padding-block-end: var(--section-spacing--md);
+	}
+
+	.padding-block--sm {
+		padding-block: calc(var(--section-spacing--md) / 2);
+	}
+
+	.padding-block--sm--start {
+		padding-block-start: calc(var(--section-spacing--md) / 2);
+	}
+
+	.padding-block--sm--end {
+		padding-block-end: calc(var(--section-spacing--md) / 2);
 	}
 }
 
@@ -74,5 +104,17 @@ body {
 
 	.padding-block--end {
 		padding-block-end: var(--section-spacing);
+	}
+
+	.padding-block--sm {
+		padding-block: calc(var(--section-spacing) / 2);
+	}
+
+	.padding-block--sm--start {
+		padding-block-start: calc(var(--section-spacing) / 2);
+	}
+
+	.padding-block--sm--end {
+		padding-block-end: calc(var(--section-spacing) / 2);
 	}
 }
