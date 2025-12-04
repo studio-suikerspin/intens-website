@@ -510,7 +510,18 @@ export interface ImpactStatisticsSliceDefaultPrimaryStatsItem {
  */
 export interface ImpactStatisticsSliceDefaultPrimary {
 	/**
-	 * Section eyebrow field in *ImpactNumbers → Default → Primary*
+	 * Light or dark? field in *ImpactNumbers → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: impact_statistics.default.primary.dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	dark: prismic.BooleanField;
+
+	/**
+	 * Eyebrow field in *ImpactNumbers → Default → Primary*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: Eyebrow
@@ -520,17 +531,27 @@ export interface ImpactStatisticsSliceDefaultPrimary {
 	eyebrow: prismic.KeyTextField;
 
 	/**
-	 * Section title field in *ImpactNumbers → Default → Primary*
+	 * Headline field in *ImpactNumbers → Default → Primary*
 	 *
 	 * - **Field Type**: Text
-	 * - **Placeholder**: Title
-	 * - **API ID Path**: impact_statistics.default.primary.section_title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: impact_statistics.default.primary.headline
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
-	section_title: prismic.KeyTextField;
+	headline: prismic.KeyTextField;
 
 	/**
-	 * Section description field in *ImpactNumbers → Default → Primary*
+	 * CTA Link field in *ImpactNumbers → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: impact_statistics.default.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Description field in *ImpactNumbers → Default → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -640,7 +661,7 @@ export interface ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsI
  */
 export interface ProjectShowcaseSliceWithFeaturedProjectPrimary {
 	/**
-	 * Dark field in *HorizontalShowcase → Default → Primary*
+	 * Light or dark? field in *HorizontalShowcase → Default → Primary*
 	 *
 	 * - **Field Type**: Boolean
 	 * - **Placeholder**: *None*
@@ -794,6 +815,17 @@ export interface ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlock
  */
 export interface ServiceHighlightsSliceImageTextAlternatingPrimary {
 	/**
+	 * Light or dark? field in *ImageText → Image & Text Alternating → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: service_highlights.image_text_alternating.primary.dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	dark: prismic.BooleanField;
+
+	/**
 	 * Eyebrow field in *ImageText → Image & Text Alternating → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -925,6 +957,17 @@ export interface TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem {
  * Primary content in *TeamMembersCarousel → Default → Primary*
  */
 export interface TeamMembersCarouselSliceDefaultPrimary {
+	/**
+	 * Light or dark? field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: team_members_carousel.default.primary.dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	dark: prismic.BooleanField;
+
 	/**
 	 * Section Eyebrow field in *TeamMembersCarousel → Default → Primary*
 	 *

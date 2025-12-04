@@ -11,24 +11,44 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
+        "dark": {
+          "type": "Boolean",
+          "config": {
+            "label": "Light or dark?",
+            "placeholder_false": "Light",
+            "placeholder_true": "Dark",
+            "default_value": false
+          }
+        },
         "eyebrow": {
           "type": "Text",
           "config": {
-            "label": "Section eyebrow",
+            "label": "Eyebrow",
             "placeholder": "Eyebrow"
           }
         },
-        "section_title": {
+        "headline": {
           "type": "Text",
           "config": {
-            "label": "Section title",
-            "placeholder": "Title"
+            "label": "Headline",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         },
         "description": {
           "type": "StructuredText",
           "config": {
-            "label": "Section description",
+            "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
             "single": "paragraph,strong,em,hyperlink"

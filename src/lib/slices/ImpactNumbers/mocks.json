@@ -5,7 +5,7 @@
 		"primary": {
 			"eyebrow": {
 				"__TYPE__": "FieldContent",
-				"value": "trail",
+				"value": "boat",
 				"type": "Text"
 			},
 			"description": {
@@ -14,7 +14,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Magna sint labore mollit non et sint occaecat aute cillum enim officia occaecat exercitation."
+							"text": "Ullamco consectetur excepteur occaecat in ad ullamco."
 						}
 					}
 				]
@@ -78,10 +78,23 @@
 					}
 				]
 			},
-			"section_title": {
+			"dark": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"headline": {
 				"__TYPE__": "FieldContent",
-				"value": "rough",
+				"value": "worry",
 				"type": "Text"
+			},
+			"cta_link": {
+				"key": "5c128e7f-c074-45d6-a14e-52f9ec7c82bc",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "why"
+				}
 			}
 		},
 		"items": []

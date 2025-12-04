@@ -10,9 +10,7 @@
 </script>
 
 <section
-	class="block-spacing--sm horizontal-showcase-section {slice.primary.dark
-		? 'bg-dark'
-		: 'bg-light'}"
+	class="block-spacing--sm horizontal-showcase-section {slice.primary.dark ? 'bg-dark' : ''}"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

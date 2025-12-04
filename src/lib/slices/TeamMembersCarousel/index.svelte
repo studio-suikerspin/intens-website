@@ -12,7 +12,7 @@
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="block-spacing"
+	class="block-spacing--sm--end team-members-carousel {slice.primary.dark ? 'dark' : ''}"
 >
 	<div class="container">
 		<div class="team-members-carousel__inner">
@@ -21,6 +21,7 @@
 				title={slice.primary.section_title}
 				description={slice.primary.section_description}
 				cta={slice.primary.cta_link}
+				isDark={slice.primary.dark}
 			/>
 		</div>
 	</div>

@@ -10,7 +10,7 @@
 </script>
 
 <section
-	class="block-spacing image-text-section"
+	class="block-spacing image-text-section {slice.primary.dark ? 'bg-dark' : ''}"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
@@ -21,6 +21,7 @@
 				title={slice.primary.headline}
 				description={slice.primary.description ? slice.primary.description : undefined}
 				cta={slice.primary.cta_link ? slice.primary.cta_link : undefined}
+				isDark={slice.primary.dark}
 			/>
 		</div>
 	</div>

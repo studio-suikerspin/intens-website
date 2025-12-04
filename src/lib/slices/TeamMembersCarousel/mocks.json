@@ -87,13 +87,17 @@
 				"type": "Text"
 			},
 			"cta_link": {
-				"__TYPE__": "LinkContent",
 				"key": "af5d9961-35a5-402f-82e7-d7244b5c9d0e",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com",
 					"text": "select"
 				}
+			},
+			"dark": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": []

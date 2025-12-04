@@ -14,9 +14,9 @@
         "dark": {
           "type": "Boolean",
           "config": {
-            "label": "Dark",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
+            "label": "Light or dark?",
+            "placeholder_false": "Light",
+            "placeholder_true": "Dark",
             "default_value": true
           }
         },

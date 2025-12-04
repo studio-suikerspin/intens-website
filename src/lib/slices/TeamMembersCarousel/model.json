@@ -11,6 +11,15 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
+        "dark": {
+          "type": "Boolean",
+          "config": {
+            "label": "Light or dark?",
+            "placeholder_false": "Light",
+            "placeholder_true": "Dark",
+            "default_value": false
+          }
+        },
         "eyebrow": {
           "type": "Text",
           "config": {
