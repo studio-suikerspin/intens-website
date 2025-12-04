@@ -4,10 +4,12 @@ import Hero from './Hero/index.svelte';
 import ImpactNumbers from './ImpactNumbers/index.svelte';
 import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ImageText from './ImageText/index.svelte';
+import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
 
 export const components = {
 	hero_with_navigation_overlay: Hero,
 	impact_statistics: ImpactNumbers,
 	project_showcase: HorizontalShowcase,
-	service_highlights: ImageText
+	service_highlights: ImageText,
+	team_members_carousel: TeamMembersCarousel
 };

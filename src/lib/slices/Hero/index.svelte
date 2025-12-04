@@ -1,18 +1,43 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-	import type { SliceComponentProps } from '@prismicio/svelte';
+	import { type SliceComponentProps } from '@prismicio/svelte';
 
 	type Props = SliceComponentProps<Content.HeroWithNavigationOverlaySlice>;
 
 	const { slice }: Props = $props();
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) slices.
-	<br />
-	<strong>You can edit this slice directly in your code editor.</strong>
-	<!--
-	💡 Use the Prismic MCP server with your code editor
-	📚 Docs: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-	-->
+<section class="hero" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<div class="hero__background">
+		<video
+			class="hero__background-video"
+			src={slice.primary?.video_url?.url}
+			autoplay
+			muted
+			loop
+			playsinline
+		></video>
+	</div>
 </section>
+
+<style>
+	.hero[data-slice-variation='fullscreen'] {
+		height: 100vh;
+
+		.hero__background {
+			height: 100%;
+			width: 100%;
+
+			.hero__background-video {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.hero[data-slice-variation='parallax'] {
+		min-height: 100vh;
+	}
+</style>

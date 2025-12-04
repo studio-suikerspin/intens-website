@@ -1,56 +1,6 @@
 [
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "image_left_headline_bottom_cta_right",
-		"primary": {
-			"headline": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Water"
-						}
-					}
-				]
-			},
-			"subheadline": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Veniam dolor cupidatat ad consequat irure non commodo esse amet ipsum. Ex in qui velit et eiusmod tempor aliquip quis reprehenderit aliquip exercitation est quis."
-						}
-					}
-				]
-			},
-			"cta_link": {
-				"key": "bf8cca91-1dea-45b5-9950-ba20303afb78",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://prismic.io",
-					"text": "thrown"
-				}
-			},
-			"video_url": {
-				"key": "9a8715af-d579-4cc0-b1c1-b1d86c1f2040",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "FileLink",
-					"id": "mock_Media_link",
-					"kind": "file",
-					"name": "mock_name",
-					"url": "https://source.unsplash.com/daily",
-					"size": "0"
-				}
-			}
-		},
-		"items": []
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
 		"variation": "parallax",
 		"primary": {
 			"headline": {
@@ -122,6 +72,61 @@
 						"value": []
 					}
 				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "fullscreen",
+		"primary": {
+			"headline": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Indicate"
+						}
+					}
+				]
+			},
+			"subheadline": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum dolor non irure ex magna et. Pariatur reprehenderit ut quis mollit culpa mollit aute ea excepteur quis elit. Consectetur pariatur consectetur aliquip dolore quis exercitation deserunt sint laboris elit in ut velit exercitation."
+						}
+					}
+				]
+			},
+			"cta_link": {
+				"key": "d59a6992-f343-4759-a401-1c36adc0b339",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "throw"
+				}
+			},
+			"video_url": {
+				"key": "ab4bef98-f4c9-4811-9645-5181758f310d",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0"
+				}
 			}
 		},
 		"items": [

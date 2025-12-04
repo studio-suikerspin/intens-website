@@ -6,12 +6,20 @@
 	--bg-sand-dark: #ebe0d5;
 	--bg-dark: #1f1b16;
 	--white: #fff5eb;
+	--white_20: rgba(255, 245, 235, 0.2);
 	--black: #0d0a08;
 
 	--body-font-size: 16px;
 	--section-spacing: 12.5rem;
 	--section-spacing--md: 8.75rem;
 	--section-spacing--sm: 6.25rem;
+
+	--header-z-index: 1000;
+}
+
+html,
+body {
+	background-color: transparent;
 }
 
 body {

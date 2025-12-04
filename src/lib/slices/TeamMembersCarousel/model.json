@@ -1,0 +1,87 @@
+{
+  "type": "SharedSlice",
+  "id": "team_members_carousel",
+  "name": "TeamMembersCarousel",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Carousel layout for showcasing multiple team members, including contact call-to-action and intro heading/description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Section Eyebrow",
+            "placeholder": "Eyebrow"
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Title"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Description",
+            "placeholder": "Description",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": "",
+            "allowText": true,
+            "repeat": false,
+            "select": null,
+            "allowTargetBlank": true
+          }
+        },
+        "team_members": {
+          "type": "Group",
+          "config": {
+            "label": "Team Members",
+            "fields": {
+              "photo": {
+                "type": "Image",
+                "config": {
+                  "label": "Photo"
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name"
+                }
+              },
+              "role": {
+                "type": "Text",
+                "config": {
+                  "label": "Role"
+                }
+              },
+              "social_linkedin": {
+                "type": "Link",
+                "config": {
+                  "label": "LinkedIn Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

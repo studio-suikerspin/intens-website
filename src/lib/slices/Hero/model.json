@@ -4,49 +4,6 @@
   "name": "Hero",
   "variations": [
     {
-      "id": "image_left_headline_bottom_cta_right",
-      "name": "Fullscreen",
-      "description": "This variation features the logo top left, navigation top right, headline and description bottom left, and a right-aligned call-to-action link overlayed on an image background.",
-      "version": "initial",
-      "imageUrl": "",
-      "docURL": "...",
-      "primary": {
-        "headline": {
-          "type": "StructuredText",
-          "config": {
-            "single": "heading1",
-            "label": "Headline"
-          }
-        },
-        "subheadline": {
-          "type": "StructuredText",
-          "config": {
-            "multi": "paragraph,strong,em,hyperlink",
-            "label": "Subheadline"
-          }
-        },
-        "cta_link": {
-          "type": "Link",
-          "config": {
-            "label": "Call to Action Link",
-            "allowText": true,
-            "repeat": false,
-            "select": null
-          }
-        },
-        "video_url": {
-          "type": "Link",
-          "config": {
-            "label": "Video URL",
-            "placeholder": "",
-            "select": "media",
-            "allowText": false
-          }
-        }
-      },
-      "items": {}
-    },
-    {
       "id": "parallax",
       "name": "Parallax",
       "description": "This variation features the logo top left, navigation top right, headline and description bottom left, and a right-aligned call-to-action link overlayed on an image background.",
@@ -108,6 +65,49 @@
             "label": "Column 3",
             "repeat": true,
             "fields": {}
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "fullscreen",
+      "name": "Fullscreen",
+      "description": "This variation features the logo top left, navigation top right, headline and description bottom left, and a right-aligned call-to-action link overlayed on an image background.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Headline"
+          }
+        },
+        "subheadline": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Subheadline"
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Call to Action Link",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "video_url": {
+          "type": "Link",
+          "config": {
+            "label": "Video URL",
+            "placeholder": "",
+            "select": "media",
+            "allowText": false
           }
         }
       },

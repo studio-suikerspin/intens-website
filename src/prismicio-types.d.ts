@@ -90,6 +90,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| TeamMembersCarouselSlice
 	| ImpactStatisticsSlice
 	| ServiceHighlightsSlice
 	| ProjectShowcaseSlice
@@ -295,65 +296,6 @@ export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn2Item {}
 export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn3Item {}
 
 /**
- * Primary content in *Hero → Fullscreen → Primary*
- */
-export interface HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRightPrimary {
-	/**
-	 * Headline field in *Hero → Fullscreen → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.image_left_headline_bottom_cta_right.primary.headline
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	headline: prismic.RichTextField;
-
-	/**
-	 * Subheadline field in *Hero → Fullscreen → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.image_left_headline_bottom_cta_right.primary.subheadline
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	subheadline: prismic.RichTextField;
-
-	/**
-	 * Call to Action Link field in *Hero → Fullscreen → Primary*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.image_left_headline_bottom_cta_right.primary.cta_link
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-	/**
-	 * Video URL field in *Hero → Fullscreen → Primary*
-	 *
-	 * - **Field Type**: Link to Media
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.image_left_headline_bottom_cta_right.primary.video_url
-	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-	 */
-	video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
- * Fullscreen variation for Hero Slice
- *
- * - **API ID**: `image_left_headline_bottom_cta_right`
- * - **Description**: This variation features the logo top left, navigation top right, headline and description bottom left, and a right-aligned call-to-action link overlayed on an image background.
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRight =
-	prismic.SharedSliceVariation<
-		'image_left_headline_bottom_cta_right',
-		Simplify<HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRightPrimary>,
-		never
-	>;
-
-/**
  * Primary content in *Hero → Parallax → Primary*
  */
 export interface HeroWithNavigationOverlaySliceParallaxPrimary {
@@ -442,11 +384,69 @@ export type HeroWithNavigationOverlaySliceParallax = prismic.SharedSliceVariatio
 >;
 
 /**
+ * Primary content in *Hero → Fullscreen → Primary*
+ */
+export interface HeroWithNavigationOverlaySliceFullscreenPrimary {
+	/**
+	 * Headline field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	headline: prismic.RichTextField;
+
+	/**
+	 * Subheadline field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.subheadline
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	subheadline: prismic.RichTextField;
+
+	/**
+	 * Call to Action Link field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Video URL field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.video_url
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Fullscreen variation for Hero Slice
+ *
+ * - **API ID**: `fullscreen`
+ * - **Description**: This variation features the logo top left, navigation top right, headline and description bottom left, and a right-aligned call-to-action link overlayed on an image background.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroWithNavigationOverlaySliceFullscreen = prismic.SharedSliceVariation<
+	'fullscreen',
+	Simplify<HeroWithNavigationOverlaySliceFullscreenPrimary>,
+	never
+>;
+
+/**
  * Slice variation for *Hero*
  */
 type HeroWithNavigationOverlaySliceVariation =
-	| HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRight
-	| HeroWithNavigationOverlaySliceParallax;
+	| HeroWithNavigationOverlaySliceParallax
+	| HeroWithNavigationOverlaySliceFullscreen;
 
 /**
  * Hero Shared Slice
@@ -865,6 +865,136 @@ export type ServiceHighlightsSlice = prismic.SharedSlice<
 	ServiceHighlightsSliceVariation
 >;
 
+/**
+ * Item in *TeamMembersCarousel → Default → Primary → Team Members*
+ */
+export interface TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem {
+	/**
+	 * Photo field in *TeamMembersCarousel → Default → Primary → Team Members*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.team_members[].photo
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	photo: prismic.ImageField<never>;
+
+	/**
+	 * Name field in *TeamMembersCarousel → Default → Primary → Team Members*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.team_members[].name
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	name: prismic.KeyTextField;
+
+	/**
+	 * Role field in *TeamMembersCarousel → Default → Primary → Team Members*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.team_members[].role
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	role: prismic.KeyTextField;
+
+	/**
+	 * LinkedIn Link field in *TeamMembersCarousel → Default → Primary → Team Members*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.team_members[].social_linkedin
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	social_linkedin: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *TeamMembersCarousel → Default → Primary*
+ */
+export interface TeamMembersCarouselSliceDefaultPrimary {
+	/**
+	 * Section Eyebrow field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Eyebrow
+	 * - **API ID Path**: team_members_carousel.default.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Section Title field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Title
+	 * - **API ID Path**: team_members_carousel.default.primary.section_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	section_title: prismic.KeyTextField;
+
+	/**
+	 * Section Description field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Description
+	 * - **API ID Path**: team_members_carousel.default.primary.section_description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	section_description: prismic.RichTextField;
+
+	/**
+	 * CTA Link field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Team Members field in *TeamMembersCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team_members_carousel.default.primary.team_members[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	team_members: prismic.GroupField<Simplify<TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem>>;
+}
+
+/**
+ * Default variation for TeamMembersCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Carousel layout for showcasing multiple team members, including contact call-to-action and intro heading/description.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamMembersCarouselSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TeamMembersCarouselSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TeamMembersCarousel*
+ */
+type TeamMembersCarouselSliceVariation = TeamMembersCarouselSliceDefault;
+
+/**
+ * TeamMembersCarousel Shared Slice
+ *
+ * - **API ID**: `team_members_carousel`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamMembersCarouselSlice = prismic.SharedSlice<
+	'team_members_carousel',
+	TeamMembersCarouselSliceVariation
+>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -898,14 +1028,14 @@ declare module '@prismicio/client' {
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			HeroWithNavigationOverlaySlice,
-			HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRightPrimary,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn2Item,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn3Item,
 			HeroWithNavigationOverlaySliceParallaxPrimary,
+			HeroWithNavigationOverlaySliceFullscreenPrimary,
 			HeroWithNavigationOverlaySliceVariation,
-			HeroWithNavigationOverlaySliceImageLeftHeadlineBottomCtaRight,
 			HeroWithNavigationOverlaySliceParallax,
+			HeroWithNavigationOverlaySliceFullscreen,
 			ImpactStatisticsSlice,
 			ImpactStatisticsSliceDefaultPrimaryStatsItem,
 			ImpactStatisticsSliceDefaultPrimary,
@@ -920,7 +1050,12 @@ declare module '@prismicio/client' {
 			ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlockItem,
 			ServiceHighlightsSliceImageTextAlternatingPrimary,
 			ServiceHighlightsSliceVariation,
-			ServiceHighlightsSliceImageTextAlternating
+			ServiceHighlightsSliceImageTextAlternating,
+			TeamMembersCarouselSlice,
+			TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem,
+			TeamMembersCarouselSliceDefaultPrimary,
+			TeamMembersCarouselSliceVariation,
+			TeamMembersCarouselSliceDefault
 		};
 	}
 }
