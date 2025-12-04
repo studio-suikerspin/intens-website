@@ -14,5 +14,6 @@
 		eyebrow={slice.primary.eyebrow}
 		title={slice.primary.section_title}
 		description={slice.primary.section_description}
+		cta={slice.primary.cta_link}
 	/>
 </section>
