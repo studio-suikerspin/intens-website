@@ -8,10 +8,14 @@
 
 <style>
 	.section-title {
-		font-size: 4.5rem;
+		font-size: 2.5rem;
 		color: var(--black);
 		font-weight: 700;
 		line-height: 100%;
+
+		@media screen and (min-width: 992px) {
+			font-size: 4.5rem;
+		}
 	}
 
 	.section-title--dark {

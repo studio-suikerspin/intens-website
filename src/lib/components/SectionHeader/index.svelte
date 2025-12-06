@@ -14,7 +14,7 @@
 			<Title {isDark}>{title}</Title>
 		</div>
 
-		{#if cta}
+		{#if cta?.text}
 			<CallToAction {isDark} {cta} />
 		{/if}
 	</div>
@@ -33,8 +33,15 @@
 		.section-header__content {
 			width: 100%;
 			display: flex;
-			align-items: flex-end;
-			justify-content: space-between;
+			flex-direction: column;
+			gap: 1.5rem;
+
+			@media screen and (min-width: 1200px) {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: unset;
+			}
 		}
 
 		.section-header__title {

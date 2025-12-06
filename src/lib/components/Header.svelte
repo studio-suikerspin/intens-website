@@ -13,27 +13,27 @@
 		gsap
 			.timeline()
 			.to('.mobile-menu', {
-				duration: 0.6,
+				duration: 0.4,
 				x: 0,
 				ease: 'power3.inOut'
 			})
 			.to('.mobile-menu__nav-link', {
-				duration: 0.8,
+				duration: 0.5,
 				y: 0,
 				ease: 'power3.inOut',
 				stagger: 0.1
 			})
 			.to('.mobile-menu__close-bar', {
-				duration: 0.2,
+				duration: 0.1,
 				y: 0,
 				autoAlpha: 1
 			})
 			.to('.mobile-menu__close-bar--first', {
-				duration: 0.2,
+				duration: 0.1,
 				transform: 'translate(-50%, -50%) rotate(45deg)'
 			})
 			.to('.mobile-menu__close-bar--second', {
-				duration: 0.2,
+				duration: 0.1,
 				transform: 'translate(-50%, -50%) rotate(-45deg)'
 			})
 			.play();
@@ -43,26 +43,26 @@
 		gsap
 			.timeline()
 			.to('.mobile-menu__close-bar--first', {
-				duration: 0.2,
+				duration: 0.1,
 				transform: 'translate(-50%, -50%) rotate(0)'
 			})
 			.to('.mobile-menu__close-bar--second', {
-				duration: 0.2,
+				duration: 0.1,
 				transform: 'translate(-50%, -50%) rotate(0)'
 			})
 			.to('.mobile-menu__close-bar', {
-				duration: 0.2,
+				duration: 0.1,
 				y: -10,
 				autoAlpha: 0
 			})
 			.to('.mobile-menu__nav-link', {
-				duration: 0.6,
+				duration: 0.4,
 				y: 100,
 				ease: 'power3.inOut',
-				stagger: 0.1
+				stagger: 0.05
 			})
 			.to('.mobile-menu', {
-				duration: 0.5,
+				duration: 0.3,
 				x: '100%',
 				ease: 'power3.inOut'
 			})
