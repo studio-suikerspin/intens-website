@@ -7,6 +7,7 @@
 
 	import SectionHeader from '$lib/components/SectionHeader/index.svelte';
 	import { onMount } from 'svelte';
+	import CarouselBanner from '$lib/components/CarouselBanner.svelte';
 
 	const { slice }: Props = $props();
 
@@ -82,66 +83,13 @@
 		</div>
 
 		<div class="horizontal-showcase__wrap" data-horizontal-scroll-wrap>
-			<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
-				<div class="horizontal-showcase__panel-inner">
-					<div class="demo-card">
-						<div class="demo-card__bg">
-							<img
-								src="https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf7185c9dcfbedc6d4aa_Dramatic%20Mountain%20Range%20at%20Sunrise.avif"
-								class="demo-card__bg-img"
-							/>
-						</div>
-						<div class="demo-card__inner">
-							<h2 class="demo-header__h1">Dolomites</h2>
-						</div>
+			{#each slice.primary.featured_projects as project (project.title)}
+				<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
+					<div class="horizontal-showcase__panel-inner">
+						<CarouselBanner title={project.title} summary={project.summary} image={project.image} />
 					</div>
 				</div>
-			</div>
-			<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
-				<div class="horizontal-showcase__panel-inner">
-					<div class="demo-card">
-						<div class="demo-card__bg">
-							<img
-								src="https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf71364a2fdf36e25d26_Tranquil%20Dawn%20over%20the%20Pastel%20Peak%20Range.avif"
-								class="demo-card__bg-img"
-							/>
-						</div>
-						<div class="demo-card__inner">
-							<h2 class="demo-header__h1">Patagonia</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
-				<div class="horizontal-showcase__panel-inner">
-					<div class="demo-card">
-						<div class="demo-card__bg">
-							<img
-								src="https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf712f57198f963fd7eb_Majestic%20Mountain%20Landscape.avif"
-								class="demo-card__bg-img"
-							/>
-						</div>
-						<div class="demo-card__inner">
-							<h2 class="demo-header__h1">Yosemite Park</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
-				<div class="horizontal-showcase__panel-inner">
-					<div class="demo-card">
-						<div class="demo-card__bg">
-							<img
-								src="https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf71cb5249dc6ea2eb35_Subdued%20Mountain%20Serenity.avif"
-								class="demo-card__bg-img"
-							/>
-						</div>
-						<div class="demo-card__inner">
-							<h2 class="demo-header__h1">Pyrenees</h2>
-						</div>
-					</div>
-				</div>
-			</div>
+			{/each}
 		</div>
 	</div>
 </section>
@@ -150,13 +98,14 @@
 	.horizontal-showcase {
 		&__wrap {
 			padding-block-start: 5rem;
-			flex-flow: column;
+			flex-flow: row;
 			display: flex;
+			gap: 1.5rem;
+			min-height: 90dvh;
+			overflow: hidden;
 
 			@media screen and (min-width: 768px) {
 				flex-flow: row;
-				min-height: 90dvh;
-				overflow: hidden;
 			}
 		}
 
