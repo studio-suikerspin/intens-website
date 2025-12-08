@@ -81,8 +81,10 @@
         "headline": {
           "type": "StructuredText",
           "config": {
-            "single": "heading1",
-            "label": "Headline"
+            "label": "Headline",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1"
           }
         },
         "subheadline": {
