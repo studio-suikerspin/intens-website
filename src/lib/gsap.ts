@@ -1,9 +1,12 @@
 import { browser } from '$app/environment';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 if (browser) {
-	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+	// ScrollTrigger.normalizeScroll(true);
 }
 
-export { gsap, ScrollTrigger };
+export { gsap, ScrollTrigger, ScrollSmoother };

@@ -5,10 +5,24 @@
 	import { page } from '$app/state';
 	import { repositoryName } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
+	import { onMount } from 'svelte';
+
+	import { ScrollSmoother, ScrollTrigger } from '$lib/gsap';
 
 	let { children } = $props();
 
 	let { data: metadata } = page?.data?.page ?? { data: {} };
+
+	onMount(() => {
+		if (ScrollTrigger.isTouch) {
+			return;
+		}
+
+		ScrollSmoother.create({
+			smooth: 0.5, // how long (in seconds) it takes to "catch up" to the native scroll position
+			effects: true
+		});
+	});
 </script>
 
 <svelte:head>
@@ -29,9 +43,10 @@
 </svelte:head>
 <main>
 	<Header />
-
-	{@render children()}
-
-	<i class="icon-arrow-left"></i>
+	<div id="smooth-wrapper">
+		<div id="smooth-content">
+			{@render children()}
+		</div>
+	</div>
 </main>
 <PrismicPreview {repositoryName} />
