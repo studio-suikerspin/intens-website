@@ -71,7 +71,7 @@
 </script>
 
 <header class="header">
-	<div class="container header__container">
+	<div class="header__container">
 		<div class="header__inner">
 			<a href={resolve('/')} class="header__logo" title="Home" aria-label="Home">
 				<PrismicImage field={settings.site_logo} />
@@ -128,8 +128,8 @@
 		z-index: var(--header-z-index);
 
 		.header__container {
-			max-width: 1500px;
-			margin-inline: auto;
+			/*max-width: 1500px;
+			margin-inline: auto;*/
 		}
 
 		.header__inner {
@@ -137,7 +137,7 @@
 			align-items: center;
 			justify-content: space-between;
 			padding-block: 1.25rem;
-			padding-inline: 1.25rem;
+			padding-inline: 0.75rem;
 		}
 
 		.header__logo {
@@ -151,7 +151,6 @@
 			width: 2.5rem;
 			height: 2.5rem;
 
-			background: var(--white_20);
 			border-radius: 2.5rem;
 
 			color: var(--white);
@@ -229,8 +228,8 @@
 			position: fixed;
 			top: 1.25rem;
 			right: 1.25rem;
-			width: 2rem;
-			height: 2rem;
+			width: 1.5rem;
+			height: 1.5rem;
 		}
 
 		.mobile-menu__close-bar {
