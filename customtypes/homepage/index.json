@@ -11,6 +11,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"navigational_media_grid": {
+							"type": "SharedSlice"
+						},
 						"team_members_carousel": {
 							"type": "SharedSlice"
 						},

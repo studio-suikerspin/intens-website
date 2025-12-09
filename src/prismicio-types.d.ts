@@ -58,6 +58,40 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>['id']];
 
 /**
+ * Content for Footer navigation documents
+ */
+interface FooterNavigationDocumentData {
+	/**
+	 * Footer navigation item field in *Footer navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer_navigation.footer_navigation_item
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	footer_navigation_item: prismic.Repeatable<
+		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+	>;
+}
+
+/**
+ * Footer navigation document from Prismic
+ *
+ * - **API ID**: `footer_navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterNavigationDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<FooterNavigationDocumentData>,
+		'footer_navigation',
+		Lang
+	>;
+
+/**
  * Content for General settings documents
  */
 interface GeneralSettingsDocumentData {
@@ -90,6 +124,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| NavigationalMediaGridSlice
 	| TeamMembersCarouselSlice
 	| ImpactStatisticsSlice
 	| ServiceHighlightsSlice
@@ -199,7 +234,7 @@ interface MainNavigationDocumentData {
 export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = NavigationalMediaGridSlice;
 
 /**
  * Content for Page documents
@@ -274,11 +309,46 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
+/**
+ * Content for Social media documents
+ */
+interface SocialMediaDocumentData {
+	/**
+	 * Social media link field in *Social media*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: social_media.social_media_link
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	social_media_link: prismic.Repeatable<
+		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+	>;
+}
+
+/**
+ * Social media document from Prismic
+ *
+ * - **API ID**: `social_media`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialMediaDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<SocialMediaDocumentData>,
+	'social_media',
+	Lang
+>;
+
 export type AllDocumentTypes =
+	| FooterNavigationDocument
 	| GeneralSettingsDocument
 	| HomepageDocument
 	| MainNavigationDocument
-	| PageDocument;
+	| PageDocument
+	| SocialMediaDocument;
 
 /**
  * Item in *Hero → Parallax → Primary → Column 1*
@@ -599,6 +669,86 @@ type ImpactStatisticsSliceVariation = ImpactStatisticsSliceDefault;
 export type ImpactStatisticsSlice = prismic.SharedSlice<
 	'impact_statistics',
 	ImpactStatisticsSliceVariation
+>;
+
+/**
+ * Item in *Footer → Default → Primary → Navigation items*
+ */
+export interface NavigationalMediaGridSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Footer → Default → Primary → Navigation items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigational_media_grid.default.primary.items[].media
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	media: prismic.ImageField<never>;
+
+	/**
+	 * Label field in *Footer → Default → Primary → Navigation items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigational_media_grid.default.primary.items[].label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Destination link field in *Footer → Default → Primary → Navigation items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigational_media_grid.default.primary.items[].destination
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	destination: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Footer → Default → Primary*
+ */
+export interface NavigationalMediaGridSliceDefaultPrimary {
+	/**
+	 * Navigation items field in *Footer → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigational_media_grid.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	items: prismic.GroupField<Simplify<NavigationalMediaGridSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Footer Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard grid navigation with image backgrounds and labels.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type NavigationalMediaGridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NavigationalMediaGridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Footer*
+ */
+type NavigationalMediaGridSliceVariation = NavigationalMediaGridSliceDefault;
+
+/**
+ * Footer Shared Slice
+ *
+ * - **API ID**: `navigational_media_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type NavigationalMediaGridSlice = prismic.SharedSlice<
+	'navigational_media_grid',
+	NavigationalMediaGridSliceVariation
 >;
 
 /**
@@ -1070,6 +1220,8 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			FooterNavigationDocument,
+			FooterNavigationDocumentData,
 			GeneralSettingsDocument,
 			GeneralSettingsDocumentData,
 			HomepageDocument,
@@ -1080,6 +1232,8 @@ declare module '@prismicio/client' {
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			SocialMediaDocument,
+			SocialMediaDocumentData,
 			AllDocumentTypes,
 			HeroWithNavigationOverlaySlice,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item,
@@ -1095,6 +1249,11 @@ declare module '@prismicio/client' {
 			ImpactStatisticsSliceDefaultPrimary,
 			ImpactStatisticsSliceVariation,
 			ImpactStatisticsSliceDefault,
+			NavigationalMediaGridSlice,
+			NavigationalMediaGridSliceDefaultPrimaryItemsItem,
+			NavigationalMediaGridSliceDefaultPrimary,
+			NavigationalMediaGridSliceVariation,
+			NavigationalMediaGridSliceDefault,
 			ProjectShowcaseSlice,
 			ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsItem,
 			ProjectShowcaseSliceWithFeaturedProjectPrimary,

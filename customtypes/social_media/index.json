@@ -1,0 +1,22 @@
+{
+	"format": "custom",
+	"id": "social_media",
+	"label": "Social media",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"social_media_link": {
+				"type": "Link",
+				"config": {
+					"label": "Social media link",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": true
+				}
+			}
+		}
+	}
+}
