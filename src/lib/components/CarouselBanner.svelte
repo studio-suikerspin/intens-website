@@ -1,44 +1,45 @@
 <script>
+	import { resolve } from '$app/paths';
+	import { isFilled } from '@prismicio/client';
 	import { PrismicImage, PrismicLink, PrismicRichText } from '@prismicio/svelte';
 
-	let { title, summary = null, link = null, tags = [], image = null } = $props();
+	let { project } = $props();
+	let projectData = project.project;
 </script>
 
 <div class="carousel-banner">
 	<div class="carousel-banner__bg">
-		{#if image}
-			<PrismicImage field={image} />
+		{#if isFilled.contentRelationship(projectData.data.featured_image)}
+			<PrismicImage field={projectData.data.featured_image} />
 		{/if}
 	</div>
 
 	<div class="carousel-banner__inner">
 		<div class="carousel-banner__text-wrap">
-			<div class="carousel-banner__title">
-				<PrismicRichText field={title} />
-			</div>
-			{#if summary}
+			{#if projectData.data.title}
+				<div class="carousel-banner__title">
+					{projectData.data.title}
+				</div>
+			{/if}
+			{#if projectData.data.summary}
 				<div class="carousel-banner__summary">
-					<PrismicRichText field={summary} />
+					{projectData.data.summary}
 				</div>
 			{/if}
 		</div>
 
-		{#if link}
-			<div class="carousel-banner__link">
-				<PrismicLink field={link}>
-					<span>{link.text}</span>
-					<i class="icon-arrow-right"></i>
-				</PrismicLink>
-			</div>
-		{/if}
+		<div class="carousel-banner__link">
+			<a href={resolve(`/projects/${projectData.slug}`)} title={projectData.data.title}>
+				<span>Bekijk project</span>
+				<i class="icon-arrow-right"></i>
+			</a>
+		</div>
 
-		{#if tags.length > 0}
-			<div class="carousel-banner__tags">
-				{#each tags as tag (tag.title)}
-					<div class="carousel-banner__tag">{tag.title}</div>
-				{/each}
-			</div>
-		{/if}
+		<div class="carousel-banner__tags">
+			{#each projectData.data.tags as item, index (index)}
+				<div class="carousel-banner__tag">{item.tag}</div>
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -94,6 +95,7 @@
 			font-size: 1.25rem;
 			font-weight: bold;
 			color: var(--white);
+			text-wrap: balance;
 
 			@media (min-width: 768px) {
 				font-size: 1.5rem;
@@ -101,11 +103,12 @@
 		}
 
 		&__summary {
-			font-size: 0.75rem;
+			font-size: 0.875rem;
 			color: var(--white);
 
 			@media (min-width: 768px) {
 				font-size: 1rem;
+				max-width: 650px;
 			}
 		}
 
@@ -115,6 +118,19 @@
 			gap: 0.5rem;
 
 			color: var(--white);
+		}
+
+		&__tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		:global .carousel-banner__tag {
+			background-color: var(--bg-sand-dark);
+			color: var(--black);
+			padding: 0.5rem 0.75rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>
