@@ -12,17 +12,23 @@
 	</div>
 
 	<div class="carousel-banner__inner">
-		<div class="carousel-banner__title">
-			<PrismicRichText field={title} />
-		</div>
-		{#if summary}
-			<div class="carousel-banner__summary">
-				<PrismicRichText field={summary} />
+		<div class="carousel-banner__text-wrap">
+			<div class="carousel-banner__title">
+				<PrismicRichText field={title} />
 			</div>
-		{/if}
+			{#if summary}
+				<div class="carousel-banner__summary">
+					<PrismicRichText field={summary} />
+				</div>
+			{/if}
+		</div>
+
 		{#if link}
 			<div class="carousel-banner__link">
-				<PrismicLink field={link} />
+				<PrismicLink field={link}>
+					<span>{link.text}</span>
+					<i class="icon-arrow-right"></i>
+				</PrismicLink>
 			</div>
 		{/if}
 
@@ -67,23 +73,47 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: flex-end;
+			gap: 1.5rem;
 
 			padding-inline: 0.75rem;
 			padding-block: 2.5rem;
+
+			@media (min-width: 992px) {
+				padding-block: 2.5rem;
+				padding-inline: 2.5rem;
+			}
+		}
+
+		&__text-wrap {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
 		}
 
 		&__title {
 			font-size: 1.25rem;
 			font-weight: bold;
 			color: var(--white);
+
+			@media (min-width: 768px) {
+				font-size: 1.5rem;
+			}
 		}
 
 		&__summary {
 			font-size: 0.75rem;
 			color: var(--white);
+
+			@media (min-width: 768px) {
+				font-size: 1rem;
+			}
 		}
 
 		&__link {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
 			color: var(--white);
 		}
 	}

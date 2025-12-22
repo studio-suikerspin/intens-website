@@ -5,8 +5,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 if (browser) {
 	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-	// ScrollTrigger.normalizeScroll(true);
 }
 
 export { gsap, ScrollTrigger, ScrollSmoother };

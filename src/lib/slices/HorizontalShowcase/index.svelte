@@ -18,11 +18,14 @@
 			{
 				isMobile: '(max-width:479px)',
 				isMobileLandscape: '(max-width:767px)',
-				isTablet: '(max-width:991px)',
-				isDesktop: '(min-width:992px)'
+				isTablet: '(max-width:1023px)',
+				isDesktop: '(min-width:1024px)'
 			},
 			(context) => {
+				console.log(context.conditions);
 				const { isMobile, isMobileLandscape, isTablet, isDesktop } = context.conditions;
+
+				if (!isDesktop) return;
 
 				const ctx = gsap.context(() => {
 					const wrappers = document.querySelectorAll('[data-horizontal-scroll-wrap]');
@@ -86,7 +89,12 @@
 			{#each slice.primary.featured_projects as project (project.title)}
 				<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
 					<div class="horizontal-showcase__panel-inner">
-						<CarouselBanner title={project.title} summary={project.summary} image={project.image} />
+						<CarouselBanner
+							title={project.title}
+							summary={project.summary}
+							image={project.image}
+							link={project.project_link}
+						/>
 					</div>
 				</div>
 			{/each}
@@ -102,10 +110,18 @@
 			display: flex;
 			gap: 1.5rem;
 			min-height: 90dvh;
-			overflow: hidden;
+			overflow-x: scroll;
+			padding-inline: 0.75rem;
 
-			@media screen and (min-width: 768px) {
-				flex-flow: row;
+			scroll-snap-type: x mandatory;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			@media screen and (min-width: 1024px) {
+				scroll-snap-type: none;
+				overflow-x: hidden;
 			}
 		}
 
@@ -113,45 +129,12 @@
 			flex: none;
 			width: 100%;
 
-			:not(:first-child) .horizontal-showcase__panel-inner {
-				padding-inline: 1.25rem;
-			}
+			scroll-snap-align: center;
 		}
 
 		&__panel-inner {
 			width: 100%;
 			height: 100%;
-			padding-inline: 0.75rem 1.25rem;
-		}
-
-		.demo-card {
-			border-radius: 1.25em;
-			flex-flow: column;
-			justify-content: flex-end;
-			align-items: flex-start;
-			width: 100%;
-			height: 100%;
-			padding: 3em;
-			display: flex;
-			position: relative;
-			overflow: hidden;
-
-			&__bg {
-				z-index: 0;
-				position: absolute;
-				inset: 0%;
-			}
-
-			&__inner {
-				z-index: 1;
-				position: relative;
-			}
-
-			&__bg-img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
 		}
 	}
 </style>
