@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isFilled, type Content } from '@prismicio/client';
+	import { type Content } from '@prismicio/client';
 	import type { SliceComponentProps } from '@prismicio/svelte';
 	import { gsap } from '$lib/gsap';
 
@@ -7,7 +7,7 @@
 
 	import SectionHeader from '$lib/components/SectionHeader/index.svelte';
 	import { onMount } from 'svelte';
-	import CarouselBanner from '$lib/components/CarouselBanner.svelte';
+	import ProjectBanner from '$lib/components/ProjectBanner.svelte';
 
 	const { slice }: Props = $props();
 
@@ -89,7 +89,7 @@
 			{#each slice.primary.projects as project, index (index)}
 				<div data-horizontal-scroll-panel class="horizontal-showcase__panel">
 					<div class="horizontal-showcase__panel-inner">
-						<CarouselBanner {project} />
+						<ProjectBanner {project} />
 					</div>
 				</div>
 			{/each}

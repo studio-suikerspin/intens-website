@@ -1,7 +1,7 @@
 <script>
 	import { resolve } from '$app/paths';
 	import { isFilled } from '@prismicio/client';
-	import { PrismicImage, PrismicLink, PrismicRichText } from '@prismicio/svelte';
+	import { PrismicImage } from '@prismicio/svelte';
 
 	let { project } = $props();
 	let projectData = project.project;
