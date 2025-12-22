@@ -29,7 +29,9 @@
 		</div>
 
 		<div class="carousel-banner__link">
-			<a href={resolve(`/projects/${projectData.slug}`)} title={projectData.data.title}>
+			<!-- <a href={resolve(`/projects/${projectData.slug}`)} title={projectData.data.title}> -->
+			<!-- TODO: Implement project link -->
+			<a href="#">
 				<span>Bekijk project</span>
 				<i class="icon-arrow-right"></i>
 			</a>
