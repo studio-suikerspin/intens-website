@@ -12,7 +12,6 @@
 							[
 								"media",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
@@ -30,7 +29,9 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "dig"
+									"alt": "dig",
+									"credits": null,
+									"__TYPE__": "ImageContent"
 								}
 							],
 							[
@@ -44,8 +45,8 @@
 							[
 								"destination",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "e2d943de-85ce-49ac-aa5f-bbe05ac22e11",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "https://prismic.io"

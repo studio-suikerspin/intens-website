@@ -1,47 +1,47 @@
 {
-	"type": "SharedSlice",
-	"id": "navigational_media_grid",
-	"name": "Footer",
-	"variations": [
-		{
-			"id": "default",
-			"name": "Default",
-			"description": "Standard grid navigation with image backgrounds and labels.",
-			"version": "initial",
-			"imageUrl": "",
-			"docURL": "...",
-			"primary": {
-				"items": {
-					"type": "Group",
-					"config": {
-						"label": "Navigation items",
-						"fields": {
-							"media": {
-								"type": "Image",
-								"config": {
-									"label": "Image"
-								}
-							},
-							"label": {
-								"type": "Text",
-								"config": {
-									"label": "Label"
-								}
-							},
-							"destination": {
-								"type": "Link",
-								"config": {
-									"label": "Destination link",
-									"allowText": false,
-									"repeat": false,
-									"select": null
-								}
-							}
-						}
-					}
-				}
-			},
-			"items": {}
-		}
-	]
+  "type": "SharedSlice",
+  "id": "navigational_media_grid",
+  "name": "Footer",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard grid navigation with image backgrounds and labels.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Navigation items",
+            "fields": {
+              "media": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "destination": {
+                "type": "Link",
+                "config": {
+                  "label": "Destination link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
 }
