@@ -60,7 +60,7 @@
 					<ul class="footer-list">
 						{#each navigationItems as link (link.key)}
 							<li class="header__nav-list-item">
-								<PrismicLink field={link} class={['header__nav-link']} />
+								<PrismicLink field={link} class={['header__nav-link']} target="_blank" rel="noopener noreferrer" />
 							</li>
 						{/each}
 					</ul>
@@ -109,6 +109,10 @@
 
 				&__item span{
 					font-size: 32px;
+
+					@media(max-width: 767px){
+						font-size: 24px;
+					}
 				}
 			}
 		}
@@ -132,6 +136,10 @@
 			position: relative;
 			flex: 1;
 			aspect-ratio: 1 / 1.1;
+
+			@media(max-width: 767px){
+				aspect-ratio: 1 / 0.7;
+			}
 				
 
 			&__label{
@@ -198,7 +206,7 @@
 				@media(max-width: 767px){
 					flex-wrap: wrap;
 					justify-content: center;
-					gap: 1rem;
+					gap: 0.5rem;
 				}
 			}
 		}
