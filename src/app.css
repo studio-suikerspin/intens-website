@@ -18,9 +18,9 @@
 }
 
 @utility container {
-	max-width: 1500px;
+	max-width: 2000px;
 	margin-inline: auto;
-	padding-inline: 1.25rem;
+	padding-inline: 0.75rem;
 }
 
 html,
@@ -121,4 +121,25 @@ body {
 	.block-spacing--sm--end {
 		padding-block-end: calc(var(--section-spacing) / 2);
 	}
+}
+
+/* Button */
+.btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	width: fit-content;
+
+	padding-block: 0.625rem;
+	padding-inline: 1.75rem;
+}
+
+.btn__icon {
+	font-size: 1.5rem;
+}
+
+.btn--primary {
+	background: var(--accent-brown);
+	color: var(--bg-sand-light);
 }

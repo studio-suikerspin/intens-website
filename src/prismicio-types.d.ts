@@ -310,35 +310,162 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 /**
- * Content for Social media documents
+ * Item in *Project → Gallery*
  */
-interface SocialMediaDocumentData {
+export interface ProjectDocumentDataGalleryItem {
 	/**
-	 * Social media link field in *Social media*
+	 * Item content field in *Project → Gallery*
 	 *
-	 * - **Field Type**: Link
+	 * - **Field Type**: Link to Media
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: social_media.social_media_link
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 * - **API ID Path**: project.gallery[].item_content
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
 	 */
-	social_media_link: prismic.Repeatable<
-		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-	>;
+	item_content: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
- * Social media document from Prismic
+ * Item in *Project → Tags*
+ */
+export interface ProjectDocumentDataTagsItem {
+	/**
+	 * Tag field in *Project → Tags*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.tags[].tag
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	tag: prismic.KeyTextField;
+}
+
+/**
+ * Content for Project documents
+ */
+interface ProjectDocumentData {
+	/**
+	 * Title field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Project title
+	 * - **API ID Path**: project.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Location field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Amsterdam
+	 * - **API ID Path**: project.location
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	location: prismic.KeyTextField;
+
+	/**
+	 * Project date field in *Project*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.project_date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/date
+	 */
+	project_date: prismic.DateField;
+
+	/**
+	 * Project type field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: BKT Renovatie
+	 * - **API ID Path**: project.project_type
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	project_type: prismic.KeyTextField;
+
+	/**
+	 * Summary field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Summary in one or two sentences. Make sure this isn't too long!
+	 * - **API ID Path**: project.summary
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	summary: prismic.KeyTextField;
+
+	/**
+	 * content_1 field in *Project*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: First content section goes here
+	 * - **API ID Path**: project.content_1
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	content_1: prismic.RichTextField;
+
+	/**
+	 * content_2 field in *Project*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Second content section goes here
+	 * - **API ID Path**: project.content_2
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	content_2: prismic.RichTextField;
+
+	/**
+	 * featured_image field in *Project*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.featured_image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	featured_image: prismic.ImageField<never>;
+
+	/**
+	 * Gallery field in *Project*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.gallery[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
+
+	/**
+	 * Tags field in *Project*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.tags[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	tags: prismic.GroupField<Simplify<ProjectDocumentDataTagsItem>>;
+}
+
+/**
+ * Project document from Prismic
  *
- * - **API ID**: `social_media`
- * - **Repeatable**: `false`
+ * - **API ID**: `project`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/content-modeling
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type SocialMediaDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
-	Simplify<SocialMediaDocumentData>,
-	'social_media',
+export type ProjectDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<ProjectDocumentData>,
+	'project',
 	Lang
 >;
 
@@ -348,7 +475,7 @@ export type AllDocumentTypes =
 	| HomepageDocument
 	| MainNavigationDocument
 	| PageDocument
-	| SocialMediaDocument;
+	| ProjectDocument;
 
 /**
  * Item in *Hero → Parallax → Primary → Column 1*
@@ -672,138 +799,25 @@ export type ImpactStatisticsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *Footer → Default → Primary → Navigation items*
+ * Item in *HorizontalShowcase → Default → Primary → Projects*
  */
-export interface NavigationalMediaGridSliceDefaultPrimaryItemsItem {
+export interface ProjectShowcaseSliceWithFeaturedProjectPrimaryProjectsItem {
 	/**
-	 * Image field in *Footer → Default → Primary → Navigation items*
+	 * Project field in *HorizontalShowcase → Default → Primary → Projects*
 	 *
-	 * - **Field Type**: Image
+	 * - **Field Type**: Content Relationship
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: navigational_media_grid.default.primary.items[].media
-	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 * - **API ID Path**: project_showcase.with_featured_project.primary.projects[].project
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
 	 */
-	media: prismic.ImageField<never>;
-
-	/**
-	 * Label field in *Footer → Default → Primary → Navigation items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: navigational_media_grid.default.primary.items[].label
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	label: prismic.KeyTextField;
-
-	/**
-	 * Destination link field in *Footer → Default → Primary → Navigation items*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: navigational_media_grid.default.primary.items[].destination
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	destination: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-}
-
-/**
- * Primary content in *Footer → Default → Primary*
- */
-export interface NavigationalMediaGridSliceDefaultPrimary {
-	/**
-	 * Navigation items field in *Footer → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: navigational_media_grid.default.primary.items[]
-	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-	 */
-	items: prismic.GroupField<Simplify<NavigationalMediaGridSliceDefaultPrimaryItemsItem>>;
-}
-
-/**
- * Default variation for Footer Slice
- *
- * - **API ID**: `default`
- * - **Description**: Standard grid navigation with image backgrounds and labels.
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type NavigationalMediaGridSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<NavigationalMediaGridSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *Footer*
- */
-type NavigationalMediaGridSliceVariation = NavigationalMediaGridSliceDefault;
-
-/**
- * Footer Shared Slice
- *
- * - **API ID**: `navigational_media_grid`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type NavigationalMediaGridSlice = prismic.SharedSlice<
-	'navigational_media_grid',
-	NavigationalMediaGridSliceVariation
->;
-
-/**
- * Item in *HorizontalShowcase → Default → Primary → Featured Projects*
- */
-export interface ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsItem {
-	/**
-	 * Image field in *HorizontalShowcase → Default → Primary → Featured Projects*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[].image
-	 * - **Documentation**: https://prismic.io/docs/fields/image
-	 */
-	image: prismic.ImageField<never>;
-
-	/**
-	 * Project Title field in *HorizontalShowcase → Default → Primary → Featured Projects*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[].title
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	title: prismic.RichTextField;
-
-	/**
-	 * Project Summary field in *HorizontalShowcase → Default → Primary → Featured Projects*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[].summary
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	summary: prismic.RichTextField;
-
-	/**
-	 * Project Link field in *HorizontalShowcase → Default → Primary → Featured Projects*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[].project_link
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	project_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-	/**
-	 * Category field in *HorizontalShowcase → Default → Primary → Featured Projects*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[].category
-	 * - **Documentation**: https://prismic.io/docs/fields/text
-	 */
-	category: prismic.KeyTextField;
+	project: ContentRelationshipFieldWithData<
+		[
+			{
+				id: 'project';
+				fields: ['title', 'location', 'featured_image', { id: 'tags'; fields: ['tag'] }, 'summary'];
+			}
+		]
+	>;
 }
 
 /**
@@ -862,15 +876,15 @@ export interface ProjectShowcaseSliceWithFeaturedProjectPrimary {
 	description: prismic.RichTextField;
 
 	/**
-	 * Featured Projects field in *HorizontalShowcase → Default → Primary*
+	 * Projects field in *HorizontalShowcase → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_showcase.with_featured_project.primary.featured_projects[]
+	 * - **API ID Path**: project_showcase.with_featured_project.primary.projects[]
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	featured_projects: prismic.GroupField<
-		Simplify<ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsItem>
+	projects: prismic.GroupField<
+		Simplify<ProjectShowcaseSliceWithFeaturedProjectPrimaryProjectsItem>
 	>;
 }
 
@@ -1232,8 +1246,10 @@ declare module '@prismicio/client' {
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
-			SocialMediaDocument,
-			SocialMediaDocumentData,
+			ProjectDocument,
+			ProjectDocumentData,
+			ProjectDocumentDataGalleryItem,
+			ProjectDocumentDataTagsItem,
 			AllDocumentTypes,
 			HeroWithNavigationOverlaySlice,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item,
@@ -1255,7 +1271,7 @@ declare module '@prismicio/client' {
 			NavigationalMediaGridSliceVariation,
 			NavigationalMediaGridSliceDefault,
 			ProjectShowcaseSlice,
-			ProjectShowcaseSliceWithFeaturedProjectPrimaryFeaturedProjectsItem,
+			ProjectShowcaseSliceWithFeaturedProjectPrimaryProjectsItem,
 			ProjectShowcaseSliceWithFeaturedProjectPrimary,
 			ProjectShowcaseSliceVariation,
 			ProjectShowcaseSliceWithFeaturedProject,

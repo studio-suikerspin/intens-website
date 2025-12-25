@@ -3,89 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "with_featured_project",
 		"primary": {
-			"featured_projects": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"image",
-								{
-									"origin": {
-										"id": "main",
-										"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
-										"width": 3810,
-										"height": 5715
-									},
-									"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
-									"width": 3810,
-									"height": 5715,
-									"edit": {
-										"zoom": 1,
-										"crop": {
-											"x": 0,
-											"y": 0
-										},
-										"background": "transparent"
-									},
-									"alt": "produce",
-									"credits": null,
-									"__TYPE__": "ImageContent"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "heading3",
-											"content": {
-												"text": "Gather"
-											}
-										}
-									]
-								}
-							],
-							[
-								"summary",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Officia anim aute veniam aute incididunt aute laborum mollit excepteur enim occaecat mollit."
-											}
-										}
-									]
-								}
-							],
-							[
-								"project_link",
-								{
-									"key": "ccc17118-fcca-4579-b331-0347c291243c",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://slicemachine.dev",
-										"text": "wheel"
-									}
-								}
-							],
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "proper",
-									"type": "Text"
-								}
-							]
-						]
-					}
-				]
-			},
 			"eyebrow": {
 				"__TYPE__": "FieldContent",
 				"value": "higher",
@@ -119,6 +36,27 @@
 			"dark": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"projects": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"project",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "e6fcafc1-7b0b-4c45-aabd-2416bf9d4dae",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []
