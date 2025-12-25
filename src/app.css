@@ -34,6 +34,14 @@ body {
 	font-size: var(--body-font-size);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5{
+	letter-spacing: -1px;
+}
+
 .bg-dark {
 	background: var(--bg-dark);
 }

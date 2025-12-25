@@ -11,6 +11,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"logo_grid": {
+							"type": "SharedSlice"
+						},
 						"navigational_media_grid": {
 							"type": "SharedSlice"
 						},

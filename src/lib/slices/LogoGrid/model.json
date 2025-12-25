@@ -1,0 +1,46 @@
+{
+  "type": "SharedSlice",
+  "id": "logo_grid",
+  "name": "LogoGrid",
+  "variations": [
+    {
+      "id": "default_grid",
+      "name": "Default Grid",
+      "description": "A standard grid of logos with support for image- or text-based logos and optional link on each logo.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Section eyebrow",
+            "placeholder": "Section eyebrow"
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section title",
+            "placeholder": "Section title"
+          }
+        },
+        "logos": {
+          "type": "Group",
+          "config": {
+            "label": "Logos",
+            "fields": {
+              "logo_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo Image"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

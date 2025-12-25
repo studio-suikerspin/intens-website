@@ -124,6 +124,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| LogoGridSlice
 	| NavigationalMediaGridSlice
 	| TeamMembersCarouselSlice
 	| ImpactStatisticsSlice
@@ -833,6 +834,83 @@ export type ImpactStatisticsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *LogoGrid → Default Grid → Primary → Logos*
+ */
+export interface LogoGridSliceDefaultGridPrimaryLogosItem {
+	/**
+	 * Logo Image field in *LogoGrid → Default Grid → Primary → Logos*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logo_grid.default_grid.primary.logos[].logo_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	logo_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *LogoGrid → Default Grid → Primary*
+ */
+export interface LogoGridSliceDefaultGridPrimary {
+	/**
+	 * Section eyebrow field in *LogoGrid → Default Grid → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Section eyebrow
+	 * - **API ID Path**: logo_grid.default_grid.primary.section_eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	section_eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Section title field in *LogoGrid → Default Grid → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Section title
+	 * - **API ID Path**: logo_grid.default_grid.primary.section_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	section_title: prismic.KeyTextField;
+
+	/**
+	 * Logos field in *LogoGrid → Default Grid → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logo_grid.default_grid.primary.logos[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	logos: prismic.GroupField<Simplify<LogoGridSliceDefaultGridPrimaryLogosItem>>;
+}
+
+/**
+ * Default Grid variation for LogoGrid Slice
+ *
+ * - **API ID**: `default_grid`
+ * - **Description**: A standard grid of logos with support for image- or text-based logos and optional link on each logo.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LogoGridSliceDefaultGrid = prismic.SharedSliceVariation<
+	'default_grid',
+	Simplify<LogoGridSliceDefaultGridPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *LogoGrid*
+ */
+type LogoGridSliceVariation = LogoGridSliceDefaultGrid;
+
+/**
+ * LogoGrid Shared Slice
+ *
+ * - **API ID**: `logo_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LogoGridSlice = prismic.SharedSlice<'logo_grid', LogoGridSliceVariation>;
+
+/**
  * Item in *Footer → Default → Primary → Navigation items*
  */
 export interface NavigationalMediaGridSliceDefaultPrimaryItemsItem {
@@ -1381,6 +1459,11 @@ declare module '@prismicio/client' {
 			ImpactStatisticsSliceDefaultPrimary,
 			ImpactStatisticsSliceVariation,
 			ImpactStatisticsSliceDefault,
+			LogoGridSlice,
+			LogoGridSliceDefaultGridPrimaryLogosItem,
+			LogoGridSliceDefaultGridPrimary,
+			LogoGridSliceVariation,
+			LogoGridSliceDefaultGrid,
 			NavigationalMediaGridSlice,
 			NavigationalMediaGridSliceDefaultPrimaryItemsItem,
 			NavigationalMediaGridSliceDefaultPrimary,
