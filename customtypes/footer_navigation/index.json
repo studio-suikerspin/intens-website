@@ -1,0 +1,22 @@
+{
+	"format": "custom",
+	"id": "footer_navigation",
+	"label": "Footer navigation",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"footer_navigation_item": {
+				"type": "Link",
+				"config": {
+					"label": "Footer navigation item",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": true
+				}
+			}
+		}
+	}
+}
