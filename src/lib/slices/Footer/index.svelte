@@ -21,7 +21,7 @@
 
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="block-spacing--start">
 	<footer class="footer">
 		<div class="container">
 			<div class="footer__wrap">
