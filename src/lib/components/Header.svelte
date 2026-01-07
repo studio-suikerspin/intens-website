@@ -207,12 +207,16 @@
 	}
 
 	:global .header.scrolled .header__nav .header__nav-link {
-		color: var(--black);
+		color: var(--bg-dark);
 		transition: color 0.3s ease-in-out;
 	}
 
 	:global .header.scrolled .header__logo .logo--dark {
 		opacity: 1;
+	}
+
+	:global .header.scrolled .menu-toggle {
+		color: var(--bg-dark);
 	}
 
 	.mobile-menu {
