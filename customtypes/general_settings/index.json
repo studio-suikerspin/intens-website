@@ -13,6 +13,14 @@
 					"constraint": {},
 					"thumbnails": []
 				}
+			},
+			"site_logo_dark": {
+				"type": "Image",
+				"config": {
+					"label": "Site logo dark",
+					"constraint": {},
+					"thumbnails": []
+				}
 			}
 		}
 	}

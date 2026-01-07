@@ -105,6 +105,17 @@ interface GeneralSettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	site_logo: prismic.ImageField<never>;
+
+	/**
+	 * Site logo dark field in *General settings*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general_settings.site_logo_dark
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	site_logo_dark: prismic.ImageField<never>;
 }
 
 /**

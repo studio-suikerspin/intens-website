@@ -5,6 +5,7 @@
 	import { gsap } from '$lib/gsap';
 
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+	import { onMount } from 'svelte';
 
 	const { data: settings } = page.data.settings;
 	const { navigation_item: navigationItems } = page.data.navigation.data;
@@ -68,13 +69,24 @@
 			})
 			.play();
 	};
+
+	onMount(() => {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 200) {
+				window.document.querySelector('.header')?.classList.add('scrolled');
+			} else {
+				window.document.querySelector('.header')?.classList.remove('scrolled');
+			}
+		});
+	});
 </script>
 
 <header class="header">
 	<div class="header__container">
 		<div class="header__inner">
 			<a href={resolve('/')} class="header__logo" title="Home" aria-label="Home">
-				<PrismicImage field={settings.site_logo} />
+				<PrismicImage field={settings.site_logo} class="logo--light" />
+				<PrismicImage field={settings.site_logo_dark} class="logo--dark" />
 			</a>
 
 			<nav class="header__nav" aria-label="Primary navigation">
@@ -126,11 +138,7 @@
 		right: 0;
 		width: 100%;
 		z-index: var(--header-z-index);
-
-		.header__container {
-			/*max-width: 1500px;
-			margin-inline: auto;*/
-		}
+		transition: background-color 0.3s ease-in-out;
 
 		.header__inner {
 			display: flex;
@@ -142,6 +150,19 @@
 
 		.header__logo {
 			max-width: clamp(8rem, 5vw, 11.25rem);
+			position: relative;
+		}
+
+		:global .header__logo .logo--dark {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		:global .header__logo .logo--dark {
+			opacity: 0;
 		}
 
 		.menu-toggle {
@@ -178,6 +199,20 @@
 			font-weight: 700;
 			color: var(--white);
 		}
+	}
+
+	:global .header.scrolled {
+		background-color: var(--white);
+		transition: background-color 0.3s ease-in-out;
+	}
+
+	:global .header.scrolled .header__nav .header__nav-link {
+		color: var(--black);
+		transition: color 0.3s ease-in-out;
+	}
+
+	:global .header.scrolled .header__logo .logo--dark {
+		opacity: 1;
 	}
 
 	.mobile-menu {
