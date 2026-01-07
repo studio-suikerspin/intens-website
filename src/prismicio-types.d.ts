@@ -135,6 +135,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| VideoBannerSectionSlice
 	| LogoGridSlice
 	| NavigationalMediaGridSlice
 	| TeamMembersCarouselSlice
@@ -1416,6 +1417,91 @@ export type TeamMembersCarouselSlice = prismic.SharedSlice<
 	TeamMembersCarouselSliceVariation
 >;
 
+/**
+ * Primary content in *VideoBannerSection → Default → Primary*
+ */
+export interface VideoBannerSectionSliceDefaultPrimary {
+	/**
+	 * Headline field in *VideoBannerSection → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_banner_section.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Content field in *VideoBannerSection → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_banner_section.default.primary.content
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	content: prismic.RichTextField;
+
+	/**
+	 * CTA link field in *VideoBannerSection → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_banner_section.default.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Video field in *VideoBannerSection → Default → Primary*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_banner_section.default.primary.video
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	video: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+	/**
+	 * Poster image field in *VideoBannerSection → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_banner_section.default.primary.poster_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	poster_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for VideoBannerSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoBannerSectionSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<VideoBannerSectionSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *VideoBannerSection*
+ */
+type VideoBannerSectionSliceVariation = VideoBannerSectionSliceDefault;
+
+/**
+ * VideoBannerSection Shared Slice
+ *
+ * - **API ID**: `video_banner_section`
+ * - **Description**: VideoBannerSection
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoBannerSectionSlice = prismic.SharedSlice<
+	'video_banner_section',
+	VideoBannerSectionSliceVariation
+>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -1494,7 +1580,11 @@ declare module '@prismicio/client' {
 			TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem,
 			TeamMembersCarouselSliceDefaultPrimary,
 			TeamMembersCarouselSliceVariation,
-			TeamMembersCarouselSliceDefault
+			TeamMembersCarouselSliceDefault,
+			VideoBannerSectionSlice,
+			VideoBannerSectionSliceDefaultPrimary,
+			VideoBannerSectionSliceVariation,
+			VideoBannerSectionSliceDefault
 		};
 	}
 }
