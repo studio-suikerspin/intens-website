@@ -7,6 +7,7 @@ import Footer from './Footer/index.svelte';
 import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ImageText from './ImageText/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
+import VideoBannerSection from './VideoBannerSection/index.svelte';
 
 export const components = {
 	hero_with_navigation_overlay: Hero,
@@ -15,5 +16,6 @@ export const components = {
 	navigational_media_grid: Footer,
 	project_showcase: HorizontalShowcase,
 	service_highlights: ImageText,
-	team_members_carousel: TeamMembersCarousel
+	team_members_carousel: TeamMembersCarousel,
+	video_banner_section: VideoBannerSection
 };

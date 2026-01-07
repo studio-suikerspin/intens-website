@@ -14,7 +14,9 @@
 {#if linkField}
 	<PrismicLink field={linkField} class={['btn', `btn--${variant}`, isDark ? 'btn--dark' : '']}>
 		<span>{linkField.text}</span>
-		<i class="icon-{icon} btn__icon"></i>
+		{#if icon}
+			<i class="icon-{icon} btn__icon"></i>
+		{/if}
 	</PrismicLink>
 {:else if href}
 	<a href={resolve(href)} class={['btn', `btn--${variant}`, isDark ? 'btn--dark' : '']}>
