@@ -151,6 +151,8 @@
 		.header__logo {
 			max-width: clamp(8rem, 5vw, 11.25rem);
 			position: relative;
+
+			transition: max-width 0.3s ease-in-out;
 		}
 
 		:global .header__logo .logo--dark {
@@ -204,19 +206,24 @@
 	:global .header.scrolled {
 		background-color: var(--white);
 		transition: background-color 0.3s ease-in-out;
-	}
 
-	:global .header.scrolled .header__nav .header__nav-link {
-		color: var(--bg-dark);
-		transition: color 0.3s ease-in-out;
-	}
+		.header__nav .header__nav-link {
+			color: var(--bg-dark);
+			transition: color 0.3s ease-in-out;
+		}
 
-	:global .header.scrolled .header__logo .logo--dark {
-		opacity: 1;
-	}
+		.header__logo {
+			max-width: 80px;
+			transition: max-width 0.3s ease-in-out;
 
-	:global .header.scrolled .menu-toggle {
-		color: var(--bg-dark);
+			.logo--dark {
+				opacity: 1;
+			}
+		}
+
+		.menu-toggle {
+			color: var(--bg-dark);
+		}
 	}
 
 	.mobile-menu {

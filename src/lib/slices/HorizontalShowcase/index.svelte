@@ -49,11 +49,12 @@
 							ease: 'none',
 							scrollTrigger: {
 								trigger: wrap,
-								start: 'top top',
+								start: '-50px top',
 								end: () => '+=' + (wrap.scrollWidth - window.innerWidth),
 								scrub: true,
 								pin: true,
-								invalidateOnRefresh: true
+								invalidateOnRefresh: true,
+								markers: true
 							}
 						});
 					});
