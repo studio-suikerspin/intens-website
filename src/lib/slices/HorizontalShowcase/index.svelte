@@ -53,8 +53,7 @@
 								end: () => '+=' + (wrap.scrollWidth - window.innerWidth),
 								scrub: true,
 								pin: true,
-								invalidateOnRefresh: true,
-								markers: true
+								invalidateOnRefresh: true
 							}
 						});
 					});
