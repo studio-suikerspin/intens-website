@@ -135,6 +135,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| CustomerReviewsSlice
 	| VideoBannerSectionSlice
 	| LogoGridSlice
 	| NavigationalMediaGridSlice
@@ -523,6 +524,126 @@ export type AllDocumentTypes =
 	| PageDocument
 	| ProjectDocument
 	| SocialMediaDocument;
+
+/**
+ * Item in *CustomerReviews → Default → Primary → Reviews*
+ */
+export interface CustomerReviewsSliceDefaultPrimaryReviewsItem {
+	/**
+	 * avatar field in *CustomerReviews → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[].avatar
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	avatar: prismic.ImageField<never>;
+
+	/**
+	 * name field in *CustomerReviews → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[].name
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	name: prismic.KeyTextField;
+
+	/**
+	 * date field in *CustomerReviews → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[].date
+	 * - **Documentation**: https://prismic.io/docs/fields/date
+	 */
+	date: prismic.DateField;
+
+	/**
+	 * rating field in *CustomerReviews → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[].rating
+	 * - **Documentation**: https://prismic.io/docs/fields/select
+	 */
+	rating: prismic.SelectField<'1' | '2' | '3' | '4' | '5'>;
+
+	/**
+	 * content field in *CustomerReviews → Default → Primary → Reviews*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[].content
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	content: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CustomerReviews → Default → Primary*
+ */
+export interface CustomerReviewsSliceDefaultPrimary {
+	/**
+	 * Eyebrow field in *CustomerReviews → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *CustomerReviews → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Reviews field in *CustomerReviews → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: customer_reviews.default.primary.reviews[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	reviews: prismic.GroupField<Simplify<CustomerReviewsSliceDefaultPrimaryReviewsItem>>;
+}
+
+/**
+ * Default variation for CustomerReviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CustomerReviewsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<CustomerReviewsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *CustomerReviews*
+ */
+type CustomerReviewsSliceVariation = CustomerReviewsSliceDefault;
+
+/**
+ * CustomerReviews Shared Slice
+ *
+ * - **API ID**: `customer_reviews`
+ * - **Description**: CustomerReviews
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CustomerReviewsSlice = prismic.SharedSlice<
+	'customer_reviews',
+	CustomerReviewsSliceVariation
+>;
 
 /**
  * Item in *Hero → Parallax → Primary → Column 1*
@@ -1552,6 +1673,11 @@ declare module '@prismicio/client' {
 			SocialMediaDocument,
 			SocialMediaDocumentData,
 			AllDocumentTypes,
+			CustomerReviewsSlice,
+			CustomerReviewsSliceDefaultPrimaryReviewsItem,
+			CustomerReviewsSliceDefaultPrimary,
+			CustomerReviewsSliceVariation,
+			CustomerReviewsSliceDefault,
 			HeroWithNavigationOverlaySlice,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item,
 			HeroWithNavigationOverlaySliceParallaxPrimaryColumn2Item,
