@@ -73,6 +73,14 @@
 									"value": "bound",
 									"type": "Text"
 								}
+							],
+							[
+								"number_symbol",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "organization",
+									"type": "Text"
+								}
 							]
 						]
 					}

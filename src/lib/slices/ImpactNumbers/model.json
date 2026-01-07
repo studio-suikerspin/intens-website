@@ -83,6 +83,13 @@
                 "config": {
                   "label": "Description"
                 }
+              },
+              "number_symbol": {
+                "type": "Text",
+                "config": {
+                  "label": "Number symbol",
+                  "placeholder": "%"
+                }
               }
             }
           }

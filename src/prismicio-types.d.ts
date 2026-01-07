@@ -747,6 +747,16 @@ export interface ImpactStatisticsSliceDefaultPrimaryStatsItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	description: prismic.KeyTextField;
+
+	/**
+	 * Number symbol field in *ImpactNumbers → Default → Primary → Statistics*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: %
+	 * - **API ID Path**: impact_statistics.default.primary.stats[].number_symbol
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	number_symbol: prismic.KeyTextField;
 }
 
 /**
