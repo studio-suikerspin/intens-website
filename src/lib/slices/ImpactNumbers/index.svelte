@@ -78,12 +78,54 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2.5rem;
+
+		@media (min-width: 1024px) {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			align-items: flex-start;
+			gap: 2.5rem;
+		}
+
+		@media (min-width: 1200px) {
+			gap: 5rem;
+		}
+	}
+
+	.stats .stat:last-child {
+		@media (min-width: 1200px) {
+			margin-top: -8rem;
+		}
 	}
 
 	.stat {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+
+		&:nth-child(even) {
+			.stat__image {
+				@media (min-width: 1024px) {
+					order: 2;
+				}
+			}
+		}
+
+		.stat__image {
+			max-height: 600px;
+			height: 100%;
+
+			:global img {
+				height: 100%;
+				width: 100%;
+				object-fit: contain;
+				object-position: left;
+
+				@media (min-width: 1024px) {
+					max-height: 500px;
+					max-width: 400px;
+				}
+			}
+		}
 
 		.stat__number-wrap {
 			font-size: 3.5rem;
