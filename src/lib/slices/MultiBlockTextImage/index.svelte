@@ -44,15 +44,15 @@
 		justify-content: space-between;
 		gap: 2.5rem;
 
-		@media (min-width: 768px) {
+		@media (min-width: var(--screen-sm)) {
 			flex-direction: row;
 		}
 
-		@media (min-width: 1024px) {
+		@media (min-width: var(--screen-md)) {
 			padding-inline-start: 5rem;
 		}
 
-		@media (min-width: 1200px) {
+		@media (min-width: var(--screen-lg)) {
 			padding-inline-start: 8rem;
 		}
 	}
