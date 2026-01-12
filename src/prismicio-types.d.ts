@@ -248,23 +248,21 @@ interface MainNavigationDocumentData {
 export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
-type PageDocumentDataSlicesSlice = NavigationalMediaGridSlice;
+type PageDocumentDataSlicesSlice =
+	| HeroWithNavigationOverlaySlice
+	| ProjectShowcaseSlice
+	| ServiceHighlightsSlice
+	| TeamMembersCarouselSlice
+	| VideoBannerSectionSlice
+	| ImpactStatisticsSlice
+	| LogoGridSlice
+	| CustomerReviewsSlice
+	| NavigationalMediaGridSlice;
 
 /**
  * Content for Page documents
  */
 interface PageDocumentData {
-	/**
-	 * Title field in *Page*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: page.title
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	title: prismic.RichTextField;
-
 	/**
 	 * Slice Zone field in *Page*
 	 *
@@ -648,51 +646,71 @@ export type CustomerReviewsSlice = prismic.SharedSlice<
 /**
  * Item in *Hero → Parallax → Primary → Column 1*
  */
-export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item {}
+export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn1Item {
+	/**
+	 * Item field in *Hero → Parallax → Primary → Column 1*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.column_1[].item
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	item: prismic.RichTextField;
+}
 
 /**
  * Item in *Hero → Parallax → Primary → Column 2*
  */
-export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn2Item {}
+export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn2Item {
+	/**
+	 * Item field in *Hero → Parallax → Primary → Column 2*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.column_2[].item
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	item: prismic.RichTextField;
+}
 
 /**
  * Item in *Hero → Parallax → Primary → Column 3*
  */
-export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn3Item {}
+export interface HeroWithNavigationOverlaySliceParallaxPrimaryColumn3Item {
+	/**
+	 * Item field in *Hero → Parallax → Primary → Column 3*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.column_3[].item
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	item: prismic.RichTextField;
+}
 
 /**
  * Primary content in *Hero → Parallax → Primary*
  */
 export interface HeroWithNavigationOverlaySliceParallaxPrimary {
 	/**
+	 * Eyebrow field in *Hero → Parallax → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
 	 * Headline field in *Hero → Parallax → Primary*
 	 *
-	 * - **Field Type**: Rich Text
+	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.headline
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
-	headline: prismic.RichTextField;
-
-	/**
-	 * Subheadline field in *Hero → Parallax → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.subheadline
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	subheadline: prismic.RichTextField;
-
-	/**
-	 * Call to Action Link field in *Hero → Parallax → Primary*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.cta_link
-	 * - **Documentation**: https://prismic.io/docs/fields/link
-	 */
-	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	headline: prismic.KeyTextField;
 
 	/**
 	 * Video URL field in *Hero → Parallax → Primary*
@@ -703,6 +721,16 @@ export interface HeroWithNavigationOverlaySliceParallaxPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
 	 */
 	video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+	/**
+	 * Poster image field in *Hero → Parallax → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.parallax.primary.poster_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	poster_image: prismic.ImageField<never>;
 
 	/**
 	 * Column 1 field in *Hero → Parallax → Primary*
