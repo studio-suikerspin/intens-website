@@ -13,20 +13,38 @@
 					"placeholder": ""
 				}
 			},
-			"title": {
-				"type": "StructuredText",
-				"config": {
-					"label": "Title",
-					"placeholder": "",
-					"allowTargetBlank": true,
-					"single": "heading1"
-				}
-			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"multi_block_text_image": {
+							"type": "SharedSlice"
+						},
+						"hero_with_navigation_overlay": {
+							"type": "SharedSlice"
+						},
+						"project_showcase": {
+							"type": "SharedSlice"
+						},
+						"service_highlights": {
+							"type": "SharedSlice"
+						},
+						"team_members_carousel": {
+							"type": "SharedSlice"
+						},
+						"video_banner_section": {
+							"type": "SharedSlice"
+						},
+						"impact_statistics": {
+							"type": "SharedSlice"
+						},
+						"logo_grid": {
+							"type": "SharedSlice"
+						},
+						"customer_reviews": {
+							"type": "SharedSlice"
+						},
 						"navigational_media_grid": {
 							"type": "SharedSlice"
 						}
