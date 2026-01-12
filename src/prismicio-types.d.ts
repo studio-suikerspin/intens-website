@@ -135,6 +135,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| MultiBlockTextImageSlice
 	| CustomerReviewsSlice
 	| VideoBannerSectionSlice
 	| LogoGridSlice
@@ -249,6 +250,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| MultiBlockTextImageSlice
 	| HeroWithNavigationOverlaySlice
 	| ProjectShowcaseSlice
 	| ServiceHighlightsSlice
@@ -1082,6 +1084,88 @@ type LogoGridSliceVariation = LogoGridSliceDefaultGrid;
 export type LogoGridSlice = prismic.SharedSlice<'logo_grid', LogoGridSliceVariation>;
 
 /**
+ * Item in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary → Blocks*
+ */
+export interface MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimaryBlocksItem {
+	/**
+	 * Title field in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary → Blocks*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: multi_block_text_image.multiple_blocks_with_side_image.primary.blocks[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Description field in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary → Blocks*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: multi_block_text_image.multiple_blocks_with_side_image.primary.blocks[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary*
+ */
+export interface MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimary {
+	/**
+	 * Blocks field in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: multi_block_text_image.multiple_blocks_with_side_image.primary.blocks[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	blocks: prismic.GroupField<
+		Simplify<MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimaryBlocksItem>
+	>;
+
+	/**
+	 * Side image field in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: multi_block_text_image.multiple_blocks_with_side_image.primary.side_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	side_image: prismic.ImageField<never>;
+}
+
+/**
+ * Multiple Text Blocks with Side Image variation for MultiBlockTextImage Slice
+ *
+ * - **API ID**: `multiple_blocks_with_side_image`
+ * - **Description**: Displays multiple content blocks (each with a title and description) aligned left, paired with an image on the right.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MultiBlockTextImageSliceMultipleBlocksWithSideImage = prismic.SharedSliceVariation<
+	'multiple_blocks_with_side_image',
+	Simplify<MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *MultiBlockTextImage*
+ */
+type MultiBlockTextImageSliceVariation = MultiBlockTextImageSliceMultipleBlocksWithSideImage;
+
+/**
+ * MultiBlockTextImage Shared Slice
+ *
+ * - **API ID**: `multi_block_text_image`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MultiBlockTextImageSlice = prismic.SharedSlice<
+	'multi_block_text_image',
+	MultiBlockTextImageSliceVariation
+>;
+
+/**
  * Item in *Footer → Default → Primary → Navigation items*
  */
 export interface NavigationalMediaGridSliceDefaultPrimaryItemsItem {
@@ -1725,6 +1809,11 @@ declare module '@prismicio/client' {
 			LogoGridSliceDefaultGridPrimary,
 			LogoGridSliceVariation,
 			LogoGridSliceDefaultGrid,
+			MultiBlockTextImageSlice,
+			MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimaryBlocksItem,
+			MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimary,
+			MultiBlockTextImageSliceVariation,
+			MultiBlockTextImageSliceMultipleBlocksWithSideImage,
 			NavigationalMediaGridSlice,
 			NavigationalMediaGridSliceDefaultPrimaryItemsItem,
 			NavigationalMediaGridSliceDefaultPrimary,

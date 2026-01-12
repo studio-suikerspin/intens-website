@@ -1,0 +1,48 @@
+{
+  "type": "SharedSlice",
+  "id": "multi_block_text_image",
+  "name": "MultiBlockTextImage",
+  "variations": [
+    {
+      "id": "multiple_blocks_with_side_image",
+      "name": "Multiple Text Blocks with Side Image",
+      "description": "Displays multiple content blocks (each with a title and description) aligned left, paired with an image on the right.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "blocks": {
+          "type": "Group",
+          "config": {
+            "label": "Blocks",
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+                }
+              }
+            }
+          }
+        },
+        "side_image": {
+          "type": "Image",
+          "config": {
+            "label": "Side image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

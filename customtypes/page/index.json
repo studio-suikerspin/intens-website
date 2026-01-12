@@ -18,6 +18,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"multi_block_text_image": {
+							"type": "SharedSlice"
+						},
 						"hero_with_navigation_overlay": {
 							"type": "SharedSlice"
 						},
