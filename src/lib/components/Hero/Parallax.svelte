@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { type Content } from '@prismicio/client';
 	import { PrismicImage, PrismicRichText, type SliceComponentProps } from '@prismicio/svelte';
+	import { onMount } from 'svelte';
+
+	import { gsap, ScrollTrigger } from '$lib/gsap';
 
 	type Props = SliceComponentProps<Content.HeroWithNavigationOverlaySlice>;
 
@@ -9,39 +12,61 @@
 	let columnCount = slice.primary.column_1?.length ? 1 : 0;
 	columnCount += slice.primary.column_2?.length > 0 ? 1 : 0;
 	columnCount += slice.primary.column_3?.length > 0 ? 1 : 0;
+
+	onMount(() => {
+		gsap.to('.hero-bg__media', {
+			scale: 1.2,
+			duration: 1,
+			scrollTrigger: {
+				trigger: '.hero-bg',
+				start: 'top 80%',
+				end: 'bottom 20%',
+				scrub: true
+			}
+		});
+	});
 </script>
 
-<div class="hero-bg">
-	{#if slice.primary.video_url?.url}
-		<video autoplay loop muted playsinline poster={slice.primary.poster_image?.url}>
-			<source src={slice.primary.video_url.url} />
-		</video>
-	{:else}
-		<PrismicImage field={slice.primary.poster_image} />
-	{/if}
+<div class="parallax-wrap">
+	<div class="hero-bg">
+		{#if slice.primary.video_url?.url}
+			<video
+				class="hero-bg__media"
+				autoplay
+				loop
+				muted
+				playsinline
+				poster={slice.primary.poster_image?.url}
+			>
+				<source src={slice.primary.video_url.url} />
+			</video>
+		{:else}
+			<PrismicImage class="hero-bg__media" field={slice.primary.poster_image} />
+		{/if}
 
-	<div class="hero-bg__overlay"></div>
-</div>
-
-<div class="hero-content">
-	<div class="hero-content__top">
-		<div class="container">
-			<div class="hero-eyebrow">{slice.primary.eyebrow}</div>
-			<h1 class="hero-headline">{slice.primary.headline}</h1>
-		</div>
+		<div class="hero-bg__overlay"></div>
 	</div>
 
-	<div class="container">
-		<div class="hero-content__bottom">
-			{#each Array.from({ length: columnCount }).keys() as _, index (index)}
-				<div class="column column-{index + 1}">
-					{#each slice.primary[`column_${index + 1}`] as { item }, index (index)}
-						<div class="column-item">
-							<PrismicRichText field={item} />
-						</div>
-					{/each}
-				</div>
-			{/each}
+	<div class="hero-content">
+		<div class="hero-content__top">
+			<div class="container">
+				<div class="hero-eyebrow">{slice.primary.eyebrow}</div>
+				<h1 class="hero-headline">{slice.primary.headline}</h1>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="hero-content__bottom">
+				{#each Array.from({ length: columnCount }).keys() as _, index (index)}
+					<div class="column column-{index + 1}">
+						{#each slice.primary[`column_${index + 1}`] as { item }, index (index)}
+							<div class="column-item">
+								<PrismicRichText field={item} />
+							</div>
+						{/each}
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
 </div>
@@ -81,18 +106,38 @@
 			flex-direction: column;
 			justify-content: flex-end;
 			padding-block-end: 0.75rem;
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+
+				@media (min-width: 1024px) {
+					gap: 1.5rem;
+				}
+			}
 		}
 
 		.hero-eyebrow {
 			font-size: 1.125rem;
 			font-weight: 700;
 			color: var(--white);
+			line-height: 85%;
+
+			@media (min-width: 1024px) {
+				font-size: 2rem;
+			}
 		}
 
 		.hero-headline {
 			font-size: 3rem;
 			font-weight: 700;
 			color: var(--white);
+			line-height: 110%;
+
+			@media (min-width: 1024px) {
+				font-size: 4.5rem;
+			}
 		}
 
 		.hero-content__bottom {
@@ -111,6 +156,10 @@
 				font-size: 0.825rem;
 				color: var(--white);
 				text-align: center;
+
+				@media (min-width: 1024px) {
+					font-size: 1.125rem;
+				}
 			}
 		}
 

@@ -6,6 +6,7 @@
 
 	import CallToAction from '$lib/components/UI/CallToAction.svelte';
 	import { PrismicRichText } from '@prismicio/svelte';
+	import { onMount } from 'svelte';
 
 	const { slice }: Props = $props();
 </script>
