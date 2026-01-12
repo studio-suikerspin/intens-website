@@ -11,27 +11,18 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
         "headline": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
-            "single": "heading1",
-            "label": "Headline"
-          }
-        },
-        "subheadline": {
-          "type": "StructuredText",
-          "config": {
-            "multi": "paragraph,strong,em,hyperlink",
-            "label": "Subheadline"
-          }
-        },
-        "cta_link": {
-          "type": "Link",
-          "config": {
-            "label": "Call to Action Link",
-            "allowText": true,
-            "repeat": false,
-            "select": null
+            "label": "Headline",
+            "placeholder": ""
           }
         },
         "video_url": {
@@ -43,20 +34,48 @@
             "allowText": false
           }
         },
+        "poster_image": {
+          "type": "Image",
+          "config": {
+            "label": "Poster image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "column_1": {
           "type": "Group",
           "config": {
             "label": "Column 1",
-            "repeat": false,
-            "fields": {}
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Item",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,hyperlink"
+                }
+              }
+            }
           }
         },
         "column_2": {
           "type": "Group",
           "config": {
             "label": "Column 2",
-            "repeat": false,
-            "fields": {}
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Item",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,hyperlink"
+                }
+              }
+            }
           }
         },
         "column_3": {
@@ -64,7 +83,17 @@
           "config": {
             "label": "Column 3",
             "repeat": true,
-            "fields": {}
+            "fields": {
+              "item": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Item",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,hyperlink"
+                }
+              }
+            }
           }
         }
       },
