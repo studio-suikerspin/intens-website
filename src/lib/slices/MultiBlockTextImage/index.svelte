@@ -48,7 +48,7 @@
 			flex-direction: row;
 		}
 
-		@media (min-width: 1024px) {
+		@media (min-width: 1280px) {
 			padding-inline-start: 5rem;
 		}
 

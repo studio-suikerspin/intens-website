@@ -4,6 +4,7 @@ import CustomerReviews from './CustomerReviews/index.svelte';
 import Hero from './Hero/index.svelte';
 import ImpactNumbers from './ImpactNumbers/index.svelte';
 import LogoGrid from './LogoGrid/index.svelte';
+import MediaGrid from './MediaGrid/index.svelte';
 import MultiBlockTextImage from './MultiBlockTextImage/index.svelte';
 import Footer from './Footer/index.svelte';
 import HorizontalShowcase from './HorizontalShowcase/index.svelte';
@@ -16,6 +17,7 @@ export const components = {
 	hero_with_navigation_overlay: Hero,
 	impact_statistics: ImpactNumbers,
 	logo_grid: LogoGrid,
+	media_grid: MediaGrid,
 	multi_block_text_image: MultiBlockTextImage,
 	navigational_media_grid: Footer,
 	project_showcase: HorizontalShowcase,
