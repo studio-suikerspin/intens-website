@@ -21,6 +21,9 @@
 						"text_only": {
 							"type": "SharedSlice"
 						},
+						"media_grid": {
+							"type": "SharedSlice"
+						},
 						"multi_block_text_image": {
 							"type": "SharedSlice"
 						},

@@ -11,6 +11,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"media_grid": {
+							"type": "SharedSlice"
+						},
 						"multi_block_text_image": {
 							"type": "SharedSlice"
 						},

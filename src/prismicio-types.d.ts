@@ -135,6 +135,7 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| MediaGridSlice
 	| MultiBlockTextImageSlice
 	| CustomerReviewsSlice
 	| VideoBannerSectionSlice
@@ -251,6 +252,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 
 type PageDocumentDataSlicesSlice =
 	| TextOnlySlice
+	| MediaGridSlice
 	| MultiBlockTextImageSlice
 	| HeroWithNavigationOverlaySlice
 	| ProjectShowcaseSlice
@@ -1105,6 +1107,124 @@ type LogoGridSliceVariation = LogoGridSliceDefaultGrid;
 export type LogoGridSlice = prismic.SharedSlice<'logo_grid', LogoGridSliceVariation>;
 
 /**
+ * Item in *MediaGrid → Heading, Description & Image Grid → Primary → Items*
+ */
+export interface MediaGridSliceHeadingDescriptionImageGridPrimaryItemsItem {
+	/**
+	 * Image field in *MediaGrid → Heading, Description & Image Grid → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video URL field in *MediaGrid → Heading, Description & Image Grid → Primary → Items*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *MediaGrid → Heading, Description & Image Grid → Primary*
+ */
+export interface MediaGridSliceHeadingDescriptionImageGridPrimary {
+	/**
+	 * Light or dark field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.light_or_dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	light_or_dark: prismic.BooleanField;
+
+	/**
+	 * Eyebrow field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Heading field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	heading: prismic.KeyTextField;
+
+	/**
+	 * Description field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * CTA Link field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Items field in *MediaGrid → Heading, Description & Image Grid → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media_grid.heading_description_image_grid.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	items: prismic.GroupField<Simplify<MediaGridSliceHeadingDescriptionImageGridPrimaryItemsItem>>;
+}
+
+/**
+ * Heading, Description & Image Grid variation for MediaGrid Slice
+ *
+ * - **API ID**: `heading_description_image_grid`
+ * - **Description**: Displays a grid of images with a main heading and short description above.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MediaGridSliceHeadingDescriptionImageGrid = prismic.SharedSliceVariation<
+	'heading_description_image_grid',
+	Simplify<MediaGridSliceHeadingDescriptionImageGridPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *MediaGrid*
+ */
+type MediaGridSliceVariation = MediaGridSliceHeadingDescriptionImageGrid;
+
+/**
+ * MediaGrid Shared Slice
+ *
+ * - **API ID**: `media_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MediaGridSlice = prismic.SharedSlice<'media_grid', MediaGridSliceVariation>;
+
+/**
  * Item in *MultiBlockTextImage → Multiple Text Blocks with Side Image → Primary → Blocks*
  */
 export interface MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimaryBlocksItem {
@@ -1882,6 +2002,11 @@ declare module '@prismicio/client' {
 			LogoGridSliceDefaultGridPrimary,
 			LogoGridSliceVariation,
 			LogoGridSliceDefaultGrid,
+			MediaGridSlice,
+			MediaGridSliceHeadingDescriptionImageGridPrimaryItemsItem,
+			MediaGridSliceHeadingDescriptionImageGridPrimary,
+			MediaGridSliceVariation,
+			MediaGridSliceHeadingDescriptionImageGrid,
 			MultiBlockTextImageSlice,
 			MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimaryBlocksItem,
 			MultiBlockTextImageSliceMultipleBlocksWithSideImagePrimary,
