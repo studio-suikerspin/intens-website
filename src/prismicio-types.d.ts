@@ -250,6 +250,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| TextOnlySlice
 	| MultiBlockTextImageSlice
 	| HeroWithNavigationOverlaySlice
 	| ProjectShowcaseSlice
@@ -1681,6 +1682,58 @@ export type TeamMembersCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TextOnly → Default → Primary*
+ */
+export interface TextOnlySliceDefaultPrimary {
+	/**
+	 * Title field in *TextOnly → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Title
+	 * - **API ID Path**: text_only.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Text field in *TextOnly → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Text
+	 * - **API ID Path**: text_only.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TextOnly Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextOnlySliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextOnlySliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextOnly*
+ */
+type TextOnlySliceVariation = TextOnlySliceDefault;
+
+/**
+ * TextOnly Shared Slice
+ *
+ * - **API ID**: `text_only`
+ * - **Description**: TextOnly
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextOnlySlice = prismic.SharedSlice<'text_only', TextOnlySliceVariation>;
+
+/**
  * Primary content in *VideoBannerSection → Default → Primary*
  */
 export interface VideoBannerSectionSliceDefaultPrimary {
@@ -1854,6 +1907,10 @@ declare module '@prismicio/client' {
 			TeamMembersCarouselSliceDefaultPrimary,
 			TeamMembersCarouselSliceVariation,
 			TeamMembersCarouselSliceDefault,
+			TextOnlySlice,
+			TextOnlySliceDefaultPrimary,
+			TextOnlySliceVariation,
+			TextOnlySliceDefault,
 			VideoBannerSectionSlice,
 			VideoBannerSectionSliceDefaultPrimary,
 			VideoBannerSectionSliceVariation,

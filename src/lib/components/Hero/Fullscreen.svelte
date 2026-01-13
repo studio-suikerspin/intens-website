@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.hero__background {
 		height: 100%;
 		width: 100%;
@@ -90,7 +90,7 @@
 			line-height: 85%;
 			max-width: 900px;
 
-			@media screen and (min-width: 768px) {
+			@media(min-width: 768px) {
 				font-size: 5.875rem;
 			}
 		}
@@ -102,6 +102,10 @@
 			line-height: 140%;
 			max-width: 400px;
 			text-wrap: balance;
+			display: none;
+			@media(min-width: 768px) {
+				display: block;
+			}
 		}
 	}
 
@@ -119,14 +123,22 @@
 	.hero__headlines_first {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 0.5rem;
+
+		@media(min-width: 768px) {
+			gap: 1rem;
+		}
 	}
 	.hero__eyebrow{
-		font-size: 2rem;
+		font-size: 1.125rem;
 		font-weight: 700;
 		line-height: 85%;
 		letter-spacing: -1px;
 		color: #ffffff;
 		opacity: 0.5;
+
+		@media(min-width: 768px) {
+			font-size: 2rem;
+		}
 	}
 </style>
