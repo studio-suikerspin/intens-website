@@ -10,6 +10,7 @@ import Footer from './Footer/index.svelte';
 import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ImageText from './ImageText/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
+import TextOnly from './TextOnly/index.svelte';
 import VideoBannerSection from './VideoBannerSection/index.svelte';
 
 export const components = {
@@ -23,5 +24,6 @@ export const components = {
 	project_showcase: HorizontalShowcase,
 	service_highlights: ImageText,
 	team_members_carousel: TeamMembersCarousel,
+	text_only: TextOnly,
 	video_banner_section: VideoBannerSection
 };

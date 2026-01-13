@@ -29,6 +29,7 @@
 			<div class="image-text__blocks">
 				{#each slice.primary.image_text_block as block, index (index)}
 					<div class="image-text__block">
+						
 						<a
 							href={resolve(block.cta_button.url)}
 							class="image-text__block-image image-text__block-image--{block.image_right
@@ -38,7 +39,7 @@
 							<div class="image-button">
 								<i class="icon-arrow-right"></i>
 							</div>
-							<PrismicImage field={block.image} />
+							<PrismicImage field={block.image} />						
 						</a>
 						<div class="image-text__block-wrap">
 							<div class="image-text__block-content">
