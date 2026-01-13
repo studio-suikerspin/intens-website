@@ -123,6 +123,15 @@
             "label": "Subheadline"
           }
         },
+        "eyebrow": {
+          "type": "StructuredText",
+          "config": {
+            "label": "eyebrow",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        },
         "cta_link": {
           "type": "Link",
           "config": {
@@ -139,6 +148,14 @@
             "placeholder": "",
             "select": "media",
             "allowText": false
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

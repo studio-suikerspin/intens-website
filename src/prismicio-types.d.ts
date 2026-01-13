@@ -803,6 +803,16 @@ export interface HeroWithNavigationOverlaySliceFullscreenPrimary {
 	subheadline: prismic.RichTextField;
 
 	/**
+	 * eyebrow field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	eyebrow: prismic.RichTextField;
+
+	/**
 	 * Call to Action Link field in *Hero → Fullscreen → Primary*
 	 *
 	 * - **Field Type**: Link
@@ -821,6 +831,16 @@ export interface HeroWithNavigationOverlaySliceFullscreenPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
 	 */
 	video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+	/**
+	 * Image field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
 }
 
 /**
