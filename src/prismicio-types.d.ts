@@ -135,6 +135,9 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| TextOnlySlice
+	| TextWithFeatureGridSlice
+	| ProjectsGridWithFiltersSlice
 	| MediaGridSlice
 	| MultiBlockTextImageSlice
 	| CustomerReviewsSlice
@@ -251,6 +254,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| ProjectsGridWithFiltersSlice
 	| TextWithFeatureGridSlice
 	| TextOnlySlice
 	| MediaGridSlice
@@ -845,6 +849,17 @@ export interface HeroWithNavigationOverlaySliceFullscreenPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	image: prismic.ImageField<never>;
+
+	/**
+	 * Add overlay field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.add_overlay
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	add_overlay: prismic.BooleanField;
 }
 
 /**
@@ -1508,6 +1523,80 @@ export type ProjectShowcaseSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProjectsGridWithFilters → Default → Primary → Projects*
+ */
+export interface ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem {
+	/**
+	 * Project field in *ProjectsGridWithFilters → Default → Primary → Projects*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects_grid_with_filters.default.primary.projects[].project
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+	 */
+	project: ContentRelationshipFieldWithData<
+		[
+			{
+				id: 'project';
+				fields: [
+					'title',
+					'project_date',
+					'project_type',
+					'summary',
+					'featured_image',
+					{ id: 'tags'; fields: ['tag'] }
+				];
+			}
+		]
+	>;
+}
+
+/**
+ * Primary content in *ProjectsGridWithFilters → Default → Primary*
+ */
+export interface ProjectsGridWithFiltersSliceDefaultPrimary {
+	/**
+	 * Projects field in *ProjectsGridWithFilters → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects_grid_with_filters.default.primary.projects[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	projects: prismic.GroupField<Simplify<ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem>>;
+}
+
+/**
+ * Default variation for ProjectsGridWithFilters Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectsGridWithFiltersSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ProjectsGridWithFiltersSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ProjectsGridWithFilters*
+ */
+type ProjectsGridWithFiltersSliceVariation = ProjectsGridWithFiltersSliceDefault;
+
+/**
+ * ProjectsGridWithFilters Shared Slice
+ *
+ * - **API ID**: `projects_grid_with_filters`
+ * - **Description**: ProjectsGridWithFilters
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectsGridWithFiltersSlice = prismic.SharedSlice<
+	'projects_grid_with_filters',
+	ProjectsGridWithFiltersSliceVariation
+>;
+
+/**
  * Item in *ImageText → Image & Text Alternating → Primary → Image & text block*
  */
 export interface ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlockItem {
@@ -2144,6 +2233,11 @@ declare module '@prismicio/client' {
 			ProjectShowcaseSliceWithFeaturedProjectPrimary,
 			ProjectShowcaseSliceVariation,
 			ProjectShowcaseSliceWithFeaturedProject,
+			ProjectsGridWithFiltersSlice,
+			ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem,
+			ProjectsGridWithFiltersSliceDefaultPrimary,
+			ProjectsGridWithFiltersSliceVariation,
+			ProjectsGridWithFiltersSliceDefault,
 			ServiceHighlightsSlice,
 			ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlockItem,
 			ServiceHighlightsSliceImageTextAlternatingPrimary,

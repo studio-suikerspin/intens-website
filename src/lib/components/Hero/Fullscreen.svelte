@@ -13,24 +13,28 @@
 
 <div class="hero__background">
 	{#if slice.primary.video_url?.url}
-	<video
-		class="hero__background-video"
-		src={slice.primary?.video_url?.url}
-		autoplay
-		muted
-		loop
-		playsinline
-	></video>
+		<video
+			class="hero__background-video"
+			src={slice.primary?.video_url?.url}
+			autoplay
+			muted
+			loop
+			playsinline
+		></video>
 	{:else}
-	<PrismicImage field={slice.primary?.image} class="hero__background-image" style="object-fit: cover; width: 100%; height: 100%;" />
+		<PrismicImage
+			field={slice.primary?.image}
+			class="hero__background-image"
+			style="object-fit: cover; width: 100%; height: 100%;"
+		/>
 	{/if}
 </div>
 
-<div class="hero__content">
+<div class="hero__content {slice.primary.add_overlay ? 'hero__content--overlay' : ''}">
 	{#if slice.primary.cta_link && slice.primary.video_url?.url}
-	<div class="filled-cta">
-		<CallToAction cta={slice.primary.cta_link} isDark={true} />
-	</div>
+		<div class="filled-cta">
+			<CallToAction cta={slice.primary.cta_link} isDark={true} />
+		</div>
 	{/if}
 	<div class="hero__headlines">
 		<div class="hero__headlines_first">
@@ -76,6 +80,10 @@
 		flex-direction: column;
 		justify-content: flex-end;
 
+		&.hero__content--overlay {
+			background-color: rgba(0, 0, 0, 0.35);
+		}
+
 		.filled-cta {
 			flex: 1;
 			display: flex;
@@ -90,7 +98,7 @@
 			line-height: 85%;
 			max-width: 900px;
 
-			@media(min-width: 768px) {
+			@media (min-width: 768px) {
 				font-size: 5.875rem;
 			}
 		}
@@ -103,7 +111,7 @@
 			max-width: 400px;
 			text-wrap: balance;
 			display: none;
-			@media(min-width: 768px) {
+			@media (min-width: 768px) {
 				display: block;
 			}
 		}
@@ -125,11 +133,11 @@
 		flex-direction: column;
 		gap: 0.5rem;
 
-		@media(min-width: 768px) {
+		@media (min-width: 768px) {
 			gap: 1rem;
 		}
 	}
-	.hero__eyebrow{
+	.hero__eyebrow {
 		font-size: 1.125rem;
 		font-weight: 700;
 		line-height: 85%;
@@ -137,7 +145,7 @@
 		color: #ffffff;
 		opacity: 0.5;
 
-		@media(min-width: 768px) {
+		@media (min-width: 768px) {
 			font-size: 2rem;
 		}
 	}
