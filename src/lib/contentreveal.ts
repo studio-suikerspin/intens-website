@@ -1,6 +1,13 @@
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger } from './gsap';
+import { browser } from '$app/environment';
 
-function initContentRevealScroll(){
+if (browser) {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+export function initContentRevealScroll() {
+  if (!browser) return () => {};
+  
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const ctx = gsap.context(() => {
@@ -40,7 +47,7 @@ function initContentRevealScroll(){
       }
 
       // Build animation slots: item or nested (deep layers allowed)
-      const slots = [];
+      const slots: any[] = [];
       directChildren.forEach(child => {
         const nestedGroup = child.matches('[data-reveal-group-nested]')
           ? child
@@ -66,7 +73,7 @@ function initContentRevealScroll(){
           if (slot.includeParent) gsap.set(slot.parentEl, { y: groupDistance, autoAlpha: 0 });
           // Children use nested group's own distance (fallback to group distance)
           const nestedD = slot.nestedEl.getAttribute('data-distance') || groupDistance;
-          Array.from(slot.nestedEl.children).forEach(target => gsap.set(target, { y: nestedD, autoAlpha: 0 }));
+          Array.from(slot.nestedEl.children).forEach((target: any) => gsap.set(target, { y: nestedD, autoAlpha: 0 }));
         }
       });
 
@@ -110,7 +117,7 @@ function initContentRevealScroll(){
               // Nested children use nested stagger (ms → sec); fallback to group stagger
               const nestedMs = parseFloat(slot.nestedEl.getAttribute('data-stagger'));
               const nestedStaggerSec = isNaN(nestedMs) ? groupStaggerSec : nestedMs / 1000;
-              Array.from(slot.nestedEl.children).forEach((nestedChild, nestedIndex) => {
+              Array.from(slot.nestedEl.children).forEach((nestedChild: any, nestedIndex) => {
                 tl.to(nestedChild, { 
                   y: 0, 
                   autoAlpha: 1, 
@@ -129,8 +136,3 @@ function initContentRevealScroll(){
 
   return () => ctx.revert();
 }
-
-// Initialize Elements Reveal on Scroll
-document.addEventListener("DOMContentLoaded", () =>{
-  initContentRevealScroll();
-})
