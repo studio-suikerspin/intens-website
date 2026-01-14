@@ -147,13 +147,24 @@ h5 {
 
 	padding-block: 0.625rem;
 	padding-inline: 1.75rem;
-}
 
-.btn__icon {
-	font-size: 1.5rem;
-}
+	&.btn__icon {
+		font-size: 1.5rem;
+	}
 
-.btn--primary {
-	background: var(--accent-brown);
-	color: var(--bg-sand-light);
+	&.btn--primary {
+		background: var(--accent-brown);
+		color: var(--bg-sand-light);
+	}
+
+	&.btn--outline {
+		background: transparent;
+		border: 1px solid var(--bg-dark);
+		color: var(--bg-dark);
+
+		&.active {
+			background: var(--bg-dark);
+			color: var(--white);
+		}
+	}
 }

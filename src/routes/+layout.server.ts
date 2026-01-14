@@ -8,6 +8,7 @@ export async function load({ params, fetch, cookies }) {
 	const navigation = await client.getSingle('main_navigation');
 	const footerNavigation = await client.getSingle('footer_navigation');
 	const socialMedia = await client.getSingle('social_media');
+	const projectTags = await client.getAllByType('project_tag');
 
-	return { settings, navigation, footerNavigation, socialMedia  };
+	return { settings, navigation, footerNavigation, socialMedia, projectTags };
 }

@@ -97,11 +97,18 @@
 					"label": "Tags",
 					"repeat": true,
 					"fields": {
-						"tag": {
-							"type": "Text",
+						"project_tag": {
+							"type": "Link",
 							"config": {
-								"label": "Tag",
-								"placeholder": ""
+								"label": "Project tag",
+								"select": "document",
+								"repeat": false,
+								"customtypes": [
+									{
+										"id": "project_tag",
+										"fields": ["tag"]
+									}
+								]
 							}
 						}
 					}

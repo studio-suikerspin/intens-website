@@ -353,14 +353,14 @@ export interface ProjectDocumentDataGalleryItem {
  */
 export interface ProjectDocumentDataTagsItem {
 	/**
-	 * Tag field in *Project → Tags*
+	 * Project tag field in *Project → Tags*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Content Relationship
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.tags[].tag
-	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 * - **API ID Path**: project.tags[].project_tag
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
 	 */
-	tag: prismic.KeyTextField;
+	project_tag: ContentRelationshipFieldWithData<[{ id: 'project_tag'; fields: ['tag'] }]>;
 }
 
 /**
@@ -494,6 +494,37 @@ export type ProjectDocument<Lang extends string = string> = prismic.PrismicDocum
 >;
 
 /**
+ * Content for Project tag documents
+ */
+interface ProjectTagDocumentData {
+	/**
+	 * Tag field in *Project tag*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_tag.tag
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	tag: prismic.KeyTextField;
+}
+
+/**
+ * Project tag document from Prismic
+ *
+ * - **API ID**: `project_tag`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectTagDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<ProjectTagDocumentData>,
+	'project_tag',
+	Lang
+>;
+
+/**
  * Content for Social media documents
  */
 interface SocialMediaDocumentData {
@@ -533,6 +564,7 @@ export type AllDocumentTypes =
 	| MainNavigationDocument
 	| PageDocument
 	| ProjectDocument
+	| ProjectTagDocument
 	| SocialMediaDocument;
 
 /**
@@ -2377,6 +2409,8 @@ declare module '@prismicio/client' {
 			ProjectDocumentData,
 			ProjectDocumentDataGalleryItem,
 			ProjectDocumentDataTagsItem,
+			ProjectTagDocument,
+			ProjectTagDocumentData,
 			SocialMediaDocument,
 			SocialMediaDocumentData,
 			AllDocumentTypes,
