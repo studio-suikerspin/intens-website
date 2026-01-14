@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { PrismicImage, type SliceComponentProps } from '@prismicio/svelte';
 	import LinkButton from '$lib/components/UI/LinkButton.svelte';
+	import { resolve } from '$app/paths';
 
 	type Props = SliceComponentProps<Content.ProjectsGridWithFiltersSlice>;
 
@@ -40,12 +41,10 @@
 
 							<div class="project-card__inner">
 								<div class="project-card__top">
-									<div class="project-card__tags">
-										{#each project.data.tags as item, index (index)}
-											{item.tag}
-										{/each}
-									</div>
-									<LinkButton href={project.url} />
+									<div class="project-card__tags"></div>
+									<a href={resolve(`/projecten/${project.slug}`)} title={project.data.title}>
+										<i class="icon-arrow-right"></i>
+									</a>
 								</div>
 
 								<div class="project-card__content">
