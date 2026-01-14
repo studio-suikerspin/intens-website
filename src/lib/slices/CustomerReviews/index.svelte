@@ -53,6 +53,7 @@
 <style>
 	.reviews-section {
 		background: var(--bg-dark);
+		margin-bottom: 200px;
 
 		@media (min-width: 768px) {
 			padding-block-start: 20rem;

@@ -254,6 +254,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| ServicesSliderSlice
 	| ProjectsGridWithFiltersSlice
 	| TextWithFeatureGridSlice
 	| TextOnlySlice
@@ -1751,6 +1752,103 @@ export type ServiceHighlightsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ServicesSlider → Default → Primary → Projects*
+ */
+export interface ServicesSliderSliceDefaultPrimaryProjectsItem {
+	/**
+	 * Service title field in *ServicesSlider → Default → Primary → Projects*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Service title
+	 * - **API ID Path**: services_slider.default.primary.projects[].service_title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	service_title: prismic.RichTextField;
+
+	/**
+	 * Project field in *ServicesSlider → Default → Primary → Projects*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: services_slider.default.primary.projects[].project
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+	 */
+	project: ContentRelationshipFieldWithData<
+		[
+			{
+				id: 'project';
+				fields: ['title', 'location', 'summary', 'featured_image', { id: 'tags'; fields: ['tag'] }];
+			}
+		]
+	>;
+
+	/**
+	 * Service text field in *ServicesSlider → Default → Primary → Projects*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Service text
+	 * - **API ID Path**: services_slider.default.primary.projects[].service_text
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	service_text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ServicesSlider → Default → Primary*
+ */
+export interface ServicesSliderSliceDefaultPrimary {
+	/**
+	 * Section title field in *ServicesSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Dagelijks onderhoud
+	 * - **API ID Path**: services_slider.default.primary.section_title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	section_title: prismic.RichTextField;
+
+	/**
+	 * Projects field in *ServicesSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: services_slider.default.primary.projects[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	projects: prismic.GroupField<Simplify<ServicesSliderSliceDefaultPrimaryProjectsItem>>;
+}
+
+/**
+ * Default variation for ServicesSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServicesSliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ServicesSliderSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ServicesSlider*
+ */
+type ServicesSliderSliceVariation = ServicesSliderSliceDefault;
+
+/**
+ * ServicesSlider Shared Slice
+ *
+ * - **API ID**: `services_slider`
+ * - **Description**: ServicesSlider
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServicesSliderSlice = prismic.SharedSlice<
+	'services_slider',
+	ServicesSliderSliceVariation
+>;
+
+/**
  * Item in *TeamMembersCarousel → Default → Primary → Team Members*
  */
 export interface TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem {
@@ -2243,6 +2341,11 @@ declare module '@prismicio/client' {
 			ServiceHighlightsSliceImageTextAlternatingPrimary,
 			ServiceHighlightsSliceVariation,
 			ServiceHighlightsSliceImageTextAlternating,
+			ServicesSliderSlice,
+			ServicesSliderSliceDefaultPrimaryProjectsItem,
+			ServicesSliderSliceDefaultPrimary,
+			ServicesSliderSliceVariation,
+			ServicesSliderSliceDefault,
 			TeamMembersCarouselSlice,
 			TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem,
 			TeamMembersCarouselSliceDefaultPrimary,
