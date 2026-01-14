@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { isFilled, type Content } from '@prismicio/client';
 	import { page } from '$app/state';
-	import { PrismicImage, PrismicLink, type SliceComponentProps } from '@prismicio/svelte';
+	import { PrismicImage, type SliceComponentProps } from '@prismicio/svelte';
 	import LinkButton from '$lib/components/UI/LinkButton.svelte';
 
 	type Props = SliceComponentProps<Content.ProjectsGridWithFiltersSlice>;
