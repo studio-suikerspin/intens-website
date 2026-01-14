@@ -18,6 +18,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"services_slider": {
+							"type": "SharedSlice"
+						},
 						"projects_grid_with_filters": {
 							"type": "SharedSlice"
 						},

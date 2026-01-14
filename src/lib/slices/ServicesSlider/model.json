@@ -1,0 +1,80 @@
+{
+  "id": "services_slider",
+  "type": "SharedSlice",
+  "name": "ServicesSlider",
+  "description": "ServicesSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section title",
+            "placeholder": "Dagelijks onderhoud",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "projects": {
+          "type": "Group",
+          "config": {
+            "label": "Projects",
+            "repeat": true,
+            "fields": {
+              "service_title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Service title",
+                  "placeholder": "Service title",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "project": {
+                "type": "Link",
+                "config": {
+                  "label": "Project",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    {
+                      "id": "project",
+                      "fields": [
+                        "title",
+                        "location",
+                        "summary",
+                        "featured_image",
+                        {
+                          "id": "tags",
+                          "fields": [
+                            "tag"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "service_text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Service text",
+                  "placeholder": "Service text",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
