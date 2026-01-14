@@ -9,6 +9,8 @@
 	import { resolve } from '$app/paths';
 
 	const { slice }: Props = $props();
+
+	// let tag = $state('div');
 </script>
 
 <section
@@ -30,17 +32,29 @@
 				{#each slice.primary.image_text_block as block, index (index)}
 					<div class="image-text__block">
 						
-						<a
+						
+						<!-- {#if block.cta_button.url} -->
+						<!-- <a
 							href={resolve(block.cta_button.url)}
 							class="image-text__block-image image-text__block-image--{block.image_right
 								? 'right'
 								: 'left'}"
-						>
+						> -->
+						<svelte:element this={block.cta_button.url ? 'a' : 'div'} class="image-text__block-image image-text__block-image--{block.image_right
+								? 'right'
+								: 'left'}">
+
+						{#if block.cta_button.url}
+							{@html `<link rel="preload" as="image" href="${block.image.url}" />`}
 							<div class="image-button">
 								<i class="icon-arrow-right"></i>
 							</div>
-							<PrismicImage field={block.image} />						
-						</a>
+						{/if}
+							<PrismicImage field={block.image} />				
+						</svelte:element>
+						
+						<!-- </a> -->
+						
 						<div class="image-text__block-wrap">
 							<div class="image-text__block-content">
 								<h3 class="image-text__block-title">{block.title}</h3>
@@ -48,7 +62,7 @@
 									<PrismicRichText field={block.text} />
 								</div>
 							</div>
-							{#if block.cta_button}
+							{#if block.cta_button.url}
 								<LinkButton linkField={block.cta_button} />
 							{/if}
 						</div>

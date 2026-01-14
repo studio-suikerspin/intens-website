@@ -10,6 +10,7 @@ import Footer from './Footer/index.svelte';
 import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ProjectsGridWithFilters from './ProjectsGridWithFilters/index.svelte';
 import ImageText from './ImageText/index.svelte';
+import ServicesSlider from './ServicesSlider/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
 import TextOnly from './TextOnly/index.svelte';
 import TextWithFeatureGrid from './TextWithFeatureGrid/index.svelte';
@@ -26,6 +27,7 @@ export const components = {
 	project_showcase: HorizontalShowcase,
 	projects_grid_with_filters: ProjectsGridWithFilters,
 	service_highlights: ImageText,
+	services_slider: ServicesSlider,
 	team_members_carousel: TeamMembersCarousel,
 	text_only: TextOnly,
 	text_with_feature_grid: TextWithFeatureGrid,
