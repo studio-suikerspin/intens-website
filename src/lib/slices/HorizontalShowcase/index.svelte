@@ -73,6 +73,7 @@
 	class="block-spacing--sm horizontal-showcase {slice.primary.dark ? 'bg-dark' : ''}"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
+	data-reveal-group
 >
 	<div class="horizontal-showcase__container">
 		<div class="container">

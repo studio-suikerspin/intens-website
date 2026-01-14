@@ -48,6 +48,7 @@
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 	class="block-spacing--sm--end team-members {slice.primary.dark ? 'dark' : ''}"
+	data-reveal-group
 >
 	<div class="team-members__inner">
 		<div class="container">
