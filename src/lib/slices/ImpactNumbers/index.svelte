@@ -111,7 +111,6 @@
 		}
 
 		.stat__image {
-			max-height: 600px;
 			height: 100%;
 
 			:global img {
