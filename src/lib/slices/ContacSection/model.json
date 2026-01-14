@@ -1,0 +1,50 @@
+{
+  "type": "SharedSlice",
+  "id": "contact_info_sidebar",
+  "name": "ContacSection",
+  "variations": [
+    {
+      "id": "default_with_image",
+      "name": "Default with Image",
+      "description": "Contact information sidebar with corresponding image area.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "contact_categories": {
+          "type": "Group",
+          "config": {
+            "label": "Contact Categories",
+            "fields": {
+              "category_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Category Label"
+                }
+              },
+              "email": {
+                "type": "Text",
+                "config": {
+                  "label": "Email Address"
+                }
+              },
+              "phone_number": {
+                "type": "Text",
+                "config": {
+                  "label": "Phone Number"
+                }
+              }
+            }
+          }
+        },
+        "side_image": {
+          "type": "Image",
+          "config": {
+            "label": "Side Image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

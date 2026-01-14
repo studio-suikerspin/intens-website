@@ -18,6 +18,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"contact_info_sidebar": {
+							"type": "SharedSlice"
+						},
 						"services_slider": {
 							"type": "SharedSlice"
 						},
