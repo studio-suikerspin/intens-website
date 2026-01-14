@@ -36,7 +36,17 @@
                         {
                           "id": "tags",
                           "fields": [
-                            "tag"
+                            {
+                              "id": "project_tag",
+                              "customtypes": [
+                                {
+                                  "id": "project_tag",
+                                  "fields": [
+                                    "tag"
+                                  ]
+                                }
+                              ]
+                            }
                           ]
                         }
                       ]
