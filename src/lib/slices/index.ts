@@ -11,6 +11,7 @@ import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ImageText from './ImageText/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
 import TextOnly from './TextOnly/index.svelte';
+import TextWithFeatureGrid from './TextWithFeatureGrid/index.svelte';
 import VideoBannerSection from './VideoBannerSection/index.svelte';
 
 export const components = {
@@ -25,5 +26,6 @@ export const components = {
 	service_highlights: ImageText,
 	team_members_carousel: TeamMembersCarousel,
 	text_only: TextOnly,
+	text_with_feature_grid: TextWithFeatureGrid,
 	video_banner_section: VideoBannerSection
 };

@@ -1,0 +1,81 @@
+{
+  "type": "SharedSlice",
+  "id": "text_with_feature_grid",
+  "name": "TextWithFeatureGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "A main headline, intro text, and a flexible grid of multiple feature boxes with titles and bullet points.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
+        "headline": {
+          "type": "Text",
+          "config": {
+            "label": "Headline",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "features": {
+          "type": "Group",
+          "config": {
+            "label": "Features",
+            "fields": {
+              "feature_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Feature Title"
+                }
+              },
+              "feature_bullets": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Feature Bullets",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,list-item"
+                }
+              }
+            }
+          }
+        },
+        "text_is_dark": {
+          "type": "Boolean",
+          "config": {
+            "label": "Should the text be light or dark?",
+            "placeholder_false": "Light",
+            "placeholder_true": "Dark",
+            "default_value": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

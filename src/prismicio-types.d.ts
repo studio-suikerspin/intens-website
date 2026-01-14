@@ -25,14 +25,16 @@ type PickContentRelationshipFieldData<
 			TSubRelationship['customtypes'],
 			TLang
 		>;
-	} & { // Group
+	} & // Group
+	{
 		[TGroup in Extract<
 			TRelationship['fields'][number],
 			prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
 		> as TGroup['id']]: TData[TGroup['id']] extends prismic.GroupField<infer TGroupData>
 			? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
 			: never;
-	} & { // Other fields
+	} & // Other fields
+	{
 		[TFieldKey in Extract<TRelationship['fields'][number], string>]: TFieldKey extends keyof TData
 			? TData[TFieldKey]
 			: never;
@@ -249,6 +251,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| TextWithFeatureGridSlice
 	| TextOnlySlice
 	| MediaGridSlice
 	| MultiBlockTextImageSlice
@@ -1852,6 +1855,127 @@ type TextOnlySliceVariation = TextOnlySliceDefault;
 export type TextOnlySlice = prismic.SharedSlice<'text_only', TextOnlySliceVariation>;
 
 /**
+ * Item in *TextWithFeatureGrid → Default → Primary → Features*
+ */
+export interface TextWithFeatureGridSliceDefaultPrimaryFeaturesItem {
+	/**
+	 * Feature Title field in *TextWithFeatureGrid → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[].feature_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	feature_title: prismic.KeyTextField;
+
+	/**
+	 * Feature Bullets field in *TextWithFeatureGrid → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[].feature_bullets
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	feature_bullets: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TextWithFeatureGrid → Default → Primary*
+ */
+export interface TextWithFeatureGridSliceDefaultPrimary {
+	/**
+	 * Eyebrow field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Description field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * Background image field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.background_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	background_image: prismic.ImageField<never>;
+
+	/**
+	 * Features field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	features: prismic.GroupField<Simplify<TextWithFeatureGridSliceDefaultPrimaryFeaturesItem>>;
+
+	/**
+	 * Should the text be light or dark? field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text_with_feature_grid.default.primary.text_is_dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	text_is_dark: prismic.BooleanField;
+}
+
+/**
+ * Default variation for TextWithFeatureGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: A main headline, intro text, and a flexible grid of multiple feature boxes with titles and bullet points.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextWithFeatureGridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextWithFeatureGridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextWithFeatureGrid*
+ */
+type TextWithFeatureGridSliceVariation = TextWithFeatureGridSliceDefault;
+
+/**
+ * TextWithFeatureGrid Shared Slice
+ *
+ * - **API ID**: `text_with_feature_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextWithFeatureGridSlice = prismic.SharedSlice<
+	'text_with_feature_grid',
+	TextWithFeatureGridSliceVariation
+>;
+
+/**
  * Primary content in *VideoBannerSection → Default → Primary*
  */
 export interface VideoBannerSectionSliceDefaultPrimary {
@@ -2034,6 +2158,11 @@ declare module '@prismicio/client' {
 			TextOnlySliceDefaultPrimary,
 			TextOnlySliceVariation,
 			TextOnlySliceDefault,
+			TextWithFeatureGridSlice,
+			TextWithFeatureGridSliceDefaultPrimaryFeaturesItem,
+			TextWithFeatureGridSliceDefaultPrimary,
+			TextWithFeatureGridSliceVariation,
+			TextWithFeatureGridSliceDefault,
 			VideoBannerSectionSlice,
 			VideoBannerSectionSliceDefaultPrimary,
 			VideoBannerSectionSliceVariation,
