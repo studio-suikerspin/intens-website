@@ -40,10 +40,11 @@
 		display: flex;
 		align-items: stretch;
 		justify-content: space-between;
-		/* flex-direction: column; */
+		flex-direction: column;
+		gap: 5rem;
 
 		@media(min-width: 768px) {
-			/* flex-direction: row; */
+			flex-direction: row;
 		}
 	}
 
@@ -52,6 +53,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		gap: 2.5rem;
+		
+		@media(min-width: 768px) {
+			gap: 0;
+		}
 	}
 
 	.contact-section__category {
