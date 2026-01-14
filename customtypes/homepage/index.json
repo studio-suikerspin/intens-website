@@ -11,6 +11,15 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"text_only": {
+							"type": "SharedSlice"
+						},
+						"text_with_feature_grid": {
+							"type": "SharedSlice"
+						},
+						"projects_grid_with_filters": {
+							"type": "SharedSlice"
+						},
 						"media_grid": {
 							"type": "SharedSlice"
 						},

@@ -18,6 +18,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"projects_grid_with_filters": {
+							"type": "SharedSlice"
+						},
+						"text_with_feature_grid": {
+							"type": "SharedSlice"
+						},
 						"text_only": {
 							"type": "SharedSlice"
 						},

@@ -135,6 +135,9 @@ export type GeneralSettingsDocument<Lang extends string = string> =
 	>;
 
 type HomepageDocumentDataSlicesSlice =
+	| TextOnlySlice
+	| TextWithFeatureGridSlice
+	| ProjectsGridWithFiltersSlice
 	| MediaGridSlice
 	| MultiBlockTextImageSlice
 	| CustomerReviewsSlice
@@ -251,6 +254,8 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| ProjectsGridWithFiltersSlice
+	| TextWithFeatureGridSlice
 	| TextOnlySlice
 	| MediaGridSlice
 	| MultiBlockTextImageSlice
@@ -844,6 +849,17 @@ export interface HeroWithNavigationOverlaySliceFullscreenPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	image: prismic.ImageField<never>;
+
+	/**
+	 * Add overlay field in *Hero → Fullscreen → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: hero_with_navigation_overlay.fullscreen.primary.add_overlay
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	add_overlay: prismic.BooleanField;
 }
 
 /**
@@ -1507,6 +1523,80 @@ export type ProjectShowcaseSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProjectsGridWithFilters → Default → Primary → Projects*
+ */
+export interface ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem {
+	/**
+	 * Project field in *ProjectsGridWithFilters → Default → Primary → Projects*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects_grid_with_filters.default.primary.projects[].project
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+	 */
+	project: ContentRelationshipFieldWithData<
+		[
+			{
+				id: 'project';
+				fields: [
+					'title',
+					'project_date',
+					'project_type',
+					'summary',
+					'featured_image',
+					{ id: 'tags'; fields: ['tag'] }
+				];
+			}
+		]
+	>;
+}
+
+/**
+ * Primary content in *ProjectsGridWithFilters → Default → Primary*
+ */
+export interface ProjectsGridWithFiltersSliceDefaultPrimary {
+	/**
+	 * Projects field in *ProjectsGridWithFilters → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects_grid_with_filters.default.primary.projects[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	projects: prismic.GroupField<Simplify<ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem>>;
+}
+
+/**
+ * Default variation for ProjectsGridWithFilters Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectsGridWithFiltersSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ProjectsGridWithFiltersSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ProjectsGridWithFilters*
+ */
+type ProjectsGridWithFiltersSliceVariation = ProjectsGridWithFiltersSliceDefault;
+
+/**
+ * ProjectsGridWithFilters Shared Slice
+ *
+ * - **API ID**: `projects_grid_with_filters`
+ * - **Description**: ProjectsGridWithFilters
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectsGridWithFiltersSlice = prismic.SharedSlice<
+	'projects_grid_with_filters',
+	ProjectsGridWithFiltersSliceVariation
+>;
+
+/**
  * Item in *ImageText → Image & Text Alternating → Primary → Image & text block*
  */
 export interface ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlockItem {
@@ -1854,6 +1944,127 @@ type TextOnlySliceVariation = TextOnlySliceDefault;
 export type TextOnlySlice = prismic.SharedSlice<'text_only', TextOnlySliceVariation>;
 
 /**
+ * Item in *TextWithFeatureGrid → Default → Primary → Features*
+ */
+export interface TextWithFeatureGridSliceDefaultPrimaryFeaturesItem {
+	/**
+	 * Feature Title field in *TextWithFeatureGrid → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[].feature_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	feature_title: prismic.KeyTextField;
+
+	/**
+	 * Feature Bullets field in *TextWithFeatureGrid → Default → Primary → Features*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[].feature_bullets
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	feature_bullets: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *TextWithFeatureGrid → Default → Primary*
+ */
+export interface TextWithFeatureGridSliceDefaultPrimary {
+	/**
+	 * Eyebrow field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.eyebrow
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	eyebrow: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Description field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * Background image field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.background_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	background_image: prismic.ImageField<never>;
+
+	/**
+	 * Features field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_feature_grid.default.primary.features[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	features: prismic.GroupField<Simplify<TextWithFeatureGridSliceDefaultPrimaryFeaturesItem>>;
+
+	/**
+	 * Should the text be light or dark? field in *TextWithFeatureGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text_with_feature_grid.default.primary.text_is_dark
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	text_is_dark: prismic.BooleanField;
+}
+
+/**
+ * Default variation for TextWithFeatureGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: A main headline, intro text, and a flexible grid of multiple feature boxes with titles and bullet points.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextWithFeatureGridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextWithFeatureGridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextWithFeatureGrid*
+ */
+type TextWithFeatureGridSliceVariation = TextWithFeatureGridSliceDefault;
+
+/**
+ * TextWithFeatureGrid Shared Slice
+ *
+ * - **API ID**: `text_with_feature_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TextWithFeatureGridSlice = prismic.SharedSlice<
+	'text_with_feature_grid',
+	TextWithFeatureGridSliceVariation
+>;
+
+/**
  * Primary content in *VideoBannerSection → Default → Primary*
  */
 export interface VideoBannerSectionSliceDefaultPrimary {
@@ -2022,6 +2233,11 @@ declare module '@prismicio/client' {
 			ProjectShowcaseSliceWithFeaturedProjectPrimary,
 			ProjectShowcaseSliceVariation,
 			ProjectShowcaseSliceWithFeaturedProject,
+			ProjectsGridWithFiltersSlice,
+			ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem,
+			ProjectsGridWithFiltersSliceDefaultPrimary,
+			ProjectsGridWithFiltersSliceVariation,
+			ProjectsGridWithFiltersSliceDefault,
 			ServiceHighlightsSlice,
 			ServiceHighlightsSliceImageTextAlternatingPrimaryImageTextBlockItem,
 			ServiceHighlightsSliceImageTextAlternatingPrimary,
@@ -2036,6 +2252,11 @@ declare module '@prismicio/client' {
 			TextOnlySliceDefaultPrimary,
 			TextOnlySliceVariation,
 			TextOnlySliceDefault,
+			TextWithFeatureGridSlice,
+			TextWithFeatureGridSliceDefaultPrimaryFeaturesItem,
+			TextWithFeatureGridSliceDefaultPrimary,
+			TextWithFeatureGridSliceVariation,
+			TextWithFeatureGridSliceDefault,
 			VideoBannerSectionSlice,
 			VideoBannerSectionSliceDefaultPrimary,
 			VideoBannerSectionSliceVariation,
