@@ -14,8 +14,23 @@
 		line-height: 140%;
 		max-width: 43rem;
 
-		@media screen and (min-width: 992px) {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+
+		@media screen and (min-width: 768px) {
 			font-size: 1.125rem;
+		}
+
+		@media screen and (min-width: 1024px) {
+			flex-direction: row;
+			max-width: unset;
+			justify-content: space-between;
+
+			:global p {
+				width: 50%;
+				max-width: 43em;
+			}
 		}
 	}
 
