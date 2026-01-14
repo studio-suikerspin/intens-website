@@ -254,6 +254,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| ContactInfoSidebarSlice
 	| ServicesSliderSlice
 	| ProjectsGridWithFiltersSlice
 	| TextWithFeatureGridSlice
@@ -565,6 +566,98 @@ export type AllDocumentTypes =
 	| ProjectDocument
 	| ProjectTagDocument
 	| SocialMediaDocument;
+
+/**
+ * Item in *ContacSection → Default with Image → Primary → Contact Categories*
+ */
+export interface ContactInfoSidebarSliceDefaultWithImagePrimaryContactCategoriesItem {
+	/**
+	 * Category Label field in *ContacSection → Default with Image → Primary → Contact Categories*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact_info_sidebar.default_with_image.primary.contact_categories[].category_label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	category_label: prismic.KeyTextField;
+
+	/**
+	 * Email Address field in *ContacSection → Default with Image → Primary → Contact Categories*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact_info_sidebar.default_with_image.primary.contact_categories[].email
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	email: prismic.KeyTextField;
+
+	/**
+	 * Phone Number field in *ContacSection → Default with Image → Primary → Contact Categories*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact_info_sidebar.default_with_image.primary.contact_categories[].phone_number
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	phone_number: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ContacSection → Default with Image → Primary*
+ */
+export interface ContactInfoSidebarSliceDefaultWithImagePrimary {
+	/**
+	 * Contact Categories field in *ContacSection → Default with Image → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact_info_sidebar.default_with_image.primary.contact_categories[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	contact_categories: prismic.GroupField<
+		Simplify<ContactInfoSidebarSliceDefaultWithImagePrimaryContactCategoriesItem>
+	>;
+
+	/**
+	 * Side Image field in *ContacSection → Default with Image → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact_info_sidebar.default_with_image.primary.side_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	side_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default with Image variation for ContacSection Slice
+ *
+ * - **API ID**: `default_with_image`
+ * - **Description**: Contact information sidebar with corresponding image area.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactInfoSidebarSliceDefaultWithImage = prismic.SharedSliceVariation<
+	'default_with_image',
+	Simplify<ContactInfoSidebarSliceDefaultWithImagePrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ContacSection*
+ */
+type ContactInfoSidebarSliceVariation = ContactInfoSidebarSliceDefaultWithImage;
+
+/**
+ * ContacSection Shared Slice
+ *
+ * - **API ID**: `contact_info_sidebar`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactInfoSidebarSlice = prismic.SharedSlice<
+	'contact_info_sidebar',
+	ContactInfoSidebarSliceVariation
+>;
 
 /**
  * Item in *CustomerReviews → Default → Primary → Reviews*
@@ -2321,6 +2414,11 @@ declare module '@prismicio/client' {
 			SocialMediaDocument,
 			SocialMediaDocumentData,
 			AllDocumentTypes,
+			ContactInfoSidebarSlice,
+			ContactInfoSidebarSliceDefaultWithImagePrimaryContactCategoriesItem,
+			ContactInfoSidebarSliceDefaultWithImagePrimary,
+			ContactInfoSidebarSliceVariation,
+			ContactInfoSidebarSliceDefaultWithImage,
 			CustomerReviewsSlice,
 			CustomerReviewsSliceDefaultPrimaryReviewsItem,
 			CustomerReviewsSliceDefaultPrimary,
