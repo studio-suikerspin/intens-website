@@ -1670,7 +1670,10 @@ export interface ProjectsGridWithFiltersSliceDefaultPrimaryProjectsItem {
 					'project_type',
 					'summary',
 					'featured_image',
-					{ id: 'tags'; fields: ['tag'] }
+					{
+						id: 'tags';
+						fields: [{ id: 'project_tag'; customtypes: [{ id: 'project_tag'; fields: ['tag'] }] }];
+					}
 				];
 			}
 		]
