@@ -72,14 +72,6 @@
 		}
 	}
 
-	.vacature-card__image{
-		position: absolute;
-		left: 0;
-		top: 0;
-		object-fit: cover;
-		z-index: 1;
-	}
-
 	.vacature-card__content {
 		display: flex;
 		flex-direction: column;
