@@ -3,6 +3,7 @@
 import ContacSection from './ContacSection/index.svelte';
 import CustomerReviews from './CustomerReviews/index.svelte';
 import Hero from './Hero/index.svelte';
+import SimpleMediaGallery from './SimpleMediaGallery/index.svelte';
 import ImpactNumbers from './ImpactNumbers/index.svelte';
 import LogoGrid from './LogoGrid/index.svelte';
 import MediaGrid from './MediaGrid/index.svelte';
@@ -12,6 +13,7 @@ import HorizontalShowcase from './HorizontalShowcase/index.svelte';
 import ProjectsGridWithFilters from './ProjectsGridWithFilters/index.svelte';
 import ImageText from './ImageText/index.svelte';
 import ServicesSlider from './ServicesSlider/index.svelte';
+import BeforeAndAfterSlider from './BeforeAndAfterSlider/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
 import TextOnly from './TextOnly/index.svelte';
 import TextWithFeatureGrid from './TextWithFeatureGrid/index.svelte';
@@ -21,6 +23,7 @@ export const components = {
 	contact_info_sidebar: ContacSection,
 	customer_reviews: CustomerReviews,
 	hero_with_navigation_overlay: Hero,
+	image_gallery_two_column: SimpleMediaGallery,
 	impact_statistics: ImpactNumbers,
 	logo_grid: LogoGrid,
 	media_grid: MediaGrid,
@@ -30,6 +33,7 @@ export const components = {
 	projects_grid_with_filters: ProjectsGridWithFilters,
 	service_highlights: ImageText,
 	services_slider: ServicesSlider,
+	side_by_side_media_slider: BeforeAndAfterSlider,
 	team_members_carousel: TeamMembersCarousel,
 	text_only: TextOnly,
 	text_with_feature_grid: TextWithFeatureGrid,

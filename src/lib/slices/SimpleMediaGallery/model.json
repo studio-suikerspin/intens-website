@@ -1,0 +1,44 @@
+{
+  "type": "SharedSlice",
+  "id": "image_gallery_two_column",
+  "name": "SimpleMediaGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays two images in a two-column gallery layout.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "media": {
+          "type": "Group",
+          "config": {
+            "label": "Media",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image (used as poster if video)",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "label": "Video",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

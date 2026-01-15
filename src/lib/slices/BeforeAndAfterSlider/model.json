@@ -1,0 +1,34 @@
+{
+  "type": "SharedSlice",
+  "id": "side_by_side_media_slider",
+  "name": "BeforeAndAfterSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays two images side by side with navigation or reveal slider.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "before": {
+          "type": "Image",
+          "config": {
+            "label": "Before",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "after": {
+          "type": "Image",
+          "config": {
+            "label": "After",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
