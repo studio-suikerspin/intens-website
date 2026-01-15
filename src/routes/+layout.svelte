@@ -117,8 +117,8 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 
-	<link rel="stylesheet" href="fonts/satoshi/satoshi.css" />
-	<link rel="stylesheet" href="fonts/icons/iconly.css" />
+	<link rel="stylesheet" href="/fonts/satoshi/satoshi.css" />
+	<link rel="stylesheet" href="/fonts/icons/iconly.css" />
 </svelte:head>
 <main>
 	<Header />

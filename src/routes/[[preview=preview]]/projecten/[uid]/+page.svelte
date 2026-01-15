@@ -5,5 +5,4 @@
 	import { components } from '$lib/slices';
 
 	const { data }: PageProps = $props();
-	console.log(data);
 </script>

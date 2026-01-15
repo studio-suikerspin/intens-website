@@ -22,7 +22,6 @@
 				isDesktop: '(min-width:1024px)'
 			},
 			(context) => {
-				console.log(context.conditions);
 				const { isMobile, isMobileLandscape, isTablet, isDesktop } = context.conditions;
 
 				if (!isDesktop) return;
