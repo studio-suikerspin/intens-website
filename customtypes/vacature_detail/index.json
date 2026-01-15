@@ -1,7 +1,7 @@
 {
-	"id": "page",
-	"label": "Page",
 	"format": "page",
+	"id": "vacature_detail",
+	"label": "Vacature detail",
 	"repeatable": true,
 	"status": true,
 	"json": {
@@ -9,7 +9,28 @@
 			"uid": {
 				"type": "UID",
 				"config": {
-					"label": "UID",
+					"label": "UID"
+				}
+			},
+			"vacature_image": {
+				"type": "Image",
+				"config": {
+					"label": "Vacature image",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
+			"vacature_title": {
+				"type": "Text",
+				"config": {
+					"label": "Vacature Title",
+					"placeholder": ""
+				}
+			},
+			"vacature_label": {
+				"type": "Text",
+				"config": {
+					"label": "Vacature label",
 					"placeholder": ""
 				}
 			},
@@ -18,61 +39,61 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"hero_with_navigation_overlay": {
+							"type": "SharedSlice"
+						},
 						"side_by_side_media_slider": {
-							"type": "SharedSlice"
-						},
-						"service_overview_grid": {
-							"type": "SharedSlice"
-						},
-						"image_gallery_two_column": {
-							"type": "SharedSlice"
-						},
-						"contact_info_sidebar": {
-							"type": "SharedSlice"
-						},
-						"services_slider": {
-							"type": "SharedSlice"
-						},
-						"projects_grid_with_filters": {
 							"type": "SharedSlice"
 						},
 						"text_with_feature_grid": {
 							"type": "SharedSlice"
 						},
-						"text_only": {
+						"projects_grid_with_filters": {
+							"type": "SharedSlice"
+						},
+						"service_overview_grid": {
 							"type": "SharedSlice"
 						},
 						"media_grid": {
 							"type": "SharedSlice"
 						},
-						"multi_block_text_image": {
-							"type": "SharedSlice"
-						},
-						"hero_with_navigation_overlay": {
-							"type": "SharedSlice"
-						},
 						"project_showcase": {
-							"type": "SharedSlice"
-						},
-						"service_highlights": {
 							"type": "SharedSlice"
 						},
 						"team_members_carousel": {
 							"type": "SharedSlice"
 						},
+						"image_gallery_two_column": {
+							"type": "SharedSlice"
+						},
 						"video_banner_section": {
+							"type": "SharedSlice"
+						},
+						"service_highlights": {
+							"type": "SharedSlice"
+						},
+						"services_slider": {
+							"type": "SharedSlice"
+						},
+						"navigational_media_grid": {
+							"type": "SharedSlice"
+						},
+						"text_only": {
+							"type": "SharedSlice"
+						},
+						"contact_info_sidebar": {
 							"type": "SharedSlice"
 						},
 						"impact_statistics": {
 							"type": "SharedSlice"
 						},
-						"logo_grid": {
+						"multi_block_text_image": {
 							"type": "SharedSlice"
 						},
 						"customer_reviews": {
 							"type": "SharedSlice"
 						},
-						"navigational_media_grid": {
+						"logo_grid": {
 							"type": "SharedSlice"
 						}
 					}
@@ -81,29 +102,29 @@
 		},
 		"SEO & Metadata": {
 			"meta_title": {
-				"type": "Text",
 				"config": {
 					"label": "Meta Title",
 					"placeholder": "A title of the page used for social media and search engines"
-				}
+				},
+				"type": "Text"
 			},
 			"meta_description": {
-				"type": "Text",
 				"config": {
 					"label": "Meta Description",
 					"placeholder": "A brief summary of the page"
-				}
+				},
+				"type": "Text"
 			},
 			"meta_image": {
-				"type": "Image",
 				"config": {
-					"label": "Meta Image",
 					"constraint": {
-						"width": 2400,
-						"height": 1260
+						"height": 1260,
+						"width": 2400
 					},
+					"label": "Meta Image",
 					"thumbnails": []
-				}
+				},
+				"type": "Image"
 			}
 		}
 	}

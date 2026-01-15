@@ -254,6 +254,9 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| SideBySideMediaSliderSlice
+	| ServiceOverviewGridSlice
+	| ImageGalleryTwoColumnSlice
 	| ContactInfoSidebarSlice
 	| ServicesSliderSlice
 	| ProjectsGridWithFiltersSlice
@@ -528,6 +531,122 @@ export type SocialMediaDocument<Lang extends string = string> = prismic.PrismicD
 	Lang
 >;
 
+type VacatureDetailDocumentDataSlicesSlice =
+	| HeroWithNavigationOverlaySlice
+	| SideBySideMediaSliderSlice
+	| TextWithFeatureGridSlice
+	| ProjectsGridWithFiltersSlice
+	| ServiceOverviewGridSlice
+	| MediaGridSlice
+	| ProjectShowcaseSlice
+	| TeamMembersCarouselSlice
+	| ImageGalleryTwoColumnSlice
+	| VideoBannerSectionSlice
+	| ServiceHighlightsSlice
+	| ServicesSliderSlice
+	| NavigationalMediaGridSlice
+	| TextOnlySlice
+	| ContactInfoSidebarSlice
+	| ImpactStatisticsSlice
+	| MultiBlockTextImageSlice
+	| CustomerReviewsSlice
+	| LogoGridSlice;
+
+/**
+ * Content for Vacature detail documents
+ */
+interface VacatureDetailDocumentData {
+	/**
+	 * Vacature image field in *Vacature detail*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: vacature_detail.vacature_image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	vacature_image: prismic.ImageField<never>;
+
+	/**
+	 * Vacature Title field in *Vacature detail*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: vacature_detail.vacature_title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	vacature_title: prismic.KeyTextField;
+
+	/**
+	 * Vacature label field in *Vacature detail*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: vacature_detail.vacature_label
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	vacature_label: prismic.KeyTextField;
+
+	/**
+	 * Slice Zone field in *Vacature detail*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: vacature_detail.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/slices
+	 */
+	slices: prismic.SliceZone<VacatureDetailDocumentDataSlicesSlice>; /**
+	 * Meta Title field in *Vacature detail*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: vacature_detail.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Vacature detail*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: vacature_detail.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Vacature detail*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: vacature_detail.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Vacature detail document from Prismic
+ *
+ * - **API ID**: `vacature_detail`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type VacatureDetailDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<VacatureDetailDocumentData>,
+	'vacature_detail',
+	Lang
+>;
+
 export type AllDocumentTypes =
 	| FooterNavigationDocument
 	| GeneralSettingsDocument
@@ -536,7 +655,8 @@ export type AllDocumentTypes =
 	| PageDocument
 	| ProjectDocument
 	| ProjectTagDocument
-	| SocialMediaDocument;
+	| SocialMediaDocument
+	| VacatureDetailDocument;
 
 /**
  * Item in *ContacSection → Default with Image → Primary → Contact Categories*
@@ -1921,6 +2041,68 @@ export type ServiceHighlightsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *VacaturesGrid → Default → Primary → Vacatures*
+ */
+export interface ServiceOverviewGridSliceDefaultPrimaryVacaturesItem {
+	/**
+	 * Vacature field in *VacaturesGrid → Default → Primary → Vacatures*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: service_overview_grid.default.primary.vacatures[].vacature
+	 * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+	 */
+	vacature: ContentRelationshipFieldWithData<
+		[{ id: 'vacature_detail'; fields: ['vacature_image', 'vacature_title', 'vacature_label'] }]
+	>;
+}
+
+/**
+ * Primary content in *VacaturesGrid → Default → Primary*
+ */
+export interface ServiceOverviewGridSliceDefaultPrimary {
+	/**
+	 * Vacatures field in *VacaturesGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: service_overview_grid.default.primary.vacatures[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	vacatures: prismic.GroupField<Simplify<ServiceOverviewGridSliceDefaultPrimaryVacaturesItem>>;
+}
+
+/**
+ * Default variation for VacaturesGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard 2x2 or responsive grid of service/feature cards with image, label, title, and link.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceOverviewGridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ServiceOverviewGridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *VacaturesGrid*
+ */
+type ServiceOverviewGridSliceVariation = ServiceOverviewGridSliceDefault;
+
+/**
+ * VacaturesGrid Shared Slice
+ *
+ * - **API ID**: `service_overview_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceOverviewGridSlice = prismic.SharedSlice<
+	'service_overview_grid',
+	ServiceOverviewGridSliceVariation
+>;
+
+/**
  * Item in *ServicesSlider → Default → Primary → Projects*
  */
 export interface ServicesSliderSliceDefaultPrimaryProjectsItem {
@@ -2512,6 +2694,9 @@ declare module '@prismicio/client' {
 			ProjectTagDocumentData,
 			SocialMediaDocument,
 			SocialMediaDocumentData,
+			VacatureDetailDocument,
+			VacatureDetailDocumentData,
+			VacatureDetailDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			ContactInfoSidebarSlice,
 			ContactInfoSidebarSliceDefaultWithImagePrimaryContactCategoriesItem,
@@ -2577,6 +2762,11 @@ declare module '@prismicio/client' {
 			ServiceHighlightsSliceImageTextAlternatingPrimary,
 			ServiceHighlightsSliceVariation,
 			ServiceHighlightsSliceImageTextAlternating,
+			ServiceOverviewGridSlice,
+			ServiceOverviewGridSliceDefaultPrimaryVacaturesItem,
+			ServiceOverviewGridSliceDefaultPrimary,
+			ServiceOverviewGridSliceVariation,
+			ServiceOverviewGridSliceDefault,
 			ServicesSliderSlice,
 			ServicesSliderSliceDefaultPrimaryProjectsItem,
 			ServicesSliderSliceDefaultPrimary,

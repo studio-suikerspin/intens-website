@@ -1,0 +1,45 @@
+{
+  "type": "SharedSlice",
+  "id": "service_overview_grid",
+  "name": "VacaturesGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard 2x2 or responsive grid of service/feature cards with image, label, title, and link.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "vacatures": {
+          "type": "Group",
+          "config": {
+            "label": "Vacatures",
+            "repeat": true,
+            "fields": {
+              "vacature": {
+                "type": "Link",
+                "config": {
+                  "label": "Vacature",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    {
+                      "id": "vacature_detail",
+                      "fields": [
+                        "vacature_image",
+                        "vacature_title",
+                        "vacature_label"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
