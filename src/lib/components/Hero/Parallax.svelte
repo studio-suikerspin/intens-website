@@ -9,7 +9,7 @@
 
 	const { slice }: Props = $props();
 
-	let columnCount = slice.primary.column_1?.length ? 1 : 0;
+	let columnCount = $state(slice.primary.column_1?.length ? 1 : 0);
 	columnCount += slice.primary.column_2?.length > 0 ? 1 : 0;
 	columnCount += slice.primary.column_3?.length > 0 ? 1 : 0;
 
