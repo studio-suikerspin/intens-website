@@ -5,6 +5,8 @@ import { createClient } from '$lib/prismicio';
 export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies });
 
+	if (!params.uid) return { status: 404 };
+
 	const project = await client.getByUID('project', params.uid);
 
 	return {
@@ -17,7 +19,9 @@ export async function entries() {
 
 	const projects = await client.getAllByType('project');
 
-	return projects.map((project) => {
-		return { uid: project.uid };
-	});
+	return projects
+		.filter((project) => project.uid)
+		.map((project) => {
+			return { uid: project.uid };
+		});
 }

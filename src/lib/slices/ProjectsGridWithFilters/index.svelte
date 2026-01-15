@@ -15,21 +15,21 @@
 
 	let activeFilter = $state('all');
 	let projects = $state(
-		slice.primary.projects.map(function ({ project }) {
-			if (!isFilled.contentRelationship(project)) return null;
+		slice.primary.projects
+			.filter(({ project }) => isFilled.contentRelationship(project))
+			.map(function ({ project }) {
+				const tags = project.data.tags.flatMap((tag) => tag.project_tag.data.tag);
 
-			const tags = project.data.tags.flatMap((tag) => tag.project_tag.data.tag);
-
-			return {
-				id: project.uid,
-				title: project.data.title,
-				summary: project.data.summary,
-				type: project.data.project_type,
-				image: project.data.featured_image,
-				url: resolve(`/projecten/${project.uid}`),
-				tags: tags
-			};
-		})
+				return {
+					id: project.uid,
+					title: project.data.title,
+					summary: project.data.summary,
+					type: project.data.project_type,
+					image: project.data.featured_image,
+					url: `/projecten/${project.uid}`,
+					tags: tags
+				};
+			})
 	);
 
 	const handleFilterChange = (filter: string) => {
@@ -51,7 +51,7 @@
 			summary: project.data.summary,
 			type: project.data.project_type,
 			image: project.data.featured_image,
-			url: resolve(`/projecten/${project.uid}`),
+			url: `/projecten/${project.uid}`,
 			tags: project.data.tags.flatMap((tag) => tag.project_tag.data.tag)
 		}));
 	};
@@ -103,11 +103,7 @@
 									<div class="project-card__tags">
 										<span class="project-card__tag">{project.type}</span>
 									</div>
-									<a
-										href={resolve(`/projecten/${project.uid}`)}
-										title={project.title}
-										class="btn btn--icon-only"
-									>
+									<a href={resolve(project.url)} title={project.title} class="btn btn--icon-only">
 										<i class="icon-arrow-right btn__icon"></i>
 									</a>
 								</div>

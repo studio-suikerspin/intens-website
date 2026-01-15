@@ -5,43 +5,50 @@
 
 	let { project } = $props();
 	let projectData = project.project;
+
+	// Skip rendering if project relationship is not filled
+	if (!isFilled.contentRelationship(project.project)) {
+		projectData = null;
+	}
 </script>
 
-<div class="carousel-banner">
-	<div class="carousel-banner__bg">
-		{#if isFilled.contentRelationship(projectData.data.featured_image)}
-			<PrismicImage field={projectData.data.featured_image} />
-		{/if}
-	</div>
-
-	<div class="carousel-banner__inner">
-		<div class="carousel-banner__text-wrap">
-			{#if projectData.data.title}
-				<div class="carousel-banner__title">
-					{projectData.data.title}
-				</div>
-			{/if}
-			{#if projectData.data.summary}
-				<div class="carousel-banner__summary">
-					{projectData.data.summary}
-				</div>
+{#if projectData}
+	<div class="carousel-banner">
+		<div class="carousel-banner__bg">
+			{#if isFilled.contentRelationship(projectData.data.featured_image)}
+				<PrismicImage field={projectData.data.featured_image} />
 			{/if}
 		</div>
 
-		<div class="carousel-banner__link">
-			<a href={resolve(`/projecten/${projectData.uid}`)} title={projectData.data.title}>
-				<span>Bekijk project</span>
-				<i class="icon-arrow-right"></i>
-			</a>
-		</div>
+		<div class="carousel-banner__inner">
+			<div class="carousel-banner__text-wrap">
+				{#if projectData.data.title}
+					<div class="carousel-banner__title">
+						{projectData.data.title}
+					</div>
+				{/if}
+				{#if projectData.data.summary}
+					<div class="carousel-banner__summary">
+						{projectData.data.summary}
+					</div>
+				{/if}
+			</div>
 
-		<div class="carousel-banner__tags">
-			{#each projectData.data.tags as item, index (index)}
-				<div class="carousel-banner__tag">{item.tag}</div>
-			{/each}
+			<div class="carousel-banner__link">
+				<a href={resolve(`/projecten/${projectData.uid}`)} title={projectData.data.title}>
+					<span>Bekijk project</span>
+					<i class="icon-arrow-right"></i>
+				</a>
+			</div>
+
+			<div class="carousel-banner__tags">
+				{#each projectData.data.tags as item, index (index)}
+					<div class="carousel-banner__tag">{item.tag}</div>
+				{/each}
+			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
 	.carousel-banner {
