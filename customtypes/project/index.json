@@ -78,63 +78,28 @@
 					"thumbnails": []
 				}
 			},
-			"content_1": {
-				"type": "StructuredText",
+			"slices": {
+				"type": "Slices",
+				"fieldset": "Slice Zone",
 				"config": {
-					"label": "Content 1",
-					"placeholder": "First content section goes here",
-					"allowTargetBlank": true,
-					"multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item"
-				}
-			},
-			"content_2": {
-				"type": "StructuredText",
-				"config": {
-					"label": "Content 2",
-					"placeholder": "Second content section goes here",
-					"allowTargetBlank": true,
-					"multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item"
-				}
-			},
-			"gallery": {
-				"type": "Group",
-				"config": {
-					"label": "Gallery",
-					"repeat": true,
-					"fields": {
-						"item_content": {
-							"type": "Link",
-							"config": {
-								"label": "Item content",
-								"placeholder": "",
-								"select": "media",
-								"allowText": true
-							}
-						}
-					}
-				}
-			},
-			"before_after": {
-				"type": "Group",
-				"config": {
-					"label": "Before & after",
-					"repeat": false,
-					"fields": {
-						"before": {
-							"type": "Image",
-							"config": {
-								"label": "Before",
-								"constraint": {},
-								"thumbnails": []
-							}
+					"choices": {
+						"side_by_side_media_slider": {
+							"type": "SharedSlice"
 						},
-						"after": {
-							"type": "Image",
-							"config": {
-								"label": "After",
-								"constraint": {},
-								"thumbnails": []
-							}
+						"image_gallery_two_column": {
+							"type": "SharedSlice"
+						},
+						"text_only": {
+							"type": "SharedSlice"
+						},
+						"logo_grid": {
+							"type": "SharedSlice"
+						},
+						"navigational_media_grid": {
+							"type": "SharedSlice"
+						},
+						"hero_with_navigation_overlay": {
+							"type": "SharedSlice"
 						}
 					}
 				}

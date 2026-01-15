@@ -348,45 +348,13 @@ export interface ProjectDocumentDataTagsItem {
 	project_tag: ContentRelationshipFieldWithData<[{ id: 'project_tag'; fields: ['tag'] }]>;
 }
 
-/**
- * Item in *Project → Gallery*
- */
-export interface ProjectDocumentDataGalleryItem {
-	/**
-	 * Item content field in *Project → Gallery*
-	 *
-	 * - **Field Type**: Link to Media
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.gallery[].item_content
-	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-	 */
-	item_content: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
- * Item in *Project → Before & after*
- */
-export interface ProjectDocumentDataBeforeAfterItem {
-	/**
-	 * Before field in *Project → Before & after*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.before_after[].before
-	 * - **Documentation**: https://prismic.io/docs/fields/image
-	 */
-	before: prismic.ImageField<never>;
-
-	/**
-	 * After field in *Project → Before & after*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.before_after[].after
-	 * - **Documentation**: https://prismic.io/docs/fields/image
-	 */
-	after: prismic.ImageField<never>;
-}
+type ProjectDocumentDataSlicesSlice =
+	| SideBySideMediaSliderSlice
+	| ImageGalleryTwoColumnSlice
+	| TextOnlySlice
+	| LogoGridSlice
+	| NavigationalMediaGridSlice
+	| HeroWithNavigationOverlaySlice;
 
 /**
  * Content for Project documents
@@ -470,48 +438,15 @@ interface ProjectDocumentData {
 	featured_image: prismic.ImageField<never>;
 
 	/**
-	 * Content 1 field in *Project*
+	 * Slice Zone field in *Project*
 	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: First content section goes here
-	 * - **API ID Path**: project.content_1
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	content_1: prismic.RichTextField;
-
-	/**
-	 * Content 2 field in *Project*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Second content section goes here
-	 * - **API ID Path**: project.content_2
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
-	 */
-	content_2: prismic.RichTextField;
-
-	/**
-	 * Gallery field in *Project*
-	 *
-	 * - **Field Type**: Group
+	 * - **Field Type**: Slice Zone
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.gallery[]
+	 * - **API ID Path**: project.slices[]
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 * - **Documentation**: https://prismic.io/docs/slices
 	 */
-	gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
-
-	/**
-	 * Before & after field in *Project*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.before_after[]
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-	 */
-	before_after: prismic.GroupField<Simplify<ProjectDocumentDataBeforeAfterItem>>;
+	slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice>;
 }
 
 /**
@@ -1054,6 +989,76 @@ type HeroWithNavigationOverlaySliceVariation =
 export type HeroWithNavigationOverlaySlice = prismic.SharedSlice<
 	'hero_with_navigation_overlay',
 	HeroWithNavigationOverlaySliceVariation
+>;
+
+/**
+ * Item in *SimpleMediaGallery → Default → Primary → Media*
+ */
+export interface ImageGalleryTwoColumnSliceDefaultPrimaryMediaItem {
+	/**
+	 * Image (used as poster if video) field in *SimpleMediaGallery → Default → Primary → Media*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image_gallery_two_column.default.primary.media[].image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *SimpleMediaGallery → Default → Primary → Media*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image_gallery_two_column.default.primary.media[].video
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	video: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *SimpleMediaGallery → Default → Primary*
+ */
+export interface ImageGalleryTwoColumnSliceDefaultPrimary {
+	/**
+	 * Media field in *SimpleMediaGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image_gallery_two_column.default.primary.media[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	media: prismic.GroupField<Simplify<ImageGalleryTwoColumnSliceDefaultPrimaryMediaItem>>;
+}
+
+/**
+ * Default variation for SimpleMediaGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Displays two images in a two-column gallery layout.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageGalleryTwoColumnSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ImageGalleryTwoColumnSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *SimpleMediaGallery*
+ */
+type ImageGalleryTwoColumnSliceVariation = ImageGalleryTwoColumnSliceDefault;
+
+/**
+ * SimpleMediaGallery Shared Slice
+ *
+ * - **API ID**: `image_gallery_two_column`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageGalleryTwoColumnSlice = prismic.SharedSlice<
+	'image_gallery_two_column',
+	ImageGalleryTwoColumnSliceVariation
 >;
 
 /**
@@ -2013,6 +2018,61 @@ export type ServicesSliderSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *BeforeAndAfterSlider → Default → Primary*
+ */
+export interface SideBySideMediaSliderSliceDefaultPrimary {
+	/**
+	 * Before field in *BeforeAndAfterSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: side_by_side_media_slider.default.primary.before
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	before: prismic.ImageField<never>;
+
+	/**
+	 * After field in *BeforeAndAfterSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: side_by_side_media_slider.default.primary.after
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	after: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for BeforeAndAfterSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Displays two images side by side with navigation or reveal slider.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SideBySideMediaSliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<SideBySideMediaSliderSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *BeforeAndAfterSlider*
+ */
+type SideBySideMediaSliderSliceVariation = SideBySideMediaSliderSliceDefault;
+
+/**
+ * BeforeAndAfterSlider Shared Slice
+ *
+ * - **API ID**: `side_by_side_media_slider`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SideBySideMediaSliderSlice = prismic.SharedSlice<
+	'side_by_side_media_slider',
+	SideBySideMediaSliderSliceVariation
+>;
+
+/**
  * Item in *TeamMembersCarousel → Default → Primary → Team Members*
  */
 export interface TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem {
@@ -2447,8 +2507,7 @@ declare module '@prismicio/client' {
 			ProjectDocument,
 			ProjectDocumentData,
 			ProjectDocumentDataTagsItem,
-			ProjectDocumentDataGalleryItem,
-			ProjectDocumentDataBeforeAfterItem,
+			ProjectDocumentDataSlicesSlice,
 			ProjectTagDocument,
 			ProjectTagDocumentData,
 			SocialMediaDocument,
@@ -2473,6 +2532,11 @@ declare module '@prismicio/client' {
 			HeroWithNavigationOverlaySliceVariation,
 			HeroWithNavigationOverlaySliceParallax,
 			HeroWithNavigationOverlaySliceFullscreen,
+			ImageGalleryTwoColumnSlice,
+			ImageGalleryTwoColumnSliceDefaultPrimaryMediaItem,
+			ImageGalleryTwoColumnSliceDefaultPrimary,
+			ImageGalleryTwoColumnSliceVariation,
+			ImageGalleryTwoColumnSliceDefault,
 			ImpactStatisticsSlice,
 			ImpactStatisticsSliceDefaultPrimaryStatsItem,
 			ImpactStatisticsSliceDefaultPrimary,
@@ -2518,6 +2582,10 @@ declare module '@prismicio/client' {
 			ServicesSliderSliceDefaultPrimary,
 			ServicesSliderSliceVariation,
 			ServicesSliderSliceDefault,
+			SideBySideMediaSliderSlice,
+			SideBySideMediaSliderSliceDefaultPrimary,
+			SideBySideMediaSliderSliceVariation,
+			SideBySideMediaSliderSliceDefault,
 			TeamMembersCarouselSlice,
 			TeamMembersCarouselSliceDefaultPrimaryTeamMembersItem,
 			TeamMembersCarouselSliceDefaultPrimary,

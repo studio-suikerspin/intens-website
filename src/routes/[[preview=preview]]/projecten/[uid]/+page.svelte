@@ -4,5 +4,9 @@
 
 	import { components } from '$lib/slices';
 
-	const { data }: PageProps = $props();
+	import Parallax from '$lib/components/Hero/Parallax.svelte';
+
+	const { data } = $props();
 </script>
+
+<SliceZone slices={data.project.data.slices} {components} />
