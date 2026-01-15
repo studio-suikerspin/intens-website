@@ -12,6 +12,29 @@
 					"label": "UID"
 				}
 			},
+			"tags": {
+				"type": "Group",
+				"config": {
+					"label": "Tags",
+					"repeat": true,
+					"fields": {
+						"project_tag": {
+							"type": "Link",
+							"config": {
+								"label": "Project tag",
+								"select": "document",
+								"repeat": false,
+								"customtypes": [
+									{
+										"id": "project_tag",
+										"fields": ["tag"]
+									}
+								]
+							}
+						}
+					}
+				}
+			},
 			"title": {
 				"type": "Text",
 				"config": {
@@ -47,10 +70,18 @@
 					"placeholder": "Summary in one or two sentences. Make sure this isn't too long!"
 				}
 			},
+			"featured_image": {
+				"type": "Image",
+				"config": {
+					"label": "Featured image",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
 			"content_1": {
 				"type": "StructuredText",
 				"config": {
-					"label": "content_1",
+					"label": "Content 1",
 					"placeholder": "First content section goes here",
 					"allowTargetBlank": true,
 					"multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item"
@@ -59,18 +90,10 @@
 			"content_2": {
 				"type": "StructuredText",
 				"config": {
-					"label": "content_2",
+					"label": "Content 2",
 					"placeholder": "Second content section goes here",
 					"allowTargetBlank": true,
 					"multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item"
-				}
-			},
-			"featured_image": {
-				"type": "Image",
-				"config": {
-					"label": "featured_image",
-					"constraint": {},
-					"thumbnails": []
 				}
 			},
 			"gallery": {
@@ -91,24 +114,26 @@
 					}
 				}
 			},
-			"tags": {
+			"before_after": {
 				"type": "Group",
 				"config": {
-					"label": "Tags",
-					"repeat": true,
+					"label": "Before & after",
+					"repeat": false,
 					"fields": {
-						"project_tag": {
-							"type": "Link",
+						"before": {
+							"type": "Image",
 							"config": {
-								"label": "Project tag",
-								"select": "document",
-								"repeat": false,
-								"customtypes": [
-									{
-										"id": "project_tag",
-										"fields": ["tag"]
-									}
-								]
+								"label": "Before",
+								"constraint": {},
+								"thumbnails": []
+							}
+						},
+						"after": {
+							"type": "Image",
+							"config": {
+								"label": "After",
+								"constraint": {},
+								"thumbnails": []
 							}
 						}
 					}

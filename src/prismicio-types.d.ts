@@ -334,21 +334,6 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 /**
- * Item in *Project → Gallery*
- */
-export interface ProjectDocumentDataGalleryItem {
-	/**
-	 * Item content field in *Project → Gallery*
-	 *
-	 * - **Field Type**: Link to Media
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.gallery[].item_content
-	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-	 */
-	item_content: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
  * Item in *Project → Tags*
  */
 export interface ProjectDocumentDataTagsItem {
@@ -364,9 +349,60 @@ export interface ProjectDocumentDataTagsItem {
 }
 
 /**
+ * Item in *Project → Gallery*
+ */
+export interface ProjectDocumentDataGalleryItem {
+	/**
+	 * Item content field in *Project → Gallery*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.gallery[].item_content
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	item_content: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Item in *Project → Before & after*
+ */
+export interface ProjectDocumentDataBeforeAfterItem {
+	/**
+	 * Before field in *Project → Before & after*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.before_after[].before
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	before: prismic.ImageField<never>;
+
+	/**
+	 * After field in *Project → Before & after*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.before_after[].after
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	after: prismic.ImageField<never>;
+}
+
+/**
  * Content for Project documents
  */
 interface ProjectDocumentData {
+	/**
+	 * Tags field in *Project*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.tags[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	tags: prismic.GroupField<Simplify<ProjectDocumentDataTagsItem>>;
+
 	/**
 	 * Title field in *Project*
 	 *
@@ -423,7 +459,18 @@ interface ProjectDocumentData {
 	summary: prismic.KeyTextField;
 
 	/**
-	 * content_1 field in *Project*
+	 * Featured image field in *Project*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.featured_image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	featured_image: prismic.ImageField<never>;
+
+	/**
+	 * Content 1 field in *Project*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: First content section goes here
@@ -434,7 +481,7 @@ interface ProjectDocumentData {
 	content_1: prismic.RichTextField;
 
 	/**
-	 * content_2 field in *Project*
+	 * Content 2 field in *Project*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: Second content section goes here
@@ -443,17 +490,6 @@ interface ProjectDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	content_2: prismic.RichTextField;
-
-	/**
-	 * featured_image field in *Project*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.featured_image
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/fields/image
-	 */
-	featured_image: prismic.ImageField<never>;
 
 	/**
 	 * Gallery field in *Project*
@@ -467,15 +503,15 @@ interface ProjectDocumentData {
 	gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
 
 	/**
-	 * Tags field in *Project*
+	 * Before & after field in *Project*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project.tags[]
+	 * - **API ID Path**: project.before_after[]
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
 	 */
-	tags: prismic.GroupField<Simplify<ProjectDocumentDataTagsItem>>;
+	before_after: prismic.GroupField<Simplify<ProjectDocumentDataBeforeAfterItem>>;
 }
 
 /**
@@ -2410,8 +2446,9 @@ declare module '@prismicio/client' {
 			PageDocumentDataSlicesSlice,
 			ProjectDocument,
 			ProjectDocumentData,
-			ProjectDocumentDataGalleryItem,
 			ProjectDocumentDataTagsItem,
+			ProjectDocumentDataGalleryItem,
+			ProjectDocumentDataBeforeAfterItem,
 			ProjectTagDocument,
 			ProjectTagDocumentData,
 			SocialMediaDocument,

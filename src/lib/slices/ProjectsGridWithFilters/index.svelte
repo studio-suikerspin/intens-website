@@ -4,12 +4,57 @@
 	import { PrismicImage, type SliceComponentProps } from '@prismicio/svelte';
 	import LinkButton from '$lib/components/UI/LinkButton.svelte';
 	import { resolve } from '$app/paths';
+	import { crossfade, fade, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
 	type Props = SliceComponentProps<Content.ProjectsGridWithFiltersSlice>;
 
 	const { slice }: Props = $props();
 
 	const { projectTags } = page.data;
+
+	let activeFilter = $state('all');
+	let projects = $state(
+		slice.primary.projects.map(function ({ project }) {
+			if (!isFilled.contentRelationship(project)) return null;
+
+			const tags = project.data.tags.flatMap((tag) => tag.project_tag.data.tag);
+
+			return {
+				id: project.uid,
+				title: project.data.title,
+				summary: project.data.summary,
+				type: project.data.project_type,
+				image: project.data.featured_image,
+				url: resolve(`/projecten/${project.uid}`),
+				tags: tags
+			};
+		})
+	);
+
+	const handleFilterChange = (filter: string) => {
+		activeFilter = filter;
+
+		const filteredProjects = slice.primary.projects.filter(({ project }) => {
+			if (!isFilled.contentRelationship(project)) return false;
+
+			const tags = project.data.tags.flatMap((tag) => tag.project_tag.data.tag);
+
+			if (filter === 'all') return true;
+
+			return tags.includes(filter);
+		});
+
+		projects = filteredProjects.map(({ project }) => ({
+			id: project.uid,
+			title: project.data.title,
+			summary: project.data.summary,
+			type: project.data.project_type,
+			image: project.data.featured_image,
+			url: resolve(`/projecten/${project.uid}`),
+			tags: project.data.tags.flatMap((tag) => tag.project_tag.data.tag)
+		}));
+	};
 </script>
 
 <section
@@ -19,10 +64,21 @@
 >
 	<div class="project-grid">
 		<div class="project-grid__filters">
+			<div class="project-grid__filter">
+				<button
+					class="btn btn--outline {activeFilter === 'all' ? 'btn--active' : ''}"
+					onclick={() => handleFilterChange('all')}
+				>
+					Alle projecten
+				</button>
+			</div>
 			{#each projectTags as projectTag, index (index)}
 				{#if isFilled.contentRelationship(projectTag) && projectTag.data}
 					<div class="project-grid__filter">
-						<button class="btn btn--outline">
+						<button
+							class="btn btn--outline {activeFilter === projectTag.data.tag ? 'btn--active' : ''}"
+							onclick={() => handleFilterChange(projectTag.data.tag)}
+						>
 							{projectTag.data.tag}
 						</button>
 					</div>
@@ -32,29 +88,42 @@
 
 		<div class="container">
 			<div class="project-grid__projects">
-				{#each slice.primary.projects as { project }, index (index)}
-					{#if isFilled.contentRelationship(project) && project.data}
-						<div class="project-card">
+				{#if projects.length > 0}
+					{#each projects as project, index (index)}
+						<div
+							class="project-card"
+							transition:scale={{ start: 0.95, duration: 160, easing: quintOut }}
+						>
 							<div class="project-card__bg">
-								<PrismicImage field={project.data.featured_image} />
+								<PrismicImage field={project.image} />
 							</div>
 
 							<div class="project-card__inner">
 								<div class="project-card__top">
-									<div class="project-card__tags"></div>
-									<a href={resolve(`/projecten/${project.slug}`)} title={project.data.title}>
-										<i class="icon-arrow-right"></i>
+									<div class="project-card__tags">
+										<span class="project-card__tag">{project.type}</span>
+									</div>
+									<a
+										href={resolve(`/projecten/${project.uid}`)}
+										title={project.title}
+										class="btn btn--icon-only"
+									>
+										<i class="icon-arrow-right btn__icon"></i>
 									</a>
 								</div>
 
 								<div class="project-card__content">
-									<h2 class="project-card__title">{project.data.title}</h2>
-									<p class="project-card__summary">{project.data.summary}</p>
+									<h2 class="project-card__title">{project.title}</h2>
+									<p class="project-card__summary">{project.summary}</p>
 								</div>
 							</div>
 						</div>
-					{/if}
-				{/each}
+					{/each}
+				{:else}
+					<div class="project-card project-card--no-projects">
+						<p>Er zijn geen projecten gevonden.</p>
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -147,6 +216,23 @@
 				padding: 1.25rem;
 
 				background: rgba(0, 0, 0, 0.3);
+			}
+
+			.project-card__top {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+			}
+
+			.project-card__tag {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.5rem;
+				background: var(--bg-dark);
+				color: var(--white);
+				font-size: 0.875rem;
+				font-weight: 500;
 			}
 
 			.project-card__content {

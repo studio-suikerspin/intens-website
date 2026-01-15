@@ -162,9 +162,27 @@ h5 {
 		border: 1px solid var(--bg-dark);
 		color: var(--bg-dark);
 
-		&.active {
+		&.btn--active {
 			background: var(--bg-dark);
 			color: var(--white);
 		}
+	}
+
+	&.btn--icon-only {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: unset;
+
+		background: var(--bg-sand-dark);
+		color: var(--black);
+
+		height: 2.5rem;
+		width: 2.5rem;
+	}
+
+	&.btn--icon-only .btn__icon {
+		font-size: 1.5rem;
 	}
 }
