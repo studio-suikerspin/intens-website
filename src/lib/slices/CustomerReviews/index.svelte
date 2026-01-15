@@ -12,6 +12,7 @@
 	class="reviews-section block-spacing"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
+	data-reveal-group
 >
 	<div class="reviews-section__inner">
 		<div class="container">

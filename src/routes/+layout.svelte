@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 
 	import { ScrollSmoother, ScrollTrigger, gsap } from '$lib/gsap';
+	import { initContentRevealScroll } from '$lib/contentreveal';
 
 	let { children } = $props();
 
@@ -99,6 +100,7 @@
 		});
 
 		initGlobalParallax();
+		initContentRevealScroll();
 	});
 </script>
 

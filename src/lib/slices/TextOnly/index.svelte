@@ -9,7 +9,7 @@
 	const { slice }: Props = $props();
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="block-spacing text-only-section">
+<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="block-spacing text-only-section" data-reveal-group>
 	<div class="container">
 		<div class="text-only">
 			<div class="text-only__title">

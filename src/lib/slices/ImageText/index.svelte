@@ -17,6 +17,7 @@
 	class="block-spacing image-text {slice.primary.dark ? 'bg-dark' : ''}"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
+	data-reveal-group
 >
 	<div class="container">
 		<div class="image-text__inner">
@@ -30,7 +31,7 @@
 
 			<div class="image-text__blocks">
 				{#each slice.primary.image_text_block as block, index (index)}
-					<div class="image-text__block">
+					<div class="image-text__block" data-reveal-group>
 						
 						
 						<!-- {#if block.cta_button.url} -->

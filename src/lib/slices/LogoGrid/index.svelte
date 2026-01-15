@@ -158,7 +158,7 @@
 }
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="block-spacing--end ">
+<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="block-spacing--end " data-reveal-group>
 	<div data-logo-wall-shuffle="false" data-logo-wall-cycle-init="" class="logo-wall">
 		<div class="container">
 			
