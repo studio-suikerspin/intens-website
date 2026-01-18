@@ -10,7 +10,7 @@
 </script>
 
 <section
-	class="text-with-feature-grid block-spacing"
+	class="text-with-feature-grid block-spacing--start"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

@@ -74,9 +74,11 @@
 									<p class="carousel-item__title">{member.role}</p>
 								</div>
 
+								{#if member.social_linkedin != null} 
 								<PrismicLink field={member.social_linkedin} class="carousel-item__social-link">
 									<i class="icon-linkedin"></i>
 								</PrismicLink>
+								{/if}
 							</div>
 						</div>
 					</div>

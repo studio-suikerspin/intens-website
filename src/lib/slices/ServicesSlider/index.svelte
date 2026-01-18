@@ -139,6 +139,7 @@
 		gap: 1rem;
 		color: var(--white);
 
+
 		i{
 			font-size: 1.5rem;
 		}
@@ -170,6 +171,7 @@
 		align-items: center;
 		justify-content: center;
 		padding: 1rem;
+		cursor: pointer;
 	}
 
 	.service-slider__subtitle {

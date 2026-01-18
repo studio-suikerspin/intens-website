@@ -58,7 +58,7 @@
 </script>
 
 <section
-	class="project-grid-section block-spacing"
+	class="project-grid-section"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
@@ -90,9 +90,10 @@
 			<div class="project-grid__projects">
 				{#if projects.length > 0}
 					{#each projects as project, index (index)}
-						<div
+						<a
 							class="project-card"
 							transition:scale={{ start: 0.95, duration: 160, easing: quintOut }}
+							href={resolve(project.url)} title={project.title}
 						>
 							<div class="project-card__bg">
 								<PrismicImage field={project.image} />
@@ -103,9 +104,9 @@
 									<div class="project-card__tags">
 										<span class="project-card__tag">{project.type}</span>
 									</div>
-									<a href={resolve(project.url)} title={project.title} class="btn btn--icon-only">
+									<div href={resolve(project.url)} title={project.title} class="btn btn--icon-only icon__button">
 										<i class="icon-arrow-right btn__icon"></i>
-									</a>
+									</div>
 								</div>
 
 								<div class="project-card__content">
@@ -113,7 +114,7 @@
 									<p class="project-card__summary">{project.summary}</p>
 								</div>
 							</div>
-						</div>
+						</a>
 					{/each}
 				{:else}
 					<div class="project-card project-card--no-projects">
@@ -126,6 +127,10 @@
 </section>
 
 <style>
+	.project-grid-section{
+		padding-top: 100px;
+		padding-bottom: 200px;
+	}
 	.project-grid {
 		display: flex;
 		flex-direction: column;
@@ -249,5 +254,21 @@
 				font-weight: 500;
 			}
 		}
+	}
+
+	.project-card__bg :global img { 
+		transition: transform 0.3s ease;
+	}
+
+	.project-card:hover .project-card__bg :global img {
+		transform: scale(1.05);
+	}
+
+	.icon__button i{
+		transition: rotate 0.3s ease;
+	}
+
+	.project-card:hover .icon__button i{
+		rotate: -25deg;
 	}
 </style>

@@ -43,7 +43,8 @@
 						> -->
 						<svelte:element this={block.cta_button.url ? 'a' : 'div'} class="image-text__block-image image-text__block-image--{block.image_right
 								? 'right'
-								: 'left'}">
+								: 'left'}"
+								href={block.cta_button.url}>
 
 						{#if block.cta_button.url}
 							{@html `<link rel="preload" as="image" href="${block.image.url}" />`}
@@ -194,5 +195,14 @@
 				font-size: 1.125rem;
 			}
 		}
+	}
+
+	.image-button{
+		transition: rotate 0.3s ease;
+	}
+	
+	.image-text__block-image:hover .image-button i{
+		transform: rotate(-25deg);
+
 	}
 </style>
