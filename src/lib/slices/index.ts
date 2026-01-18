@@ -5,6 +5,7 @@ import CustomerReviews from './CustomerReviews/index.svelte';
 import Hero from './Hero/index.svelte';
 import SimpleMediaGallery from './SimpleMediaGallery/index.svelte';
 import ImpactNumbers from './ImpactNumbers/index.svelte';
+import JobDescriptionOverview from './JobDescriptionOverview/index.svelte';
 import LogoGrid from './LogoGrid/index.svelte';
 import MediaGrid from './MediaGrid/index.svelte';
 import MultiBlockTextImage from './MultiBlockTextImage/index.svelte';
@@ -16,6 +17,7 @@ import VacaturesGrid from './VacaturesGrid/index.svelte';
 import ServicesSlider from './ServicesSlider/index.svelte';
 import BeforeAndAfterSlider from './BeforeAndAfterSlider/index.svelte';
 import TeamMembersCarousel from './TeamMembersCarousel/index.svelte';
+import TestimonialImageSide from './TestimonialImageSide/index.svelte';
 import TextOnly from './TextOnly/index.svelte';
 import TextWithFeatureGrid from './TextWithFeatureGrid/index.svelte';
 import VideoBannerSection from './VideoBannerSection/index.svelte';
@@ -26,6 +28,7 @@ export const components = {
 	hero_with_navigation_overlay: Hero,
 	image_gallery_two_column: SimpleMediaGallery,
 	impact_statistics: ImpactNumbers,
+	job_description_overview: JobDescriptionOverview,
 	logo_grid: LogoGrid,
 	media_grid: MediaGrid,
 	multi_block_text_image: MultiBlockTextImage,
@@ -37,6 +40,7 @@ export const components = {
 	services_slider: ServicesSlider,
 	side_by_side_media_slider: BeforeAndAfterSlider,
 	team_members_carousel: TeamMembersCarousel,
+	testimonial_image_side: TestimonialImageSide,
 	text_only: TextOnly,
 	text_with_feature_grid: TextWithFeatureGrid,
 	video_banner_section: VideoBannerSection

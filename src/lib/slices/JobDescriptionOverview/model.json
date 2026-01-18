@@ -1,0 +1,66 @@
+{
+  "type": "SharedSlice",
+  "id": "job_description_overview",
+  "name": "JobDescriptionOverview",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays job details in grouped sections alongside a side panel with a call-to-action and button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "intro_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Intro text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "text_block": {
+          "type": "Group",
+          "config": {
+            "label": "text block",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "text",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        },
+        "sidebar_heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading3",
+            "label": "Sidebar Heading"
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
