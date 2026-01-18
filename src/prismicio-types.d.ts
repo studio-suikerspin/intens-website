@@ -254,6 +254,7 @@ export type MainNavigationDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<MainNavigationDocumentData>, 'main_navigation', Lang>;
 
 type PageDocumentDataSlicesSlice =
+	| JobDescriptionOverviewSlice
 	| SideBySideMediaSliderSlice
 	| ServiceOverviewGridSlice
 	| ImageGalleryTwoColumnSlice
@@ -532,6 +533,8 @@ export type SocialMediaDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type VacatureDetailDocumentDataSlicesSlice =
+	| TestimonialImageSideSlice
+	| JobDescriptionOverviewSlice
 	| HeroWithNavigationOverlaySlice
 	| SideBySideMediaSliderSlice
 	| TextWithFeatureGridSlice
@@ -1330,6 +1333,106 @@ type ImpactStatisticsSliceVariation = ImpactStatisticsSliceDefault;
 export type ImpactStatisticsSlice = prismic.SharedSlice<
 	'impact_statistics',
 	ImpactStatisticsSliceVariation
+>;
+
+/**
+ * Item in *JobDescriptionOverview → Default → Primary → text block*
+ */
+export interface JobDescriptionOverviewSliceDefaultPrimaryTextBlockItem {
+	/**
+	 * Title field in *JobDescriptionOverview → Default → Primary → text block*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.text_block[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * text field in *JobDescriptionOverview → Default → Primary → text block*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.text_block[].text
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *JobDescriptionOverview → Default → Primary*
+ */
+export interface JobDescriptionOverviewSliceDefaultPrimary {
+	/**
+	 * Intro text field in *JobDescriptionOverview → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.intro_text
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	intro_text: prismic.RichTextField;
+
+	/**
+	 * text block field in *JobDescriptionOverview → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.text_block[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	text_block: prismic.GroupField<Simplify<JobDescriptionOverviewSliceDefaultPrimaryTextBlockItem>>;
+
+	/**
+	 * Sidebar Heading field in *JobDescriptionOverview → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.sidebar_heading
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	sidebar_heading: prismic.RichTextField;
+
+	/**
+	 * Button text field in *JobDescriptionOverview → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: job_description_overview.default.primary.button_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	button_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for JobDescriptionOverview Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Displays job details in grouped sections alongside a side panel with a call-to-action and button.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type JobDescriptionOverviewSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<JobDescriptionOverviewSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *JobDescriptionOverview*
+ */
+type JobDescriptionOverviewSliceVariation = JobDescriptionOverviewSliceDefault;
+
+/**
+ * JobDescriptionOverview Shared Slice
+ *
+ * - **API ID**: `job_description_overview`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type JobDescriptionOverviewSlice = prismic.SharedSlice<
+	'job_description_overview',
+	JobDescriptionOverviewSliceVariation
 >;
 
 /**
@@ -2396,6 +2499,81 @@ export type TeamMembersCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TestimonialImageSide → Default → Primary*
+ */
+export interface TestimonialImageSideSliceDefaultPrimary {
+	/**
+	 * Quote field in *TestimonialImageSide → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial_image_side.default.primary.quote
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	quote: prismic.RichTextField;
+
+	/**
+	 * Author Name field in *TestimonialImageSide → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial_image_side.default.primary.author_name
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	author_name: prismic.KeyTextField;
+
+	/**
+	 * Author Role field in *TestimonialImageSide → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial_image_side.default.primary.author_role
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	author_role: prismic.KeyTextField;
+
+	/**
+	 * Side Image field in *TestimonialImageSide → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial_image_side.default.primary.side_image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	side_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TestimonialImageSide Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Horizontal layout with testimonial text on one side and an image on the other, including quote, author, and role.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialImageSideSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TestimonialImageSideSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TestimonialImageSide*
+ */
+type TestimonialImageSideSliceVariation = TestimonialImageSideSliceDefault;
+
+/**
+ * TestimonialImageSide Shared Slice
+ *
+ * - **API ID**: `testimonial_image_side`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TestimonialImageSideSlice = prismic.SharedSlice<
+	'testimonial_image_side',
+	TestimonialImageSideSliceVariation
+>;
+
+/**
  * Primary content in *TextOnly → Default → Primary*
  */
 export interface TextOnlySliceDefaultPrimary {
@@ -2727,6 +2905,11 @@ declare module '@prismicio/client' {
 			ImpactStatisticsSliceDefaultPrimary,
 			ImpactStatisticsSliceVariation,
 			ImpactStatisticsSliceDefault,
+			JobDescriptionOverviewSlice,
+			JobDescriptionOverviewSliceDefaultPrimaryTextBlockItem,
+			JobDescriptionOverviewSliceDefaultPrimary,
+			JobDescriptionOverviewSliceVariation,
+			JobDescriptionOverviewSliceDefault,
 			LogoGridSlice,
 			LogoGridSliceDefaultGridPrimaryLogosItem,
 			LogoGridSliceDefaultGridPrimary,
@@ -2781,6 +2964,10 @@ declare module '@prismicio/client' {
 			TeamMembersCarouselSliceDefaultPrimary,
 			TeamMembersCarouselSliceVariation,
 			TeamMembersCarouselSliceDefault,
+			TestimonialImageSideSlice,
+			TestimonialImageSideSliceDefaultPrimary,
+			TestimonialImageSideSliceVariation,
+			TestimonialImageSideSliceDefault,
 			TextOnlySlice,
 			TextOnlySliceDefaultPrimary,
 			TextOnlySliceVariation,

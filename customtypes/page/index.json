@@ -18,6 +18,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"job_description_overview": {
+							"type": "SharedSlice"
+						},
 						"side_by_side_media_slider": {
 							"type": "SharedSlice"
 						},

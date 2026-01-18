@@ -39,6 +39,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"testimonial_image_side": {
+							"type": "SharedSlice"
+						},
+						"job_description_overview": {
+							"type": "SharedSlice"
+						},
 						"hero_with_navigation_overlay": {
 							"type": "SharedSlice"
 						},
